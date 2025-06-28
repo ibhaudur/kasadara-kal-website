@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import TestList from "./component/TestList";
 
 const Attended: React.FC = () => {
   return (
-    <section>Attended</section>
-  )
-}
+    <section className="p-4">
+      <TestList />
+    </section>
+  );
+};
 
-export default Attended
+export default Attended;
