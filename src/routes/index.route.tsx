@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoadingSpinner from "../component/LoadingSpinner";
 import Layout from "../layout";
+import Attended from "../pages/attended";
 
 const Exams = lazy(() => import("../pages/exams"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -14,6 +15,7 @@ const AllRoutes: React.FC = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="exams" />} />
             <Route path="exams" element={<Exams />} />
+            <Route path="paid-attended" element={<Attended />} />
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
