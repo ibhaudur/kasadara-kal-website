@@ -42,4 +42,5 @@ export interface ModalProps {
 }
 export interface SearchBoxProp {
   placeholder: string;
+  splClass?:string;
 }
