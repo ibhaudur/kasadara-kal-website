@@ -7,7 +7,7 @@ import { RoutesList } from "../utils/utils";
 const Header: React.FC = () => {
   return (
     <header
-      className="bg-white flex justify-between items-center w-full p-3 "
+      className="bg-white flex justify-between items-center w-full p-3 border-b border-b-[#EBEBEB] "
     >
       <img src={Logo} width={150} className="" alt="icon" />
       <SearchBox
