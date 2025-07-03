@@ -1,5 +1,8 @@
 import React from "react";
 import { StandsOutList } from "../utils/index.utils";
+import Overview from "./Overview";
+import Exampattern from "./Exampatter";
+
 
 const StandOut: React.FC = () => {
   return (
@@ -20,6 +23,8 @@ const StandOut: React.FC = () => {
           </div>
         ))}
       </div>
+      <Overview/>
+      <Exampattern/>
     </div>
   );
 };

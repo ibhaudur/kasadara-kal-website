@@ -1,7 +1,8 @@
 import React from "react";
 import ExamBanner from "../components/ExamBanner";
 import StandOut from "../components/StandOut";
-import Overview from "../components/Overview";
+
+
 
 const BuyExam: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const BuyExam: React.FC = () => {
         }}
       />
       <StandOut />
-      <Overview />
+      
     </section>
   );
 };
