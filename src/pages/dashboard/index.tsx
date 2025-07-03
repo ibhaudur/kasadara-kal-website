@@ -4,7 +4,11 @@ import average from "../../../public/images/average.svg";
 import exam from "../../../public/images/exam.svg";
 import speed from "../../../public/images/speed.svg";
 import accuracy from "../../../public/images/accuracy.svg";
-import resultoverview from "../../../public/images/resultoverview.svg";
+import AccuracyLineChart from "../../pages/dashboard/accuracychart";
+import AttendedExamsChart from "../../pages/dashboard/attendedexam";
+import ExamResultChart from "../../pages/dashboard/examresultchart";
+
+
 
 const Dashboard: React.FC = () => {
   return (
@@ -22,8 +26,7 @@ const Dashboard: React.FC = () => {
           <img
             src={medal}
             alt="Medal Icon"
-            className=" absolute top-0 right-5 w-20 h-20 -mt-0 -mr-0"
-          />
+            className=" absolute top-0 right-5 w-20 h-20 -mt-0 -mr-0"/>
           <p className="text-gray-600 mb-3 ">Rank</p>
           <h2 className="text-3xl font-bold ">
             23 <span className="text-gray-500 text-sm">/ 50</span>
@@ -70,86 +73,67 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow ">
-          <p className="text-bold flex text-[15px] ">Exam Result Overview</p>
-          <div className="relative  flex  items-center ">
-            <p className="text-sm font-semibold  absolute items-center mt-14 ml-10">
-              12
-              <br />
-              Exams
-            </p>
-            <img
-              src={resultoverview}
-              alt="Resultoverview"
-              className="relative mt-8 mr-16 w-30 h-30 "
-            />
-            <div className="space-y-3  ml-8 mt-8">
-              <div className="flex items-center gap-2  ">
-                <span className="w-3 h-3 rounded-full bg-green-500"></span>
-                <p className="text-sm text-gray-700">GOOD</p>
-              </div>
-              <div className="flex items-center gap-2 ">
-                <span className="w-3 h-3 rounded-full bg-blue-400"></span>
-                <p className="text-sm text-gray-700">AVERAGE</p>
-              </div>
-              <div className="flex items-center gap-2 ">
-                <span className="w-3 h-3 rounded-full bg-red-500"></span>
-                <p className="text-sm text-gray-700">BAD</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-        <div className="bg-white rounded-xl p-6 shadow w-full max-w-md">
-          <h3 className="text-md font-semibold text-gray-800 mb-1">
-            Attended Exams
-          </h3>
-          <p className="text-3xl font-bold text-gray-900">23</p>
-          <p className="text-sm text-gray-500 mb-4">exams attended</p>
+        <div className="col-span-1">
+          <ExamResultChart />
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow w-full max-w-md">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
-            Attended Exams Results
-          </h3>
+      </section >
 
-          <div className="space-y-3">
-            <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-              <span>Group 4 Exam - Quick Test - 4</span>
-              <span className="text-blue-600 font-semibold">34/50</span>
-            </div>
+  <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
 
-            <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-              <span>Mock Test - 3</span>
-              <span className="text-green-600 font-semibold">45/50</span>
-            </div>
+    <div className="bg-white rounded-xl p-6 shadow w-full max-w-md">
+      <h3 className="text-md font-semibold text-gray-800 mb-1">
+        Attended Exams
+      </h3>
+      <p className="text-3xl font-bold text-gray-900">23</p>
+      <p className="text-sm text-gray-500 mb-4">exams attended</p>
+      <AttendedExamsChart />
+    </div>
 
-            <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-              <span>Quick Test - 23</span>
-              <span className="text-red-500 font-semibold">16/50</span>
-            </div>
+    <div className="bg-white rounded-xl p-6 shadow w-full max-w-md">
+      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+        Attended Exams Results
+      </h3>
 
-            <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-              <span>GrNameoup 1 - Exam - Mock test</span>
-              <span className="text-blue-600 font-semibold">34/50</span>
-            </div>
-
-            <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-              <span>Group 1 - Exam - Mock test</span>
-              <span className="text-blue-600 font-semibold">34/50</span>
-            </div>
-          </div>
+      <div className="space-y-3">
+        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+          <span>Group 4 Exam - Quick Test - 4</span>
+          <span className="text-blue-600 font-semibold">34/50</span>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h3 className=" text-lg font-semibold text-gray-800 mb-4">
-            Monthly Based Answer Accuracy
-          </h3>
-          <p className="text-2xl font-bold text-green-600">78%</p>
-          <p className="text-sm text-gray-500">Current Accuracy</p>
+        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+          <span>Mock Test - 3</span>
+          <span className="text-green-600 font-semibold">45/50</span>
         </div>
-      </section>
+
+        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+          <span>Quick Test - 23</span>
+          <span className="text-red-500 font-semibold">16/50</span>
+        </div>
+
+        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+          <span>GrNameoup 1 - Exam - Mock test</span>
+          <span className="text-blue-600 font-semibold">34/50</span>
+        </div>
+
+        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+          <span>Group 1 - Exam - Mock test</span>
+          <span className="text-blue-600 font-semibold">34/50</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div className="bg-white p-4 rounded-xl shadow w-full max-w-md">
+      <h3 className="text-lg font-semibold text-gray-800 mb-1">
+        Monthly Based Answer Accuracy
+      </h3>
+      <p className="text-2xl font-bold text-green-600">78%</p>
+      <p className="text-sm text-gray-500 mb-2">Current accuracy</p>
+      <AccuracyLineChart />
+    </div>
+
+  </section>
     </div>
   );
 };
