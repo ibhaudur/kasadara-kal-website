@@ -2,6 +2,7 @@ import React from "react";
 import { StandsOutList } from "../utils/index.utils";
 import Overview from "./Overview";
 import Exampattern from "./Exampatter";
+import FandQ from "./FandQ";
 
 
 const StandOut: React.FC = () => {
@@ -25,6 +26,7 @@ const StandOut: React.FC = () => {
       </div>
       <Overview/>
       <Exampattern/>
+      <FandQ/>
     </div>
   );
 };
