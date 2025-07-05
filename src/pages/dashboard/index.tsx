@@ -82,11 +82,11 @@ const Dashboard: React.FC = () => {
   <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
 
     <div className="bg-white rounded-xl p-6 shadow w-full max-w-md">
-      <h3 className="text-md font-semibold text-gray-800 mb-1">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">
         Attended Exams
       </h3>
       <p className="text-3xl font-bold text-gray-900">23</p>
-      <p className="text-sm text-gray-500 mb-4">exams attended</p>
+      <p className="text-sm text-gray-500 mb-10">exams attended</p>
       <AttendedExamsChart />
     </div>
 
@@ -95,47 +95,53 @@ const Dashboard: React.FC = () => {
         Attended Exams Results
       </h3>
 
-      <div className="space-y-3">
+      <div className="space-y-3 ">
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
   <span>Group 4 Exam - Quick Test - 4</span>
-  <span className="mr-4">
-    <span className="font-semibold">34</span>/50
+  <span className="ml-4">
+    <span className=" text-blue-600 font-semibold">34</span>/50
   </span>
-  <span className="text-blue-600">Average</span>
 </div>
 
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
           <span>Mock Test - 3</span>
           <span className=" ml-18">
-            <span className="font-semibold">45</span>/50</span>
-          <span className="text-green-600 ">Good</span>
+            <span className=" text-green-600 font-semibold">45</span>/50</span>
+          
         </div>
 
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
           <span>Quick Test - 23</span>
           <span className="  ml-12">
-            <span className="font-semibold">16</span>/50</span>
-          <span className="text-red-500 ">Bad</span>
+            <span className="font-semibold text-red-500">16</span>/50</span>
+          
         </div>
 
       
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
   <span>Group 1 - Exam - Mock test</span>
-  <span className="ml-2npnpm">
-    <span className="font-semibold">34</span>/50
+  <span className="ml-2">
+    <span className=" text-blue-600 font-semibold">34</span>/50
   </span>
-  <span className="text-blue-600">Average</span>
+
+</div>
+   <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
+  <span>Group 1 - Exam - Mock test</span>
+  <span className="ml-2">
+    <span className=" text-blue-600 font-semibold">34</span>/50
+  </span>
+
 </div>
       </div>
     </div>
 
 
-    <div className="bg-white p-4 rounded-xl shadow w-full max-w-md">
-      <h3 className="text-lg font-semibold text-gray-800 mb-1">
+    <div className="bg-white p-5 rounded-xl shadow w-full max-w-md">
+      <h3 className="text-lg font-semibold text-gray-800 mb-4">
         Monthly Based Answer Accuracy
       </h3>
-      <p className="text-2xl font-bold text-green-600">78%</p>
-      <p className="text-sm text-gray-500 mb-2">Current accuracy</p>
+      <p className="text-2xl font-bold text-gray-900 ">78%</p>
+      <p className="text-sm text-gray-500 mb-18">Current accuracy</p>
       <AccuracyLineChart />
     </div>
 
