@@ -97,29 +97,35 @@ const Dashboard: React.FC = () => {
 
       <div className="space-y-3">
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-          <span>Group 4 Exam - Quick Test - 4</span>
-          <span className="text-blue-600 font-semibold">34/50</span>
-        </div>
+  <span>Group 4 Exam - Quick Test - 4</span>
+  <span className="mr-4">
+    <span className="font-semibold">34</span>/50
+  </span>
+  <span className="text-blue-600">Average</span>
+</div>
 
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
           <span>Mock Test - 3</span>
-          <span className="text-green-600 font-semibold">45/50</span>
+          <span className=" ml-18">
+            <span className="font-semibold">45</span>/50</span>
+          <span className="text-green-600 ">Good</span>
         </div>
 
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
           <span>Quick Test - 23</span>
-          <span className="text-red-500 font-semibold">16/50</span>
+          <span className="  ml-12">
+            <span className="font-semibold">16</span>/50</span>
+          <span className="text-red-500 ">Bad</span>
         </div>
 
+      
         <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-          <span>GrNameoup 1 - Exam - Mock test</span>
-          <span className="text-blue-600 font-semibold">34/50</span>
-        </div>
-
-        <div className="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-md text-sm text-gray-700 shadow-sm">
-          <span>Group 1 - Exam - Mock test</span>
-          <span className="text-blue-600 font-semibold">34/50</span>
-        </div>
+  <span>Group 1 - Exam - Mock test</span>
+  <span className="ml-2npnpm">
+    <span className="font-semibold">34</span>/50
+  </span>
+  <span className="text-blue-600">Average</span>
+</div>
       </div>
     </div>
 

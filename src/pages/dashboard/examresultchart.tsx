@@ -15,7 +15,7 @@ const data = {
       data: [8, 3, 1],
       backgroundColor: ["#4ade80", "#60a5fa", "#f87171"],
       borderWidth: 3,
-      cutout: "70%", // center hole
+      cutout: "70%",
     },
   ],
 };
@@ -53,9 +53,9 @@ const ExamResultChart: React.FC = () => {
           <span className="text-sm font-semibold text-blue-600 ml-2">3</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-red-500" />
+          <span className="w-3 h-3 rounded-full bg-red-400" />
           <span className="text-sm text-gray-700">BAD</span>
-          <span className="text-sm font-semibold text-red-600 ml-2">1</span>
+          <span className="text-sm font-semibold text-red-400 ml-2">1</span>
         </div>
       </div>
     </div>
