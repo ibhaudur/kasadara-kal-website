@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import frame from "../../../../../public/images/Frame.png";
+import { PiMinusBold, PiPlusBold } from "react-icons/pi";
 
 interface FaqItem {
   question: string;
@@ -67,7 +68,7 @@ const FandQ: React.FC = () => {
                     {faq.question}
                   </h3>
                   <span className="text-[19px] text-[#3D3D3D] font-light">
-                    {openQuestion === index ? "−" : "+"}
+                    {openQuestion === index ? <PiMinusBold /> : <PiPlusBold />}
                   </span>
                 </div>
 
