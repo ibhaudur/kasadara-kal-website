@@ -1,6 +1,11 @@
 import React from "react";
 import { StandsOutList } from "../utils/index.utils";
 import Overview from "./Overview";
+import Exampattern from "./Exampatter";
+import FandQ from "./FandQ";
+import TermsAndCond from "./TermsAndCondn";
+
+
 const StandOut: React.FC = () => {
   return (
     <div className="relative bg-white rounded-2xl p-5 shadow-md overflow-hidden mt-5">
@@ -20,7 +25,10 @@ const StandOut: React.FC = () => {
           </div>
         ))}
       </div>
-      <Overview />
+      <Overview/>
+      <Exampattern/>
+      <FandQ/>
+      <TermsAndCond/>
     </div>
   );
 };
