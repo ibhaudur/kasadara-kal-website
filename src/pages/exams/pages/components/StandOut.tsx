@@ -3,6 +3,7 @@ import { StandsOutList } from "../utils/index.utils";
 import Overview from "./Overview";
 import Exampattern from "./Exampatter";
 import FandQ from "./FandQ";
+import TermsAndCond from "./TermsAndCondn";
 
 
 const StandOut: React.FC = () => {
@@ -27,6 +28,7 @@ const StandOut: React.FC = () => {
       <Overview/>
       <Exampattern/>
       <FandQ/>
+      <TermsAndCond/>
     </div>
   );
 };
