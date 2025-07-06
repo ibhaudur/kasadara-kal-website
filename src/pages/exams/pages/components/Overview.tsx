@@ -5,7 +5,7 @@ const Overview: React.FC = () => {
   return (
     <div className="w-[100%] max-w-[1280px] p-[20px_30px] mx-auto border border-[#e0e0e0] rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)] font-['Segoe_UI',sans-serif] mt-5">
       <div className="w-full min-h-[114px] max-w-[65%] mb-5 h-auto">
-        <h2 className="text-3xl mt-0 mb-2.5 text-[#333] font-bold">Overview</h2>
+        <h2 className="text-2xl mt-0 mb-2.5 text-[#333] font-bold">Overview</h2>
         <p className="text-base leading-relaxed mb-4 text-[rgb(113,122,138)]">
           Kasadara kal offers full-length mock tests, quick practice quizzes, and detailed performance insights to help you prepare 
           smarter and faster. Stay updated with the latest patterns, track your progress easily, and boost your chances of success 

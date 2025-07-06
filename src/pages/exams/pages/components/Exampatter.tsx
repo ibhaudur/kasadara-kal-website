@@ -2,8 +2,8 @@ import React from 'react';
 
 const Exampattern: React.FC = () => {
   return (
-    <div className="w-[100%] w-full max-w-[1280px] mx-auto  font-['Segoe_UI',sans-serif] mt-5">
-      <h2 className="text-[28px] font-bold text-[#333] mb-5">Exam Pattern: TNPSC Group 4 (2025)</h2>
+    <div className="w-full max-w-[1280px] mx-auto  font-['Segoe_UI',sans-serif] mt-5">
+      <h2 className="text-2xl font-bold text-[#333] mb-5">Exam Pattern: TNPSC Group 4 (2025)</h2>
       
       <div className="border border-[#e0e0e0] rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
         <div className="flex p-[16px_20px]">
