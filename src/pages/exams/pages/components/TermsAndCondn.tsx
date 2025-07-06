@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsAndCond: React.FC = () => {
   return (
-    <div className="w-[100%] max-w-[1280px] font-['Segoe_UI',Arial,sans-serif] text-[#333] leading-none mt-5 ">
+    <div className="w-[100%] font-['Segoe_UI',Arial,sans-serif] text-[#333] leading-none mt-5 ">
       <h1 className="text-2xl font-bold leading-[22px] mb-5 text-[#333]">
         Terms & Conditions
       </h1>

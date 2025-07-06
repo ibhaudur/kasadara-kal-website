@@ -6,7 +6,7 @@ import StandOut from "../components/StandOut";
 
 const BuyExam: React.FC = () => {
   return (
-    <section className="p-4">
+    <section className="p-4 max-w-[1580px] mx-auto">
       <ExamBanner
         details={{
           examName: "Group 4 Exam - Quick Test - 4",
