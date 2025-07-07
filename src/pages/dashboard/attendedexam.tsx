@@ -31,7 +31,7 @@ const barData = {
       },
       borderRadius: 4,
       borderSkipped: false,
-      barThickness: 12,
+      barThickness: 20,
     },
   ],
 };

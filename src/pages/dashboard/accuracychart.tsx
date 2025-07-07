@@ -9,6 +9,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
+// Register Chart.js components
 ChartJS.register(
   LineElement,
   CategoryScale,
@@ -18,36 +19,50 @@ ChartJS.register(
   Filler
 );
 
+// Line chart data
 const lineData = {
   labels: [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ],
   datasets: [
     {
       label: "Accuracy",
       data: [30, 60, 45, 70, 40, 65, 75, 55, 68, 85, 60, 70],
-      borderColor: "rgba(44, 140, 83, 0.5)",
+      borderColor: "rgba(44, 140, 83, 1)", // Solid green line
       backgroundColor: (context: any) => {
         const ctx = context.chart.ctx;
-        const gradient = ctx.createLinearGradient(75, 100, 75, 75);
-        gradient.addColorStop(0, "rgba(44, 140, 83, 0.5)");
-        gradient.addColorStop(1, "rgba(44, 140, 83, 0)");
+        const chart = context.chart;
+        const gradient = ctx.createLinearGradient(0, 0, 0, chart.height);
+        gradient.addColorStop(0, "rgba(44, 140, 83, 0.2)"); // very light near the line
+        gradient.addColorStop(1, "rgba(44, 140, 83, 0)"); // transparent
         return gradient;
       },
       tension: 0.4,
       fill: true,
       pointRadius: 0,
+      borderWidth: 2,
     },
   ],
 };
 
+// Line chart options
 const lineOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
-    tooltip: { enabled: false },
+    tooltip: { enabled: true },
   },
   scales: {
     y: {
@@ -56,17 +71,18 @@ const lineOptions = {
     x: {
       grid: { display: false },
       ticks: {
-        color: "#6b7280", //
-        font: { size: 14},
+        color: "#6b7280", // Tailwind gray-500
+        font: { size: 14 },
         padding: 10,
       },
     },
   },
 };
 
+// Component
 const AccuracyLineChart = () => {
   return (
-    <div className="w-[408px] h-[100px] overflow-hidden">
+    <div className="overflow-hidden">
       <Line data={lineData} options={lineOptions} />
     </div>
   );
