@@ -8,10 +8,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-// Register Chart.js components
+
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
-// Labels for each month
+
 const labels = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -27,7 +27,7 @@ const barData = {
       data: attendedData,
       backgroundColor: (ctx: any) => {
         const index = ctx.dataIndex;
-        return index === 6 ? "#16a34a" : "#bbf7d0"; // Highlight July
+        return index === 6 ? "#16a34a" : "#bbf7d0";
       },
       borderRadius: 4,
       borderSkipped: false,
