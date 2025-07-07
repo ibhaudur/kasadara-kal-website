@@ -56,13 +56,16 @@ const lineData = {
   ],
 };
 
-// Line chart options
 const lineOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
     tooltip: { enabled: true },
+  },
+  interaction: {
+    mode: "index" as const,
+    intersect: false,
   },
   scales: {
     y: {
@@ -71,8 +74,8 @@ const lineOptions = {
     x: {
       grid: { display: false },
       ticks: {
-        color: "#6b7280", // Tailwind gray-500
-        font: { size: 14 },
+        color: "#6b7280",
+        font: { size: 12 },
         padding: 10,
       },
     },

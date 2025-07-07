@@ -30,7 +30,7 @@ const options = {
 
 const ExamResultChart: React.FC = () => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow flex items-center justify-between w-full max-w-md">
+    <div className="flex items-center">
       {/* Chart */}
       <div className="relative w-32 h-32">
         <Doughnut data={data} options={options} />
@@ -41,7 +41,7 @@ const ExamResultChart: React.FC = () => {
       </div>
 
       {/* Legend */}
-      <div className="space-y-4 ml-6 w-full max-w-[140px]">
+      <div className="space-y-1 ml-6 w-full">
         <div className="flex justify-between items-center text-sm text-gray-700">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-green-500" />

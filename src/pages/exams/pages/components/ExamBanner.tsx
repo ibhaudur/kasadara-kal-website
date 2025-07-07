@@ -18,7 +18,10 @@ const ExamBanner: React.FC<DetailsProps> = ({ details }) => {
           FREE
         </span>
       )}
-      <small className="text-[12px] text-[#8790A1] flex items-center gap-2 mb-3">Exams <HiChevronRight /> Quick tests <HiChevronRight /> <span className="text-[#2BBC7C]">Group 4 Exam - Quick Test - 4 </span></small>
+      <small className="text-[12px] text-[#8790A1] flex items-center gap-2 mb-3">
+        Exams <HiChevronRight /> Quick tests <HiChevronRight />{" "}
+        <span className="text-[#2BBC7C]">Group 4 Exam - Quick Test - 4 </span>
+      </small>
       <div className="flex flex-col h-full justify-between">
         <div>
           <div className="flex justify-between">
