@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./header";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import Footer from "./footer/footer";
 
 const Layout: React.FC = () => {
   const User = useSelector((state: RootState) => state?.header?.pageName);
@@ -13,7 +14,10 @@ const Layout: React.FC = () => {
           <Header />{" "}
         </div>
         <Outlet />
+        <Footer/>
       </main>
+      
+
     </div>
   );
 };
