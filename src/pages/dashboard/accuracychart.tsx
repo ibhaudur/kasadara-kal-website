@@ -75,7 +75,7 @@ const lineOptions = {
       grid: { display: false },
       ticks: {
         color: "#6b7280",
-        font: { size: 12 },
+        font: { size: 11 },
         padding: 10,
       },
     },
