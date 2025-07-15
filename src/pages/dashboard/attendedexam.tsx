@@ -51,7 +51,7 @@ const barOptions = {
   scales: {
     x: {
       grid: { display: false },
-      ticks: { color: "#6b7280", font: { size: 11 } },
+      ticks: { color: "#6b7280", font: { size: 12 } },
     },
     y: {
       display: false,

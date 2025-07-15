@@ -30,39 +30,40 @@ const options = {
 
 const ExamResultChart: React.FC = () => {
   return (
-    <div className="bg-white p-4 rounded-xl w-full max-w-xs mx-auto mb-2">
-     
+    <div className="flex items-center">
       {/* Chart */}
-      <div className="relative w-\30 h-30 mx-auto">
+      <div className="relative w-32 h-32">
         <Doughnut data={data} options={options} />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold">
-          <p className="text-lg">12</p>
+          <p className="text-xl">12</p>
           <p className="text-gray-600">Exams</p>
         </div>
       </div>
 
       {/* Legend */}
-      <div className="mt-4 space-y-3">
-        <div className="flex items-center justify-between text-sm">
+      <div className="space-y-1 ml-6 w-full">
+        <div className="flex justify-between items-center text-sm text-gray-700">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-            <span className="text-gray-700">GOOD</span>
+            <span className="w-3 h-3 rounded-full bg-green-500" />
+            <span>GOOD</span>
           </div>
-          <span className="text-green-600 font-semibold">8</span>
+          <span className=" text-green-600 text-lg">8</span>
         </div>
-        <div className="flex items-center justify-between text-sm">
+
+        <div className="flex justify-between items-center text-sm text-gray-700">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-blue-400" />
-            <span className="text-gray-700">AVERAGE</span>
+            <span className="w-3 h-3 rounded-full bg-blue-400" />
+            <span>AVERAGE</span>
           </div>
-          <span className="text-blue-600 font-semibold">3</span>
+          <span className=" text-blue-600 text-lg">3</span>
         </div>
-        <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-            <span className="text-gray-700">BAD</span>
+
+        <div className="flex justify-between items-center text-sm text-gray-700">
+          <div className="flex items-center gap-2 ">
+            <span className="w-3 h-3 rounded-full bg-red-400 " />
+            <span>BAD</span>
           </div>
-          <span className="text-red-500 font-semibold">1</span>
+          <span className="text-red-500 text-lg">1</span>
         </div>
       </div>
     </div>
