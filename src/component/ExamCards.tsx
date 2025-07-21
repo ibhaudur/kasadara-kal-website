@@ -11,23 +11,23 @@ type DetailsProps = { details: ExamDetails; index: number };
 const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
   const navigate = useNavigate();
   return (
-    <div
+    <div 
       key={index}
       onClick={() => navigate(`buy/${index + 1}`)}
-      className="relative bg-white rounded-2xl p-4 shadow-md overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
+      className="    relative bg-white rounded-2xl p-4 shadow-md overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
     >
       {details.type === "free" && (
         <span className="absolute top-[13px] right-[-25px] w-[100px] text-center bg-[#FFCA60] text-[12px] font-bold px-5 py-1 shadow-sm rotate-45 overflow-hidden">
           FREE
         </span>
       )}
-      <div className="flex flex-col h-full justify-between">
+      <div className=" flex flex-col h-full justify-between  sm:text-[14px]">
         <div>
           <h5 className="text-[18px] font-semibold text-[#21272C]">
             {details.examName}
           </h5>
-          <small className="text-[#8790A1] flex gap-2 my-3 mb-4 text-[12px] font-medium">
-            <span className="flex items-center gap-2">
+          <small className=" text-[#8790A1] flex gap-2 my-3 mb-4 text-[11px]   font-medium">
+            <span className=" flex items-center gap-2">
               <LuGauge /> {details.mark} marks
             </span>
             |
