@@ -109,7 +109,7 @@ const TestList: React.FC = () => {
   const paidExams = ExamList.slice(5, 10);
 
   return (
-    <div className="  px-2 md:px-10 py-2">
+    <div className="md:px-10">
      
      <div className="flex md:hidden items-center justify-center my-4  ">
   <div className="flex bg-white rounded-full p-2 ">
