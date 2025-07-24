@@ -5,6 +5,7 @@ import user from './user.png';
 import youtube from './youtube.png';
 import mail from './mail.png';
 import footer_logo from './footer-logo.png';
+import twitter from './twitter.png';
 
 const asset: Record<string, string> = {
   facebook,
@@ -14,6 +15,7 @@ const asset: Record<string, string> = {
   youtube,
   mail,
   footer_logo,
+  twitter,
 };
 
 export default asset;
