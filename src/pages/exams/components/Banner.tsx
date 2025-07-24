@@ -6,44 +6,63 @@ import { BannerTileList } from "../utils/index.utils";
 
 const Banner: React.FC = () => {
   return (
-    <div className="relative" style={{ zIndex: "999" }}>
-      <div className="bg-[#CCFFD9] text-[#21272C] py-20">
-        <div className="mx-24 grid grid-cols-12 items-center">
-          <div className="col-span-12 md:col-span-6">
-            <h4 className="text-[32px] md:text-[40px] font-bold leading-tight">
-              We’re trying to help improve <br /> your preparation for <br />{" "}
-              group exams
-            </h4>
-            <p className="mt-5 text-[15px] mb-4">
-              Unlock your exams by buying them to maximize your preparation
+    <div className="relative z-[999] ">
+      {/* Green Background */}
+      <div className=" grid grid-cols-1 bg-[#CCFFD9] text-[#21272C] pt-10 pb-40 md:pb-20 px-4 md:px-24 relative z-10">
+        <div className="grid grid-cols-12 items-center gap-4">
+          {/* Text + Search */}
+          <div className="col-span-12 md:col-span-6 text-center md:text-left">
+            <h4 className="text-[22px] md:text-[40px] font-bold leading-tight">
+    We’re try to help to improve <br />
+    your preparing for group 
+    <br className="md:hidden" /> exams
+  </h4>
+            <p className="mt-3 text-[14px] md:text-[15px] mb-4">
+              Unlock your exams by buying them to maximize  <br className="md:hidden" />your preparation
             </p>
-            <SearchBox placeholder="Search exams, mock test  & etc..." />
+     <div className="w-full md:w-auto max-w-full md:max-w-md mx-auto md:mx-0 px-4 md:px-0">
+  <SearchBox placeholder="Search exams, mock test & etc..." />
+</div>
           </div>
+
+          {/* Image */}
           <div className="col-span-12 md:col-span-6 flex justify-center">
             <img
               src={Avt}
               alt="Exam Illustration"
-              className="w-full max-w-[350px]"
+              className="w-full max-w-[300px] md:max-w-[350px]"
             />
           </div>
         </div>
       </div>
-      <div className="absolute left-1/2 bottom-[-50px] transform -translate-x-1/2">
-        <div className="bg-white p-6 flex rounded-3xl">
+
+      {/* White Tile Section */}
+      <div className="relative z-20 px-4 md:px-0 -mt-[120px] md:mt-0">
+        <div
+          className="bg-white p-4 md:p-5 flex flex-col md:flex-row rounded-3xl 
+          md:absolute md:left-1/2 md:bottom-[-50px] md:transform md:-translate-x-1/2 
+          w-full md:w-auto shadow-md"
+        >
           {BannerTileList.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 w-[260px] px-2 border-r border-r-[#EBEBEB] last:border-none"
+              className={`flex items-start gap-3 md:gap-2 px-6 py-3 md:py-0 md:px-2 md:w-[260px] ${
+                index !== BannerTileList.length - 1
+                  ? "border-b md:border-b-0 md:border-r border-[#EBEBEB]"
+                  : ""
+              }`}
             >
-              <div className="p-4 bg-[#D0FFEA] rounded-2xl">
+              <div className="p-3 bg-[#D0FFEA] rounded-xl">
                 <LuBookCheck className="text-[20px]" />
               </div>
               <div>
-                <p className="text-[16px] font-semibold">{item.name}</p>
-                <small className="text-[10px] leading-3 block line-clamp-2">
-                  {item.content}
-                </small>
-              </div>
+  <p className="text-[15px]  text-gray-700 md:text-black md:font-semibold">
+    {item.name}
+  </p>
+  <small className="text-[10px] leading-3 block text-gray-500 md:text-black ">
+    {item.content}
+  </small>
+</div>
             </div>
           ))}
         </div>
