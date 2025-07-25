@@ -4,12 +4,12 @@ import { SearchBoxProp } from "../types/component.types";
 
 const SearchBox: React.FC<SearchBoxProp> = ({ placeholder, splClass }) => {
   return (
-    <div className={`relative w-100 ${splClass}`}>
-      <FiSearch className="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+    <div className={`relative w-full ${splClass}`}>
+      <FiSearch className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
       <input
         type="text"
-        placeholder={placeholder ? placeholder : "Search..."}
-        className="w-full h-[40px] bg-white pl-10 pr-4 rounded-[50px] border-[0.6px] border-[#DCDFE4] text-sm"
+        placeholder={placeholder || "Search..."}
+        className="w-full h-[48px] bg-white pl-10 pr-4 rounded-full border border-[#E3E7EA] text-sm placeholder:text-gray-400 shadow-md"
       />
     </div>
   );
