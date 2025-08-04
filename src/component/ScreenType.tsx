@@ -26,7 +26,7 @@ const ScreenType = () => {
   return (
     <Button
       type="outline"
-      splClass="text-[#3253EB] border border-[#3253EB] px-4 py-2 rounded-lg"
+      splClass="text-[#3253EB] border border-[#EBEBEB] px-4 py-3 rounded-[16px]"
       handler={handleFullScreen}
     >
       {isFullScreen ? (
