@@ -4,7 +4,9 @@ import { ButtonProps } from "../../types/component.types";
 const Button: React.FC<Partial<ButtonProps>> = ({
   splClass,
   btnName,
-  handler,type
+  handler,
+  type,
+  children,
 }) => {
   if (type === "outline") {
     return (
@@ -14,7 +16,7 @@ const Button: React.FC<Partial<ButtonProps>> = ({
         onClick={handler ? handler : undefined}
         type="submit"
       >
-        {btnName}
+        {btnName ? btnName : children}
       </button>
     );
   }
@@ -25,7 +27,7 @@ const Button: React.FC<Partial<ButtonProps>> = ({
       onClick={handler ? handler : undefined}
       type="submit"
     >
-      {btnName}
+      {btnName ? btnName : children}
     </button>
   );
 };
