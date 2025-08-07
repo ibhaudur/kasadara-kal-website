@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ExamIndicator from "./components/ExamIndicator";
 import { usePrompt } from "../../../../hooks/usePrompt";
 import QuestionsandOptions from "./components/QuestionsandOptions";
+import Validator from "./components/Validator";
 
 const TakeExam = () => {
   const location = useLocation();
@@ -52,8 +53,9 @@ const TakeExam = () => {
   return (
     <section>
       <ExamIndicator />
-      <div className="grid grid-cols-6">
+      <div className="flex">
         <QuestionsandOptions language={language} />
+        <Validator />
       </div>
     </section>
   );

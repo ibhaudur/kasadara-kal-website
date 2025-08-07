@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { questions } from "../utils/index.utils";
+import Button from "../../../../../component/UI/Button";
 
 interface QuestionsandOptionsProps {
   language: string;
@@ -13,7 +14,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   const q = questions[0][langKey];
 
   return (
-    <div className="bg-white col-span-4">
+    <div className="bg-white flex-grow">
       <div className="flex items-center justify-between p-2 border border-gray-200">
         <p className="mb-0 font-semibold">Question No: 1</p>
         <div className="flex items-center text-xs gap-2">
@@ -29,7 +30,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
           </p>{" "}
         </div>
       </div>
-      <div className="p-3">
+      <div className="p-3 mb-5">
         <p className="text-lg mb-4">{q.question}</p>
         {Object.entries(q.options).map(([key, value]) => (
           <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
@@ -51,6 +52,33 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
             </label>
           </div>
         ))}
+      </div>
+      <div className="flex items-center justify-between p-2 border mt-8 border-gray-200">
+        <div className="flex items-center gap-2">
+          <Button
+            type="outline"
+            splClass="text-[#FF4444] border border-[#EBEBEB] px-5 py-2 text-[14px] rounded-[20px]"
+          >
+            Clear Response
+          </Button>
+          <Button
+            type="outline"
+            splClass="text-[#C94951] border border-[#C94951] px-5 py-2 text-[14px] rounded-[20px]"
+          >
+            Mark
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button
+            type="outline"
+            splClass="text-[#2BBC7C] border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+          >
+            Next
+          </Button>
+          <Button splClass="text-white border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]">
+            Save & Next
+          </Button>
+        </div>
       </div>
     </div>
   );
