@@ -5,13 +5,12 @@ import mobileHamburger from "../../../public/images/mobile-hamburger.png";
 import SearchBox from "../../component/SearchBox";
 import { NavLink } from "react-router-dom";
 import { RoutesList } from "../utils/utils";
-import LoginPage from "../../component/LoginPage";
+import LoginPage from "./LoginPage";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
 
   const profileRoute = RoutesList.find((route) => route.name === "Profile");
 
@@ -61,22 +60,17 @@ const Header: React.FC = () => {
             </svg>
           </button>
           {isLoggedIn && profileRoute?.icon ? (
-    <NavLink to="/profile" className="p-2">
-      <img
-        src={profileRoute.icon}
-        alt="Profile"
-        className="w-7 h-7 rounded-full"
-      />
-    </NavLink>
-  ) : (
-    <button
-      className="p-2 text-sm text-black-500 font-semibold"
-      onClick={() => setShowLoginForm(true)}
-    >
-      Login
-    </button>
-  )}
-</div>
+            <NavLink to="/profile" className="p-2">
+              <img
+                src={profileRoute.icon}
+                alt="Profile"
+                className="w-7 h-7 rounded-full"
+              />
+            </NavLink>
+          ) : (
+            <LoginPage />
+          )}
+        </div>
       </div>
 
       {showMobileSearch && (
@@ -132,59 +126,40 @@ const Header: React.FC = () => {
             placeholder="Search exams, mock test  & etc..."
           />
         </div>
-       <div className="flex flex-row items-center gap-0 w-auto mt-0">
-  {RoutesList.map((item, index) => (
-    <React.Fragment key={index}>
-      {item.name === "Profile" ? (
-        isLoggedIn ? (
-          <NavLink
-            to={item.path}
-            className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
-          >
-            <img src={item.icon} alt="Profile" className="w-7 h-7 rounded-full" />
-          </NavLink>
-        ) : (
-          <button
-            onClick={() => setShowLoginForm(true)}
-            className="p-3 text-black font-medium text-[15px] block sm:inline"
-          >
-            Login
-          </button>
-        )
-      ) : (
-        <NavLink
-          to={item.path}
-          className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
-        >
-          {item.icon ? (
-            <img src={item.icon} alt={item.name} />
-          ) : (
-            <span>{item.name}</span>
-          )}
-        </NavLink>
-      )}
-    </React.Fragment>
-  ))}
-</div>
-
+        <div className="flex flex-row items-center gap-0 w-auto mt-0">
+          {RoutesList.map((item, index) => (
+            <React.Fragment key={index}>
+              {item.name === "Profile" ? (
+                isLoggedIn ? (
+                  <NavLink
+                    to={item.path}
+                    className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
+                  >
+                    <img
+                      src={item.icon}
+                      alt="Profile"
+                      className="w-7 h-7 rounded-full"
+                    />
+                  </NavLink>
+                ) : (
+                  <LoginPage />
+                )
+              ) : (
+                <NavLink
+                  to={item.path}
+                  className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
+                >
+                  {item.icon ? (
+                    <img src={item.icon} alt={item.name} />
+                  ) : (
+                    <span>{item.name}</span>
+                  )}
+                </NavLink>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
-      {showLoginForm && (
-  <div className="fixed inset-0 bg-white bg-opacity-50 z-50 flex items-center justify-center px-4">
-    <div className="relative w-full max-w-5xl">
-      <button
-        onClick={() => setShowLoginForm(false)}
-        className="absolute top-2 right-4 z-10 text-black text-2xl bg-white bg-opacity-50 p-4 rounded-full hover:bg-opacity-80"
-      >
-        ✕
-      </button>
-      <LoginPage onLoginSuccess={() => {
-        setIsLoggedIn(true);
-        setShowLoginForm(false);
-      }} />
-    </div>
-  </div>
-)}
-
     </header>
   );
 };
