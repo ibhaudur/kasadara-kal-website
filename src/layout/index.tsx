@@ -13,6 +13,7 @@ const Layout: React.FC = () => {
         <div className="bg-gray-100 sticky top-0" style={{ zIndex: "9999" }}>
           <Header />{" "}
         </div>
+        
         <Outlet />
         <Footer/>
       </main>
