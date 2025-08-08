@@ -48,8 +48,8 @@ const FandQ: React.FC = () => {
         Frequently asked questions
       </h2>
       
-      {/* Desktop/Tablet View (>360px) - Original Layout */}
-      <div className="hidden min-[361px]:flex w-full mx-auto font-['Segoe_UI',sans-serif] mt-5">
+      {/* Desktop/Tablet View (>750px) - Original Layout */}
+      <div className="hidden min-[751px]:flex w-full mx-auto font-['Segoe_UI',sans-serif] mt-5">
         <div className="flex-1 max-w-[65%]">
           <div className="flex flex-col gap-[10px]">
             {faqData.map((faq, index) => (
@@ -106,8 +106,8 @@ const FandQ: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile View (≤360px) - FAQ Items + Image Below */}
-      <div className="block min-[361px]:hidden w-full mx-auto font-['Segoe_UI',sans-serif] mt-5">
+      {/* Mobile/Tablet View (≤750px) - FAQ Items + Image Below */}
+      <div className="block min-[751px]:hidden w-full mx-auto font-['Segoe_UI',sans-serif] mt-5">
         {/* FAQ Questions List */}
         <div className="flex flex-col gap-[10px] mb-6">
           {faqData.map((faq, index) => (
