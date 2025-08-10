@@ -150,26 +150,25 @@ const TermsAndCond: React.FC = () => {
           </p>
           <ul className="list-none pl-0 mb-3 text-[#8790A1]">
             <li className="flex items-center mb-1.5">
-              <span className="inline-block w-3 h-3 rounded-full mr-2 bg-[#4CAF50]"></span>
+              <span className="inline-block w-3 h-3 sm:pl-4 rounded-full mr-2 bg-[#4CAF50]"></span>
               <span className="text-xs">
                 Answered - You have answered the question.
               </span>
             </li>
             <li className="flex items-center mb-1.5">
-              <span className="inline-block w-4 sm:w-3 h-3 rounded-full mr-2 bg-[#F44336]"></span>
+              <span className="inline-block w-4 sm:w-3 h-3 sm:pl-4 rounded-full mr-2 bg-[#F44336]"></span>
               <span className="text-xs">
                 Not answered - You have seen the question but not answered it.
               </span>
             </li>
             <li className="flex items-center mb-1.5">
-              <span className="inline-block w-4 sm:w-3 h-3 rounded-full mr-2 bg-[#FF9800]"></span>
-
+              <span className="inline-block w-4 md:w-3 h-3 sm:pl-3 rounded-full mr-2 bg-[#FF9800]"></span>
               <span className="text-xs">
                 Currently attending - You are actively working on this question.
               </span>
             </li>
             <li className="flex items-center mb-1.5">
-              <span className="inline-block w-4 sm:w-3 h-3 rounded-full mr-2 border border-[#ccc] bg-transparent"></span>
+              <span className="inline-block w-4 md:w-3 h-3 sm:pl-3 rounded-full mr-2 border border-[#ccc] bg-transparent"></span>
               <span className="text-xs">
                 Not attempted yet - You haven't opened or answered this question
                 yet.
