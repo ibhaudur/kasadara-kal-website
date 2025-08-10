@@ -118,10 +118,10 @@ const AttendExam = () => {
         </li>
       </ul>
       <div
-        className="fixed bottom-0 left-0 w-full bg-white p-4 flex justify-between items-center z-10"
+        className="fixed bottom-0 left-0 w-full bg-white p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 z-10"
         style={{ boxShadow: "0px 0px 4px 0px #00000014" }}
       >
-        <label className="flex items-center gap-2 text-sm">
+        <label className="flex items-center gap-2 text-sm flex-1">
           <input
             type="checkbox"
             checked={agreed}
@@ -131,15 +131,18 @@ const AttendExam = () => {
           I have read all the instructions carefully and have understood them. I
           agree not to cheat or use unfair means in this examination.
         </label>
-        <button
-          className={`px-6 py-2 flex gap-3 cursor-pointer items-center bg-[#2BBC7C] text-white rounded-3xl transition-opacity ${
-            !agreed ? "bg-[#CED8D4] cursor-not-allowed" : ""
-          }`}
-          disabled={!agreed}
-          onClick={() => setIsOpen(true)}
-        >
-          Ready to Start <HiArrowNarrowRight />
-        </button>
+
+        <div className="flex justify-end sm:justify-start">
+          <button
+            className={`px-6 py-2 flex gap-3 cursor-pointer items-center bg-[#2BBC7C] text-white rounded-3xl transition-opacity ${
+              !agreed ? "bg-[#CED8D4] cursor-not-allowed" : ""
+            }`}
+            disabled={!agreed}
+            onClick={() => setIsOpen(true)}
+          >
+            Ready to Start <HiArrowNarrowRight />
+          </button>
+        </div>
       </div>
     </section>
   );
