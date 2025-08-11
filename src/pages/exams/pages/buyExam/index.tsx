@@ -19,7 +19,6 @@ const BuyExam: React.FC = () => {
         }}
       />
       <StandOut />
-      
     </section>
   );
 };

@@ -33,6 +33,7 @@ export interface ButtonProps {
   btnName: string | ReactNode;
   handler: () => void;
   type: string;
+  children?: ReactNode;
 }
 export interface ModalProps {
   isOpen: boolean;
