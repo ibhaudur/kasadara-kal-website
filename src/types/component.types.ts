@@ -38,7 +38,7 @@ export interface ButtonProps {
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 export interface SearchBoxProp {
