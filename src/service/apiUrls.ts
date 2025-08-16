@@ -1,4 +1,4 @@
-export const postLogin = "admin_login";
+export const postLogin = "login";
 
 export const postAddExam = "add_exam";
 export const putEditExam = "edit_exam"; //id

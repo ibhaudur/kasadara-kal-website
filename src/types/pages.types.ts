@@ -67,3 +67,10 @@ export interface StepsProps {
   setSelect: (index: number) => void;
   select: number;
 }
+export interface Credentials {
+  name: string;
+  email: string;
+  newPassword: string;
+  confirmPassword: string;
+  otp: string;
+}

@@ -15,7 +15,7 @@ const UserSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action) => {
-      state.userDetails = action.payload?.admin;
+      state.userDetails = action.payload?.user;
       state.token = action.payload?.token;
     },
     clearUser: () => {

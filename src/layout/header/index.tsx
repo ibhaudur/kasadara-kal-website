@@ -5,13 +5,14 @@ import mobileHamburger from "../../../public/images/mobile-hamburger.png";
 import SearchBox from "../../component/SearchBox";
 import { NavLink } from "react-router-dom";
 import { RoutesList } from "../utils/utils";
-import LoginPage from "./LoginPage";
+import Login from "./login";
+import { useSelector } from "react-redux";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const userDetails = useSelector((state: any) => state.user.userDetails);
+  console.log(userDetails);
   const profileRoute = RoutesList.find((route) => route.name === "Profile");
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const Header: React.FC = () => {
               />
             </svg>
           </button>
-          {isLoggedIn && profileRoute?.icon ? (
+          {userDetails?.name && profileRoute?.icon ? (
             <NavLink to="/profile" className="p-2">
               <img
                 src={profileRoute.icon}
@@ -68,7 +69,7 @@ const Header: React.FC = () => {
               />
             </NavLink>
           ) : (
-            <LoginPage />
+            <Login />
           )}
         </div>
       </div>
@@ -130,7 +131,7 @@ const Header: React.FC = () => {
           {RoutesList.map((item, index) => (
             <React.Fragment key={index}>
               {item.name === "Profile" ? (
-                isLoggedIn ? (
+                userDetails?.name ? (
                   <NavLink
                     to={item.path}
                     className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
@@ -142,7 +143,7 @@ const Header: React.FC = () => {
                     />
                   </NavLink>
                 ) : (
-                  <LoginPage />
+                  <Login />
                 )
               ) : (
                 <NavLink

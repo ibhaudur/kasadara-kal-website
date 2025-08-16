@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { Credentials } from "../../../../types/pages.types";
 
 interface OtpFormProps {
   onBack: () => void;
-  onVerify: () => void;
+  setActive: React.Dispatch<React.SetStateAction<number>>;
+  credentials: Credentials;
+  setCredentials: React.Dispatch<React.SetStateAction<Credentials>>;
 }
 
-const OtpForm: React.FC<OtpFormProps> = ({ onBack, onVerify }) => {
+const OtpForm: React.FC<OtpFormProps> = ({ onBack, setActive }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
+  const onVerify = () => {
+    setActive(4);
+  };
 
   const handleChange = (value: string, index: number) => {
     if (/^[0-9]?$/.test(value)) {
@@ -24,7 +30,7 @@ const OtpForm: React.FC<OtpFormProps> = ({ onBack, onVerify }) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="text-xl font-bold text-gray-900 mb-4">Enter OTP</h2>
-        <p className="text-gray-800 mb-6 text-xs sm:text-sm">
+      <p className="text-gray-800 mb-6 text-xs sm:text-sm">
         We've sent a 4-digit OTP to your number.
       </p>
 
@@ -42,20 +48,19 @@ const OtpForm: React.FC<OtpFormProps> = ({ onBack, onVerify }) => {
         ))}
       </div>
       <div className="flex justify-center w-full gap-2 mt-3 ">
-            <button
-              onClick={onBack}
-              className=" px-6 py-2 rounded-full bg-[#E6ECFF]  font-medium hover:bg-[#d0dbff] transition"
-            >
-              Back
-            </button>
-            <button
-              onClick={onVerify}
-              className=" px-6 py-2 rounded-full bg-[#2BBC7C] text-white font-medium hover:bg-[#24a06b] transition"
-            >
-              Verify OTP
-            </button>
-          </div>
-
+        <button
+          onClick={onBack}
+          className=" px-6 py-2 rounded-full bg-[#E6ECFF]  font-medium hover:bg-[#d0dbff] transition"
+        >
+          Back
+        </button>
+        <button
+          onClick={onVerify}
+          className="cursor-pointer px-6 py-2 rounded-full bg-[#2BBC7C] text-white font-medium hover:bg-[#24a06b] transition"
+        >
+          Verify OTP
+        </button>
+      </div>
     </div>
   );
 };
