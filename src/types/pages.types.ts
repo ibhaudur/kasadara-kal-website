@@ -1,25 +1,31 @@
 export interface AuthLogin {
-  emailId: string;
+  email: string;
   password: string;
+  role: string;
 }
-
+export interface UserDetails extends AuthLogin {
+  _id?: string;
+  name: string | undefined;
+}
 
 export interface ExamDetails {
-  examName: string;
-  mark: string;
-  hour: string;
-  questionCount: string;
-  candidateCount: number;
-  status: "draft" | "published" | "scheduled" | string; // extend as needed
-  type: "free" | "paid" | string;
-  price?: string;
+  exam_name: string;
+  total_marks: number;
+  duration: number;
+  total_questions: number;
+  candidateCount?: number;
+  status?: "draft" | "published" | "scheduled" | string; // extend as needed
+  exam_type?: "free" | "paid" | string;
+  cost?: string;
+  discount_cost?: string;
+  price?: string; 
 }
 export interface ExamFormValues {
-  examName: string;
+  exam_name: string;
   status: string;
   examType: string;
   duration: string;
-  totalMarks: string;
+  totalmarks: string;
   cost: string;
   discountCost: string;
   examStartDate: string;
@@ -40,7 +46,7 @@ export interface Question {
 }
 export interface QuestionItem {
   id: number;
-  mark: string;
+  total_marks: string;
   english: Question;
   tamil: Question;
 }

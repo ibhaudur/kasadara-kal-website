@@ -9,10 +9,10 @@ const BuyExam: React.FC = () => {
     <section className="p-4 max-w-[1580px] mx-auto">
       <ExamBanner
         details={{
-          examName: "Group 4 Exam - Quick Test - 4",
-          mark: "100",
-          hour: "01:30",
-          questionCount: "50",
+          exam_name: "Group 4 Exam - Quick Test - 4",
+          total_marks: "100",
+          duration: "01:30",
+          total_questions: "50",
           candidateCount: 80,
           status: "scheduled",
           type: "paid",

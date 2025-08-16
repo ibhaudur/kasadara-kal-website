@@ -3,7 +3,7 @@ import ScreenType from "../../../../../component/ScreenType";
 import Button from "../../../../../component/UI/Button";
 import { AiOutlineClose } from "react-icons/ai";
 
-const INITIAL_TIME = 60 * 90; // 1 hour in seconds
+const INITIAL_TIME = 60 * 90; // 1 duration in seconds
 
 const formatTime = (time: number) => String(time).padStart(2, "0");
 
@@ -16,7 +16,7 @@ const ExamIndicator = () => {
     return () => clearInterval(timer);
   }, [remaining]);
 
-  const hours = Math.floor(remaining / 3600);
+  const durations = Math.floor(remaining / 3600);
   const minutes = Math.floor((remaining % 3600) / 60);
   const seconds = remaining % 60;
 
@@ -39,7 +39,7 @@ const ExamIndicator = () => {
               className="bg-[#D1FFE4] rounded-[16px] font-semibold flex items-center justify-center"
               style={{ width: "40px", height: "40px" }}
             >
-              {formatTime(hours)}
+              {formatTime(durations)}
             </div>
             <span>:</span>
             <div

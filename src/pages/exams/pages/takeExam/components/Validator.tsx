@@ -7,7 +7,7 @@ import { IoMdClose } from "react-icons/io";
 
 interface ValidatorProps {
   answers: (string | null)[];
-  markedQuestions: number[];
+  total_marksedQuestions: number[];
   currentQuestion: number;
   visitedQuestions: number[];
   handleSetCurrentQuestion: (index: number) => void;
@@ -15,7 +15,7 @@ interface ValidatorProps {
 
 const Validator: React.FC<ValidatorProps> = ({
   answers,
-  markedQuestions,
+  total_marksedQuestions,
   currentQuestion,
   visitedQuestions,
   handleSetCurrentQuestion,
@@ -27,7 +27,7 @@ const Validator: React.FC<ValidatorProps> = ({
 
   const getBgColor = (index: number) => {
     if (currentQuestion === index) return "bg-[#BDFFD8] border-[#2C8C53]";
-    if (markedQuestions.includes(index))
+    if (total_marksedQuestions.includes(index))
       return "bg-[#C94951] text-white cursor-pointer";
     if (answers[index] !== null)
       return "bg-[#2BBC7C] text-white cursor-pointer";

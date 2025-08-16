@@ -27,23 +27,23 @@ const ExamBanner: React.FC<DetailsProps> = ({ details }) => {
           <div className="flex justify-between">
             <div>
               <h5 className="text-[24px] font-semibold text-[#21272C]">
-                {details.examName}
+                {details.exam_name}
               </h5>
               <small className="text-[#8790A1] flex gap-2 my-3 mb-4 text-[12px] font-medium">
                 <span className="flex items-center gap-2">
                   <LuGauge className="text-[18px]" /> Total marks:{" "}
-                  <span className="text-[#2BBC7C]">{details.mark}</span>
+                  <span className="text-[#2BBC7C]">{details.total_marks}</span>
                 </span>
                 |
                 <span className="flex items-center gap-2">
                   <PiTimerBold className="text-[18px]" /> Duration :{" "}
-                  <span className="text-[#2BBC7C]">{details.hour} hrs</span>
+                  <span className="text-[#2BBC7C]">{details.duration} hrs</span>
                 </span>
                 |
                 <span className="flex items-center gap-2">
                   <LuFileQuestion className="text-[18px]" /> Questions:{" "}
                   <span className="text-[#2BBC7C]">
-                    {details.questionCount} Ques.
+                    {details.total_questions} Ques.
                   </span>
                 </span>
               </small>
