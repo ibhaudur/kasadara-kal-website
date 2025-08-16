@@ -22,7 +22,7 @@ const Exampattern: React.FC = () => {
         <div className="flex p-3">
           <div className="flex-2 text-left text-[#666] text-base font-medium">Subjects</div>
           <div className="flex-1 text-left text-[#666] text-base font-medium">No of Questions</div>
-          <div className="flex-1 text-center text-[#666] text-base font-medium">Marks</div>
+          <div className="flex-1 text-center text-[#666] text-base font-medium">marks</div>
         </div>
         
         {subjects.map((subject, index) => (

@@ -14,7 +14,7 @@ const TakeExam = () => {
   const [answers, setAnswers] = useState<(string | null)[]>(
     Array(questions.length).fill(null)
   );
-  const [markedQuestions, setMarkedQuestions] = useState<number[]>([]);
+  const [total_marksedQuestions, settotal_marksedQuestions] = useState<number[]>([]);
   const [visitedQuestions, setVisitedQuestions] = useState<number[]>([0]); // start with Q1 visited
 
   const handleSetAnswer = (answer: string | null, index: number) => {
@@ -25,8 +25,8 @@ const TakeExam = () => {
     });
   };
 
-  const handleMarkQuestion = (index: number) => {
-    setMarkedQuestions((prev) =>
+  const handletotal_marksQuestion = (index: number) => {
+    settotal_marksedQuestions((prev) =>
       prev.includes(index) ? prev.filter((q) => q !== index) : [...prev, index]
     );
   };
@@ -78,7 +78,7 @@ const TakeExam = () => {
   // Warn on React Router navigation
   usePrompt("Are you sure you want to leave the exam?", true);
 
-  console.log(answers, markedQuestions, visitedQuestions);
+  console.log(answers, total_marksedQuestions, visitedQuestions);
 
   return (
     <section className="bg-white h-screen">
@@ -90,12 +90,12 @@ const TakeExam = () => {
           answer={answers[currentQuestion]}
           setCurrentQuestion={handleSetCurrentQuestion} // now tracks visited
           currentQuestion={currentQuestion}
-          markedQuestions={markedQuestions}
-          onMark={() => handleMarkQuestion(currentQuestion)}
+          total_marksedQuestions={total_marksedQuestions}
+          ontotal_marks={() => handletotal_marksQuestion(currentQuestion)}
         />
         <Validator
           answers={answers}
-          markedQuestions={markedQuestions}
+          total_marksedQuestions={total_marksedQuestions}
           visitedQuestions={visitedQuestions} // pass visited
           currentQuestion={currentQuestion}
           handleSetCurrentQuestion={handleSetCurrentQuestion}

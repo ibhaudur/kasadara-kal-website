@@ -70,7 +70,7 @@ const AttendExam = () => {
           Duration: <b>30 mins</b>
         </p>
         <p className="bg-[#F8F8F8] text-sm rounded-xl p-3">
-          Total Marks: <b>25 marks</b>
+          Total marks: <b>25 marks</b>
         </p>
       </div>
       <h6 className="text-[20px] font-semibold mt-4">General Instructions: </h6>

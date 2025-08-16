@@ -1,7 +1,7 @@
 export const questions = [
   {
     id: 1,
-    mark: "1",
+    total_marks: "1",
     english: {
       question: "What is the capital of India?",
       options: { A: "Mumbai", B: "New Delhi", C: "Chennai", D: "Kolkata" },
@@ -17,7 +17,7 @@ export const questions = [
   },
   {
     id: 2,
-    mark: "1",
+    total_marks: "1",
     english: {
       question: "Which planet is known as the Red Planet?",
       options: { A: "Earth", B: "Venus", C: "Mars", D: "Jupiter" },
@@ -33,7 +33,7 @@ export const questions = [
   },
   {
     id: 3,
-    mark: "1",
+    total_marks: "1",
     english: {
       question: "What is the chemical symbol for water?",
       options: { A: "O2", B: "H2O", C: "CO2", D: "NaCl" },
@@ -49,7 +49,7 @@ export const questions = [
   },
   {
     id: 4,
-    mark: "1",
+    total_marks: "1",
     english: {
       question: "Which gas do plants absorb during photosynthesis?",
       options: { A: "Oxygen", B: "Nitrogen", C: "Carbon Dioxide", D: "Hydrogen" },
@@ -65,7 +65,7 @@ export const questions = [
   },
   {
     id: 5,
-    mark: "1",
+    total_marks: "1",
     english: {
       question: "Who wrote the National Anthem of India?",
       options: { A: "Mahatma Gandhi", B: "Rabindranath Tagore", C: "Subhash Chandra Bose", D: "Jawaharlal Nehru" },
