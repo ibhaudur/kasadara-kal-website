@@ -3,7 +3,7 @@ import { store } from "../store/store";
 import { clearUser } from "../store/slice/userSlice";
 
 const api = axios.create({
-  baseURL: "http://3.110.42.33:3000/api/customer/",
+  baseURL: "http://3.110.42.33:3000/api/",
 });
 
 api.interceptors.request.use(

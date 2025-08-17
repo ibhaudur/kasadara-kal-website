@@ -49,12 +49,10 @@ const TakeExam = () => {
       (e.metaKey && key === "r")
     ) {
       e.preventDefault();
-      console.log("Reload key pressed, modal shown");
     }
   }
 
   function handleBeforeUnload(event: BeforeUnloadEvent) {
-    console.log("beforeunload event fired");
     event.preventDefault();
     event.returnValue =
       "Are you sure you want to leave the exam? All progress will be lost.";
@@ -77,8 +75,6 @@ const TakeExam = () => {
 
   // Warn on React Router navigation
   usePrompt("Are you sure you want to leave the exam?", true);
-
-  console.log(answers, total_marksedQuestions, visitedQuestions);
 
   return (
     <section className="bg-white h-screen">
