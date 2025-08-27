@@ -8,7 +8,7 @@ interface QuestionsandOptionsProps {
   answer: string | null;
   setCurrentQuestion: (index: number) => void;
   currentQuestion: number;
-  total_marksedQuestions: number[];
+  markedQuestions: number[];
   ontotal_marks: () => void;
 }
 
@@ -18,7 +18,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   answer,
   setCurrentQuestion,
   currentQuestion,
-  total_marksedQuestions,
+  markedQuestions,
   ontotal_marks,
 }) => {
   const langKey = language.toLowerCase() as "english" | "tamil";
@@ -105,13 +105,13 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
           <Button
             type="outline"
             splClass={`px-5 py-2 text-[14px] rounded-[20px] ${
-              total_marksedQuestions.includes(currentQuestion)
+              markedQuestions.includes(currentQuestion)
                 ? "text-white bg-[#C94951] border border-[#C94951]"
                 : "text-[#C94951] border border-[#C94951]"
             }`}
             handler={ontotal_marks}
           >
-            {total_marksedQuestions.includes(currentQuestion) ? "Unmark" : "Mark"}
+            {markedQuestions.includes(currentQuestion) ? "Unmark" : "Mark"}
           </Button>
         </div>
 

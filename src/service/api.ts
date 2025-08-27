@@ -25,7 +25,7 @@ api.interceptors.response.use(
   (error: { status: number }) => {
     if (error?.status === 401 || error?.status === 403) {
       store.dispatch(clearUser());
-      // window.location.href = "/login";
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }
