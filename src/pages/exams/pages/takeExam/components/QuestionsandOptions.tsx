@@ -21,7 +21,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   markedQuestions,
   ontotal_marks,
 }) => {
-  const langKey = language.toLowerCase() as "english" | "tamil";
+  const langKey = language?.toLowerCase() as "english" | "tamil";
   const q = questions[currentQuestion][langKey];
 
   const handleNext = () => {
@@ -60,8 +60,8 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
 
       {/* Question & Options */}
       <div className="p-3 mb-5">
-        <p className="text-lg mb-4">{q.question}</p>
-        {Object.entries(q.options).map(([key, value]) => (
+        <p className="text-lg mb-4">{q?.question}</p>
+        {Object?.entries(q.options).map(([key, value]) => (
           <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
             <input
               type="radio"

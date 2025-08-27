@@ -4,6 +4,11 @@ import LoadingSpinner from "../component/LoadingSpinner";
 import Layout from "../layout";
 import AttendExam from "../pages/exams/pages/attendExam";
 import TakeExam from "../pages/exams/pages/takeExam";
+import ProtectedRoute from "../component/ProtectedRoutes";
+import PrivacyPolicy from "../pages/privacy-policy";
+import RefundCancellationPolicy from "../pages/refund-cancelation";
+import TermsConditions from "../pages/terms-condition";
+import ScrollToTop from "../component/ScrollToTop";
 
 const Exams = lazy(() => import("../pages/exams"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -13,16 +18,60 @@ const BuyExam = lazy(() => import("../pages/exams/pages/buyExam"));
 const AllRoutes: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="exams" />} />
             <Route path="exams" element={<Exams />} />
-            <Route path="exams/buy/:id" element={<BuyExam />} />
-            <Route path="exams/attend/:id" element={<AttendExam />} />
-            <Route path="exams/take-exam/:id" element={<TakeExam />} />
-            <Route path="paid-attended" element={<Attended />} />
-            <Route path="dashboard" element={<Dashboard />} />
+
+            {/* 🔒 Wrap protected routes */}
+            <Route
+              path="exams/buy/:id"
+              element={
+                <ProtectedRoute>
+                  <BuyExam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="exams/attend/:id"
+              element={
+                <ProtectedRoute>
+                  <AttendExam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="exams/take-exam/:id"
+              element={
+                <ProtectedRoute>
+                  <TakeExam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="paid-attended"
+              element={
+                <ProtectedRoute>
+                  <Attended />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms-and-condition" element={<TermsConditions />} />
+            <Route
+              path="refund-and-cancellation"
+              element={<RefundCancellationPolicy />}
+            />
           </Route>
         </Routes>
       </Suspense>

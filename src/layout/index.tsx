@@ -10,7 +10,10 @@ const Layout: React.FC = () => {
 
   return (
     <div className="bg-gray-100">
-      <main className="w-full h-[100vh] overflow-y-scroll">
+      <main
+        id="scroll-container"
+        className="w-full h-[100vh] overflow-y-scroll"
+      >
         {!isTakeExamRoute && (
           <div className="bg-gray-100 sticky top-0" style={{ zIndex: "9999" }}>
             <Header />

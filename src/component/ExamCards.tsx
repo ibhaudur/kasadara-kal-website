@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LuGauge } from "react-icons/lu";
 import { PiTimerBold } from "react-icons/pi";
 import { LuFileQuestion } from "react-icons/lu";
@@ -6,22 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { ExamDetails } from "../types/pages.types";
 import Button from "./UI/Button";
 import { formatMinutesToHours } from "../utils/index.utils";
-import LoginModal from "../pages/attended/component/loginmodal";
 
 type DetailsProps = { details: ExamDetails; index: number };
 
 const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
   const navigate = useNavigate();
-  const [showLoginModal, setShowLoginModal] = useState(false); 
-  const handleBuyNow = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation(); 
-    const isLoggedIn = false; 
-    if (isLoggedIn) {
-      navigate(`buy/${index + 1}`);
-    } else {
-      setShowLoginModal(true); 
-    }
-  };
 
   return (
     <div
@@ -60,28 +49,17 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
               </span>{" "}
               <span className="text-[#2BBC7C] text-xs">
                 ({details?.discount_cost}% OFF)
-              </span>{" "}
+              </span>
             </small>
-            <div className="flex justify-between items-center mt-10">
-              <small className="text-[24px]">
-                ₹{details.price}{" "}
-                <span className="text-[#8790A1] text-[14px] line-through">
-                  ₹{details.cost}
-                </span>{" "}
-                <span className="text-[#2BBC7C] text-xs">
-                  ({details?.discount_cost}% OFF)
-                </span>
-              </small>
-              <Button btnName="Buy Now" splClass="rounded-[50px] px-9" onClick={handleBuyNow} />
-
-            </div>
+            <Button
+              btnName="Buy Now"
+              splClass="rounded-[50px] px-9"
+              onClick={() => navigate(`buy/${details.exam_id}`)}
+            />
           </div>
         </div>
       </div>
-
-     
-      {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
-    </>
+    </div>
   );
 };
 
