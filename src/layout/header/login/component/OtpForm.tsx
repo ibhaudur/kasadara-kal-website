@@ -11,7 +11,6 @@ interface OtpFormProps {
 const OtpForm: React.FC<OtpFormProps> = ({
   onBack,
   handleSubmit,
-  credentials,
   setCredentials,
 }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);

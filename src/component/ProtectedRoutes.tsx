@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import LoginModal from "./loginmodal";
+import LoginModal from "./LoginModal";
 
 // Define which routes need login
 const protectedRoutes = ["/exams", "/profile"];
