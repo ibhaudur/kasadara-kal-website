@@ -12,7 +12,6 @@ const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const userDetails = useSelector((state: any) => state.user.userDetails);
-  console.log(userDetails);
   const profileRoute = RoutesList.find((route) => route.name === "Profile");
 
   useEffect(() => {

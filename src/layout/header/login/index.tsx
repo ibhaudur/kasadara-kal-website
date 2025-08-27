@@ -3,6 +3,11 @@ import OtpForm from "./component/OtpForm";
 import LoginForm from "./component/LoginForm";
 import SignUp from "./component/SignUp";
 import PasswordForm from "./component/Password";
+import useApiCall from "../../../hooks/useApiCall";
+import { ApiError, ApiResponse } from "../../../types/apiservice.types";
+import { AuthLogin } from "../../../types/pages.types";
+import { toast } from "react-toastify";
+import { postOtp, postPassword, postSignUp } from "../../../service/apiUrls";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +36,24 @@ const Login = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const { mutate } = useApiCall({
+    key: "SignUp",
+    url: active === 2 ? postSignUp : active === 3 ? postOtp : postPassword,
+    method: "post",
+  });
+
+  const handleSubmit = (act: number, e: React.FormEvent) => {
+    e.preventDefault();
+    mutate(credentials, {
+      onSuccess: (res: ApiResponse<AuthLogin>) => {
+        toast.success(res?.message);
+        setActive(act);
+      },
+      onError: (err: ApiError) => {
+        toast.error(err.response?.data?.message);
+      },
+    });
+  };
   return (
     <>
       <button
@@ -59,21 +82,22 @@ const Login = () => {
 
             <div className="bg-white p-8 sm:p-10 flex flex-col justify-center text-center">
               {active === 1 && (
+                <LoginForm setIsOpen={setIsOpen} setActive={setActive} />
+              )}
+              {active === 2 && (
                 <SignUp
                   credentials={credentials}
                   handleChange={handleChange}
                   setActive={setActive}
+                  handleSubmit={handleSubmit}
                 />
-              )}
-              {active === 2 && (
-                <LoginForm setIsOpen={setIsOpen} setActive={setActive} />
               )}
               {active === 3 && (
                 <OtpForm
-                  onBack={() => setActive(1)}
+                  onBack={() => setActive(2)}
                   credentials={credentials}
                   setCredentials={setCredentials}
-                  setActive={setActive}
+                  handleSubmit={handleSubmit}
                 />
               )}
               {active === 4 && (
@@ -81,6 +105,7 @@ const Login = () => {
                   credentials={credentials}
                   handleChange={handleChange}
                   setActive={setActive}
+                  handleSubmit={handleSubmit}
                 />
               )}
             </div>

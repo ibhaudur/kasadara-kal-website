@@ -1,6 +1,7 @@
-export const postLogin = "login";
+export const postLogin = "customer/login";
+export const postSignUp = "customer/signup";
+export const postOtp = "customer/verify-otp";
+export const postPassword = "customer/set-password";
 
-export const postAddExam = "add_exam";
-export const putEditExam = "edit_exam"; //id
-export const getAllExams = "exam-list";
-export const getExamById = "exam_view"; //id
+export const getAllExams = "customer_exam/exam-list";
+export const getExamById = "customer_exam/exam-detail"; //id

@@ -2,54 +2,6 @@ import React from "react";
 import ExamCards from "../../../component/ExamCards";
 import { ExamDetails } from "../../../types/pages.types";
 
-// const ExamList = [
-//   {
-//     exam_name: "Group 4 Exam - Quick Test - 4",
-//     total_marks: "100",
-//     duration: "01:30",
-//     total_questions: "50",
-//     candidateCount: 80,
-//     status: "scheduled",
-//     type: "paid",
-//   },
-//   {
-//     exam_name: "Group 4 Exam - Quick Test - 4",
-//     total_marks: "100",
-//     duration: "01:00",
-//     total_questions: "50",
-//     candidateCount: 130,
-//     status: "published",
-//     type: "free",
-//   },
-//   {
-//     exam_name: "Group 4 Exam - Quick Test - 4",
-//     total_marks: "100",
-//     duration: "01:30",
-//     total_questions: "50",
-//     candidateCount: 85,
-//     status: "draft",
-//     type: "paid",
-//     discount_cost: "49",
-//   },
-//   {
-//     exam_name: "Group 4 Exam - Quick Test - 4",
-//     total_marks: "100",
-//     duration: "01:00",
-//     total_questions: "50",
-//     candidateCount: 130,
-//     status: "published",
-//     type: "free",
-//   },
-//   {
-//     exam_name: "Group 4 Exam - Quick Test - 4",
-//     total_marks: "100",
-//     duration: "01:30",
-//     total_questions: "50",
-//     candidateCount: 80,
-//     status: "scheduled",
-//     type: "paid",
-//   },
-// ];
 interface TestListProps {
   list: ExamDetails[];
 }

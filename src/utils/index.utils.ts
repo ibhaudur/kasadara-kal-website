@@ -1,19 +1,34 @@
 import moment from "moment";
 
-export const formatMinutesToHours = (minutes: number) => {
+export const formatMinutesToHours = (minutes?: number) => {
   const duration = moment.duration(minutes, "minutes");
   const hours = Math.floor(duration.asHours());
   const mins = duration.minutes();
   return `${hours}h ${mins}m`;
 };
 
-export const formatDateOnly = (value: string) => {
+export const formatDateOnly = (value?: string) => {
   if (!value) return "";
   return new Date(value).toISOString().split("T")[0]; // "YYYY-MM-DD"
 };
 
-export const formatTime = (isoString: string) => {
+export const formatTime = (isoString?: string) => {
   if (!isoString) return "";
   const date = new Date(isoString);
-  return date.toISOString().substr(11, 5); // "HH:mm"
+
+  return date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
+
+export const formatDate = (dateString?: string): string => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 };

@@ -35,7 +35,6 @@ const LoginForm: React.FC<{
         setIsOpen(false);
       },
       onError: (err: ApiError) => {
-        console.log(err);
         toast.error(err.response?.data?.message);
       },
     });
@@ -73,7 +72,7 @@ const LoginForm: React.FC<{
       <p className="text-gray-600 mt-4 text-xs">
         Don't have an account?{" "}
         <span
-          onClick={() => setActive(1)}
+          onClick={() => setActive(2)}
           className="text-[#2BBC7C] cursor-pointer"
         >
           Sign Up
