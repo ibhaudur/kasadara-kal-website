@@ -1,23 +1,21 @@
 import React from "react";
 import ExamBanner from "../components/ExamBanner";
 import StandOut from "../components/StandOut";
-
-
+import useApiCall from "../../../../hooks/useApiCall";
+import { getExamById } from "../../../../service/apiUrls";
+import { useParams } from "react-router-dom";
 
 const BuyExam: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data } = useApiCall({
+    key: `${getExamById}/${id}`,
+    url: `${getExamById}/${id}`,
+    method: "get",
+  });
+  console.log(data);
   return (
     <section className="p-4 max-w-[1580px] mx-auto">
-      <ExamBanner
-        details={{
-          exam_name: "Group 4 Exam - Quick Test - 4",
-          total_marks: "100",
-          duration: "01:30",
-          total_questions: "50",
-          candidateCount: 80,
-          status: "scheduled",
-          type: "paid",
-        }}
-      />
+      <ExamBanner details={data?.data} />
       <StandOut />
     </section>
   );

@@ -10,7 +10,6 @@ const Exams: React.FC = () => {
     url: getAllExams,
     method: "get",
   });
-  console.log(data?.data);
   return (
     <section>
       <Banner />

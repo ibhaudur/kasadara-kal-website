@@ -10,7 +10,6 @@ const FandQ: React.FC = () => {
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
 
   const toggleQuestion = (index: number) => {
-    console.log(index);
     setOpenQuestion(openQuestion === index ? null : index);
   };
 

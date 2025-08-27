@@ -9,6 +9,7 @@ export interface UserDetails extends AuthLogin {
 }
 
 export interface ExamDetails {
+  exam_id?: string;
   exam_name: string;
   total_marks: number;
   duration: number;
@@ -18,7 +19,9 @@ export interface ExamDetails {
   exam_type?: "free" | "paid" | string;
   cost?: string;
   discount_cost?: string;
-  price?: string; 
+  price?: string;
+  valid_until?: string;
+  published_on?: string;
 }
 export interface ExamFormValues {
   exam_name: string;
