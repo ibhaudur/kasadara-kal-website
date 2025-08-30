@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "../../../public/images/logo.svg";
 import logo2 from "../../../public/images/logo2.png";
 import mobileHamburger from "../../../public/images/mobile-hamburger.png";
@@ -6,13 +6,38 @@ import SearchBox from "../../component/SearchBox";
 import { NavLink } from "react-router-dom";
 import { RoutesList } from "../utils/utils";
 import Login from "./login";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../../component/UI/Button";
+import { clearUser } from "../../store/slice/userSlice";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const userDetails = useSelector((state: any) => state.user.userDetails);
   const profileRoute = RoutesList.find((route) => route.name === "Profile");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+
+  const togglePopup = () => setShowPopup((prev) => !prev);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        avatarRef.current &&
+        !avatarRef.current.contains(event.target as Node) &&
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setShowPopup(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
@@ -127,20 +152,46 @@ const Header: React.FC = () => {
           />
         </div>
         <div className="flex flex-row items-center gap-0 w-auto mt-0">
+          {showPopup && (
+            <div
+              ref={popupRef}
+              className="fixed top-14 right-6 z-40 bg-[#2BBC7C] shadow-lg rounded-2xl w-60 flex items-center justify-center"
+            >
+              <div className="bg-white mt-14 rounded-2xl p-3 pt-8 pb-4 flex flex-col items-center relative w-full">
+                <div className="absolute top-[-25px] bg-white flex justify-center items-center cursor-pointer border border-[#2BBC7C] rounded-full w-14 h-14">
+                  <p className="text-[#2C8C53] mb-0 text-3xl font-extrabold">
+                    {userDetails?.name?.charAt(0)}
+                  </p>
+                </div>
+                <p className="text-sm text-gray-800 mt-4 text-center font-semibold">
+                  {userDetails?.name}
+                </p>
+                <small className="text-[#8790A1] text-xs">
+                  {userDetails?.email}
+                </small>
+                <Button
+                  btnName="Logout"
+                  splClass="rounded-[60px] py-1 px-6 mt-3"
+                  type="outline"
+                  handler={() => {
+                    dispatch(clearUser());
+                    togglePopup();
+                  }}
+                />
+              </div>
+            </div>
+          )}
           {RoutesList.map((item, index) => (
             <React.Fragment key={index}>
               {item.name === "Profile" ? (
                 userDetails?.name ? (
-                  <NavLink
-                    to={item.path}
-                    className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
+                  <div
+                    ref={avatarRef}
+                    onClick={togglePopup}
+                    className="text-[#21272C] w-9 h-9 cursor-pointer flex items-center justify-center bg-[#BFFFE3] font-medium text-[15px] rounded-4xl"
                   >
-                    <img
-                      src={item.icon}
-                      alt="Profile"
-                      className="w-7 h-7 rounded-full"
-                    />
-                  </NavLink>
+                    <p className="font-bold">{userDetails?.name?.charAt(0)}</p>
+                  </div>
                 ) : (
                   <Login />
                 )

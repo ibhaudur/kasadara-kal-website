@@ -8,21 +8,24 @@ import AccuracyLineChart from "../../pages/dashboard/accuracychart";
 import AttendedExamsChart from "../../pages/dashboard/attendedexam";
 import ExamResultChart from "../../pages/dashboard/examresultchart";
 import AttendedExamResults from "./component/AttendedExamResults";
+import { useSelector } from "react-redux";
 
 const Dashboard: React.FC = () => {
+  const userDetails = useSelector((state: any) => state.user.userDetails);
+
   return (
     <div className="min-h-screen bg-white p-6 font-sans  ">
-              <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-light">
-              Welcome back, <span className="font-bold">John Smith</span>
-            </h1>
-            <p className="text-sm text-gray-500">
-              Here you can see your overall rank and activities
-            </p>
-          </div>
-        </header>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6 bg-gradient-to-br from-[#ffe9ea] to-[#c4ffed] p-4 rounded-3xl shadow-md">
+      <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-light">
+            Welcome back, <span className="font-bold">{userDetails?.name}</span>
+          </h1>
+          <p className="text-sm text-gray-500">
+            Here you can see your overall rank and activities
+          </p>
+        </div>
+      </header>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6 bg-gradient-to-br from-[#ffe9ea] to-[#c4ffed] p-4 rounded-3xl shadow-md">
         {/* Rank Card */}
         <div className="relative p-4 shadow bg-white rounded-xl">
           <img
@@ -35,7 +38,8 @@ const Dashboard: React.FC = () => {
             23 <span className="text-gray-500 text-sm">/ 50</span>
           </h2>
           <p className="text-sm text-gray-500 mt-6">
-            Compared to all the attendees who <br /> attend the same exams as you.
+            Compared to all the attendees who <br /> attend the same exams as
+            you.
           </p>
         </div>
 
@@ -83,8 +87,7 @@ const Dashboard: React.FC = () => {
         </div>
       </section>
 
-
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl p-4 shadow w-full">
           <h3 className="text-[16px] font-semibold text-gray-800 mb-3">
             Attended Exams
@@ -94,7 +97,6 @@ const Dashboard: React.FC = () => {
           <AttendedExamsChart />
         </div>
 
-        
         <div className="bg-white rounded-xl p-4 shadow w-full">
           <h3 className="text-[16px] font-semibold text-gray-800 mb-4">
             Attended Exams Results
@@ -102,8 +104,7 @@ const Dashboard: React.FC = () => {
           <AttendedExamResults />
         </div>
 
-
-       <div className="bg-white p-4 rounded-xl shadow w-full md:col-span-2 lg:col-span-1">
+        <div className="bg-white p-4 rounded-xl shadow w-full md:col-span-2 lg:col-span-1">
           <h3 className="text-[16px] font-semibold text-gray-800 mb-3">
             Monthly Based Answer Accuracy
           </h3>
@@ -112,7 +113,6 @@ const Dashboard: React.FC = () => {
           <AccuracyLineChart />
         </div>
       </section>
-
     </div>
   );
 };

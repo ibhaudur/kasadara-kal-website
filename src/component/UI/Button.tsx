@@ -13,12 +13,12 @@ const Button: React.FC<ExtendedButtonProps> = ({
   type,
   children,
 }) => {
-  const clickHandler = handler || onClick; 
+  const clickHandler = handler || onClick;
   if (type === "outline") {
     return (
       <button
         data-testid="button"
-        className={`cursor-pointer rounded-[8px] p-2 ${splClass}`}
+        className={`cursor-pointer rounded-[8px] p-2 border border-[#2BBC7C] text-[#2BBC7C] hover:bg-[#E6F4EF] ${splClass}`}
         onClick={clickHandler}
         type="submit"
       >
