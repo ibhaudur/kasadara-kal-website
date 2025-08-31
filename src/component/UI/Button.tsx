@@ -18,7 +18,7 @@ const Button: React.FC<ExtendedButtonProps> = ({
     return (
       <button
         data-testid="button"
-        className={`cursor-pointer rounded-[8px] p-2 border border-[#2BBC7C] text-[#2BBC7C] hover:bg-[#E6F4EF] ${splClass}`}
+        className={`cursor-pointer rounded-[8px] p-2 border border-[#2BBC7C] text-[#2BBC7C] ${splClass}`}
         onClick={clickHandler}
         type="submit"
       >

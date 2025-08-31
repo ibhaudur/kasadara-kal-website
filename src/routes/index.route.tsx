@@ -9,6 +9,7 @@ import PrivacyPolicy from "../pages/privacy-policy";
 import RefundCancellationPolicy from "../pages/refund-cancelation";
 import TermsConditions from "../pages/terms-condition";
 import ScrollToTop from "../component/ScrollToTop";
+import Result from "../pages/exams/pages/result";
 
 const Exams = lazy(() => import("../pages/exams"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -47,6 +48,14 @@ const AllRoutes: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <TakeExam />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="exams/result/:id"
+              element={
+                <ProtectedRoute>
+                  <Result />
                 </ProtectedRoute>
               }
             />

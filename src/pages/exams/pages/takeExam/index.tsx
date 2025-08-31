@@ -1,21 +1,51 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ExamIndicator from "./components/ExamIndicator";
 import { usePrompt } from "../../../../hooks/usePrompt";
 import QuestionsandOptions from "./components/QuestionsandOptions";
 import Validator from "./components/Validator";
-import { questions } from "./utils/index.utils";
+import useApiCall from "../../../../hooks/useApiCall";
+import {
+  getExamQuestions,
+  postSubmitAnswer,
+} from "../../../../service/apiUrls";
+import moment from "moment"; // ✅ for time formatting
+import { ApiError, ApiResponse } from "../../../../types/apiservice.types";
+import { toast } from "react-toastify";
 
 const TakeExam = () => {
+  const { id } = useParams();
   const location = useLocation();
   const language = location.state?.language;
 
+  const { data } = useApiCall({
+    key: `${getExamQuestions}/${id}?language=${
+      language === "english" ? "en" : "ta"
+    }`,
+    url: `${getExamQuestions}/${id}?language=${
+      language === "english" ? "en" : "ta"
+    }`,
+    method: "get",
+  });
+  const { mutate } = useApiCall({
+    key: postSubmitAnswer,
+    url: postSubmitAnswer,
+    method: "post",
+  });
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<(string | null)[]>(
-    Array(questions.length).fill(null)
-  );
+  const [answers, setAnswers] = useState<(string | null)[]>([]);
   const [markedQuestions, setmarkedQuestions] = useState<number[]>([]);
-  const [visitedQuestions, setVisitedQuestions] = useState<number[]>([0]); // start with Q1 visited
+  const [visitedQuestions, setVisitedQuestions] = useState<number[]>([0]);
+  const [startTime, setStartTime] = useState<string>("");
+  useEffect(() => {
+    if (data?.questions?.length) {
+      setAnswers(Array(data.questions.length).fill(null));
+    }
+  }, [data?.questions]);
+  useEffect(() => {
+    const now = moment().format("YYYY-MM-DD HH:mm:ss");
+    setStartTime(now);
+  }, []);
 
   const handleSetAnswer = (answer: string | null, index: number) => {
     setAnswers((prev) => {
@@ -31,7 +61,6 @@ const TakeExam = () => {
     );
   };
 
-  // Ensure we track visited questions
   const handleSetCurrentQuestion = (index: number) => {
     setCurrentQuestion(index);
     setVisitedQuestions((prev) =>
@@ -73,10 +102,33 @@ const TakeExam = () => {
     };
   }, []);
 
-  // Warn on React Router navigation
   usePrompt("Are you sure you want to leave the exam?", true);
-  console.log(markedQuestions);
-  console.log(answers, " answers");
+
+  const formattedAnswers = answers.map((ans, index) => ({
+    question_id: data?.questions[index]?.question_id,
+    answer: ans,
+  }));
+
+  const handleSubmitExam = () => {
+    const end = moment().format("YYYY-MM-DD HH:mm:ss");
+    const payload = {
+      exam_id: id,
+      duration: data?.duration,
+      start_time: startTime,
+      end_time: end,
+      answers: formattedAnswers,
+    };
+    console.log("Final Payload:", payload);
+    // mutate(payload, {
+    //   onSuccess: (res: ApiResponse<any>) => {
+    //     toast.success(res?.message);
+    //   },
+    //   onError: (err: ApiError) => {
+    //     toast.error(err.response?.data?.message);
+    //   },
+    // });
+  };
+
   return (
     <section className="bg-white h-screen">
       <ExamIndicator />
@@ -85,17 +137,19 @@ const TakeExam = () => {
           language={language}
           setAnswer={(ans) => handleSetAnswer(ans, currentQuestion)}
           answer={answers[currentQuestion]}
-          setCurrentQuestion={handleSetCurrentQuestion} // now tracks visited
+          setCurrentQuestion={handleSetCurrentQuestion}
           currentQuestion={currentQuestion}
           markedQuestions={markedQuestions}
           ontotal_marks={() => handletotal_marksQuestion(currentQuestion)}
+          questions={data?.questions}
         />
         <Validator
           answers={answers}
           markedQuestions={markedQuestions}
-          visitedQuestions={visitedQuestions} // pass visited
+          visitedQuestions={visitedQuestions}
           currentQuestion={currentQuestion}
           handleSetCurrentQuestion={handleSetCurrentQuestion}
+          handleSubmitExam={handleSubmitExam}
         />
       </div>
     </section>

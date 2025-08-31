@@ -1,5 +1,4 @@
 import React from "react";
-import { questions } from "../utils/index.utils";
 import Button from "../../../../../component/UI/Button";
 
 interface QuestionsandOptionsProps {
@@ -10,6 +9,7 @@ interface QuestionsandOptionsProps {
   currentQuestion: number;
   markedQuestions: number[];
   ontotal_marks: () => void;
+  questions: any;
 }
 
 const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
@@ -20,9 +20,9 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   currentQuestion,
   markedQuestions,
   ontotal_marks,
+  questions,
 }) => {
-  const langKey = language?.toLowerCase() as "english" | "tamil";
-  const q = questions[currentQuestion][langKey];
+  const q = questions?.[currentQuestion];
 
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
@@ -61,7 +61,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
       {/* Question & Options */}
       <div className="p-3 mb-5">
         <p className="text-lg mb-4">{q?.question}</p>
-        {Object?.entries(q.options).map(([key, value]) => (
+        {q?.options && Object?.entries(q?.options)?.map(([key, value]) => (
           <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
             <input
               type="radio"
@@ -78,7 +78,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
                 answer === key ? "bg-[#D6FFE7]" : "border border-[#EBEBEB]"
               }`}
             >
-              {key}) &nbsp;&nbsp; <b>{value}</b>
+              {key}) &nbsp;&nbsp; <b>{value as React.ReactNode}</b>
             </label>
           </div>
         ))}

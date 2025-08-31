@@ -15,7 +15,7 @@ export const formatMinutesToHours = (minutes?: number) => {
 
 export const formatDateOnly = (value?: string) => {
   if (!value) return "";
-  return new Date(value).toISOString().split("T")[0]; // "YYYY-MM-DD"
+  return new Date(value).toISOString().split("T")[0];
 };
 
 export const formatTime = (isoString?: string) => {

@@ -11,6 +11,7 @@ interface ValidatorProps {
   currentQuestion: number;
   visitedQuestions: number[];
   handleSetCurrentQuestion: (index: number) => void;
+  handleSubmitExam: () => void;
 }
 
 const Validator: React.FC<ValidatorProps> = ({
@@ -19,6 +20,7 @@ const Validator: React.FC<ValidatorProps> = ({
   currentQuestion,
   visitedQuestions,
   handleSetCurrentQuestion,
+  handleSubmitExam,
 }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false); // NEW for mobile toggle
@@ -183,7 +185,10 @@ const Validator: React.FC<ValidatorProps> = ({
               <HiMiniArrowLongLeft className="text-xl" />
               Back to test
             </Button>
-            <Button splClass="text-white border w-full border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]">
+            <Button
+              handler={handleSubmitExam}
+              splClass="text-white border w-full border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+            >
               Submit Test
             </Button>
           </div>
