@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Modal from "../../../../component/Modal/Modal";
+import { formatMinutesToHours } from "../../../../utils/index.utils";
 
 const AttendExam = () => {
   const { id } = useParams<{ id: string }>();
   const [agreed, setAgreed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation().state;
+  console.log(location);
   const [selectedLang, setSelectedLang] = useState<string>("Tamil");
 
   return (
@@ -64,13 +67,13 @@ const AttendExam = () => {
           </div>
         </>
       </Modal>
-      <h5 className="text-3xl font-semibold">Group 4 Exam - Quick Test - 4 </h5>
+      <h5 className="text-3xl font-semibold">{location?.exam_name}</h5>
       <div className="flex gap-3 mt-3">
         <p className="bg-[#F8F8F8] text-sm rounded-xl p-3">
-          Duration: <b>30 mins</b>
+          Duration: <b>{formatMinutesToHours(Number(location?.duration))}</b>
         </p>
         <p className="bg-[#F8F8F8] text-sm rounded-xl p-3">
-          Total marks: <b>25 marks</b>
+          Total marks: <b>{location?.total_marks} marks</b>
         </p>
       </div>
       <h6 className="text-[20px] font-semibold mt-4">General Instructions: </h6>
@@ -95,12 +98,15 @@ const AttendExam = () => {
           <div>
             <b>Read the following instructions carefully.</b>
             <ul className="list-decimal p-3">
-              <li className="mb-2">The Test has 25 questions.</li>
+              <li className="mb-2">
+                The Test has {location?.total_questions} questions.
+              </li>
               <li className="mb-2">
                 Each question has 4 options, only one is correct.
               </li>
               <li className="mb-2">
-                You have to finish the test in 30 minutes.
+                You have to finish the test in{" "}
+                {formatMinutesToHours(Number(location?.duration))}.
               </li>
               <li className="mb-2">
                 You will be awarded 1 mark for each correct answer and 1 mark

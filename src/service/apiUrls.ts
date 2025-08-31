@@ -5,3 +5,6 @@ export const postPassword = "customer/set-password";
 
 export const getAllExams = "customer_exam/exam-list";
 export const getExamById = "customer_exam/exam-detail"; //id
+
+export const postInitiatePayment = 'customer_exam/initiate-payment' //id 
+export const postConfirmPayment = 'customer_exam/confirm-payment'

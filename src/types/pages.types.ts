@@ -22,6 +22,7 @@ export interface ExamDetails {
   price?: string;
   valid_until?: string;
   published_on?: string;
+  paid_status?: string;
 }
 export interface ExamFormValues {
   exam_name: string;

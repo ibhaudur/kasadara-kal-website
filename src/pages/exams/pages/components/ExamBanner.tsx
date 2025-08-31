@@ -12,10 +12,15 @@ import {
   formatMinutesToHours,
   formatTime,
 } from "../../../../utils/index.utils";
+import { useNavigate } from "react-router-dom";
 
-type DetailsProps = { details: ExamDetails };
+type DetailsProps = {
+  details: ExamDetails;
+  setIsOpen: (initiate: boolean) => void;
+};
 
-const ExamBanner: React.FC<DetailsProps> = ({ details }) => {
+const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
+  const navigate = useNavigate();
   return (
     <div className="relative bg-white rounded-2xl p-5 shadow-md overflow-hidden">
       {details?.exam_type === "free" && (
@@ -105,7 +110,21 @@ const ExamBanner: React.FC<DetailsProps> = ({ details }) => {
                 <GoShareAndroid className=" text-[18px]" />
               </small>
               <Button
-                btnName="Buy now"
+                handler={() => {
+                  details?.paid_status === "paid"
+                    ? navigate(`/exams/attend/${details?.exam_id}`, {
+                        state: {
+                          exam_name: details?.exam_name,
+                          duration: details?.duration,
+                          total_marks: details?.total_marks,
+                          total_questions: details?.total_questions,
+                        },
+                      })
+                    : setIsOpen(true);
+                }}
+                btnName={
+                  details?.paid_status === "paid" ? "Attend Now" : "Buy now"
+                }
                 splClass="rounded-[50px] px-20 w-full sm:w-auto"
               />
             </div>
