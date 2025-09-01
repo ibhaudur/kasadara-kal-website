@@ -38,3 +38,19 @@ export const formatDate = (dateString?: string): string => {
     year: "numeric",
   });
 };
+export const prepareChartData = (
+  stats: Record<string, number>,
+  config: { key: string; label: string; color: string }[]
+) => {
+  return {
+    labels: config.map((item) => item.label),
+    datasets: [
+      {
+        data: config.map((item) => stats[item.key] || 0),
+        backgroundColor: config.map((item) => item.color),
+        borderWidth: 3,
+        cutout: "70%",
+      },
+    ],
+  };
+};

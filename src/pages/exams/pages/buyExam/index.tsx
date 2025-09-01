@@ -22,7 +22,6 @@ const BuyExam: React.FC = () => {
     url: `${getExamById}/${id}`,
     method: "get",
   });
-  console.log(data?.data);
   const { mutate } = useApiCall({
     key: "BuyExam",
     url: initiate

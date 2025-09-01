@@ -10,6 +10,7 @@ import RefundCancellationPolicy from "../pages/refund-cancelation";
 import TermsConditions from "../pages/terms-condition";
 import ScrollToTop from "../component/ScrollToTop";
 import Result from "../pages/exams/pages/result";
+import AnswerReview from "../pages/exams/pages/answer-review";
 
 const Exams = lazy(() => import("../pages/exams"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -56,6 +57,14 @@ const AllRoutes: React.FC = () => {
               element={
                 <ProtectedRoute>
                   <Result />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="exams/answer-review/:id"
+              element={
+                <ProtectedRoute>
+                  <AnswerReview />
                 </ProtectedRoute>
               }
             />

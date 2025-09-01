@@ -85,15 +85,17 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
             </div>
 
             {/* Price section */}
-            <small className="text-[36px] font-medium mt-4 sm:mt-0">
-              ₹{details?.price}{" "}
-              <span className="text-[#8790A1] text-[20px] line-through">
-                ₹{details?.cost}
-              </span>{" "}
-              <span className="text-[#2BBC7C] text-[16px]">
-                ({details?.discount_cost}% OFF)
-              </span>{" "}
-            </small>
+            {details?.exam_type !== "free" && (
+              <small className="text-[36px] font-medium mt-4 sm:mt-0">
+                ₹{details?.price}{" "}
+                <span className="text-[#8790A1] text-[20px] line-through">
+                  ₹{details?.cost}
+                </span>{" "}
+                <span className="text-[#2BBC7C] text-[16px]">
+                  ({details?.discount_cost}% OFF)
+                </span>{" "}
+              </small>
+            )}
           </div>
 
           <div className="flex justify-between items-center mt-10 flex-col sm:flex-row gap-4 sm:gap-0">

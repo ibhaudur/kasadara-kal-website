@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ExamIndicator from "./components/ExamIndicator";
 import { usePrompt } from "../../../../hooks/usePrompt";
 import QuestionsandOptions from "./components/QuestionsandOptions";
@@ -15,15 +15,16 @@ import { toast } from "react-toastify";
 
 const TakeExam = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const location = useLocation();
   const language = location.state?.language;
 
   const { data } = useApiCall({
     key: `${getExamQuestions}/${id}?language=${
-      language === "english" ? "en" : "ta"
+      language === "English" ? "en" : "ta"
     }`,
     url: `${getExamQuestions}/${id}?language=${
-      language === "english" ? "en" : "ta"
+      language === "English" ? "en" : "ta"
     }`,
     method: "get",
   });
@@ -118,15 +119,15 @@ const TakeExam = () => {
       end_time: end,
       answers: formattedAnswers,
     };
-    console.log("Final Payload:", payload);
-    // mutate(payload, {
-    //   onSuccess: (res: ApiResponse<any>) => {
-    //     toast.success(res?.message);
-    //   },
-    //   onError: (err: ApiError) => {
-    //     toast.error(err.response?.data?.message);
-    //   },
-    // });
+    mutate(payload, {
+      onSuccess: (res: ApiResponse<any>) => {
+        toast.success(res?.message);
+        navigate(`/exams/result/${id}`);
+      },
+      onError: (err: ApiError) => {
+        toast.error(err.response?.data?.message);
+      },
+    });
   };
 
   return (

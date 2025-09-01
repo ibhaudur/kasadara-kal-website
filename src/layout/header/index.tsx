@@ -3,7 +3,7 @@ import Logo from "../../../public/images/logo.svg";
 import logo2 from "../../../public/images/logo2.png";
 import mobileHamburger from "../../../public/images/mobile-hamburger.png";
 import SearchBox from "../../component/SearchBox";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { RoutesList } from "../utils/utils";
 import Login from "./login";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import Button from "../../component/UI/Button";
 import { clearUser } from "../../store/slice/userSlice";
 
 const Header: React.FC = () => {
+  const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const userDetails = useSelector((state: any) => state.user.userDetails);
@@ -143,7 +144,7 @@ const Header: React.FC = () => {
       {/* Desktop Header */}
       <div className="hidden sm:flex flex-row justify-between items-center w-full gap-0">
         <div className="flex items-center w-auto">
-          <img src={Logo} width={120} className="" alt="icon" />
+          <img src={Logo} width={120} className="cursor-pointer" onClick={() => navigate('/')} alt="icon" />
         </div>
         <div className="w-auto">
           <SearchBox

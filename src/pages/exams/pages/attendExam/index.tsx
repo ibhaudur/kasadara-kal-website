@@ -10,7 +10,6 @@ const AttendExam = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation().state;
-  console.log(location);
   const [selectedLang, setSelectedLang] = useState<string>("Tamil");
 
   return (

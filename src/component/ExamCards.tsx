@@ -42,18 +42,22 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
             </span>
           </small>
           <div className="flex justify-between items-center mt-10">
-            <small className="text-[24px]">
-              ₹{details.price}{" "}
-              <span className="text-[#8790A1] text-[14px] line-through">
-                ₹{details.cost}
-              </span>{" "}
-              <span className="text-[#2BBC7C] text-xs">
-                ({details?.discount_cost}% OFF)
-              </span>
-            </small>
+            {details?.exam_type !== "free" && (
+              <small className="text-[24px]">
+                ₹{Number(details.price).toFixed(0)}{" "}
+                <span className="text-[#8790A1] text-[14px] line-through">
+                  ₹{Number(details.cost).toFixed(0)}
+                </span>{" "}
+                <span className="text-[#2BBC7C] text-xs">
+                  ({Number(details?.discount_cost).toFixed(0)}% OFF)
+                </span>
+              </small>
+            )}
             <Button
-              btnName="Buy Now"
-              splClass="rounded-[50px] px-9"
+              btnName={details?.exam_type === "free" ? "Attend" : "Buy Now"}
+              splClass={`rounded-[50px] px-9 ${
+                details?.exam_type === "free" && "w-full"
+              }`}
               onClick={() => navigate(`buy/${details.exam_id}`)}
             />
           </div>

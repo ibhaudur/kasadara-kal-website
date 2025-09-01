@@ -26,6 +26,7 @@ const Validator: React.FC<ValidatorProps> = ({
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false); // NEW for mobile toggle
   const userDetails = useSelector((state: any) => state.user.userDetails);
+
   const handleModalClose = () => setIsModalOpen(false);
 
   const getBgColor = (index: number) => {
