@@ -1,20 +1,26 @@
 import React from "react";
 
-const AttendedExamResults: React.FC = () => {
+const AttendedExamResults: React.FC<{ data: any }> = ({ data }) => {
   return (
     <table className="w-full text-[13px] text-gray-700 border-separate border-spacing-y-2">
       <tbody>
-        <tr className="bg-gray-50 rounded-xl">
-          <td className="p-2 rounded-l-xl">Group 4 Exam - Quick Test - 4</td>
-          <td align="center" className="p-2">
-            <span className="text-blue-600 font-semibold">34</span>/50
-          </td>
-          <td align="right" className="p-2 rounded-r-xl text-[#5B9EE9]">
-            Average
-          </td>
-        </tr>
+        {data?.map((item: any, index: number) => {
+          return (
+            <tr key={index} className="bg-gray-50 rounded-xl">
+              <td className="p-2 rounded-l-xl">{item.exam_name}</td>
+              <td align="center" className="p-2">
+                <span className="text-blue-600 font-semibold">
+                  {item.score}
+                </span>
+              </td>
+              <td align="right" className="p-2 rounded-r-xl text-[#5B9EE9]">
+                Average
+              </td>
+            </tr>
+          );
+        })}
 
-        <tr className="bg-gray-50 rounded-xl">
+        {/* <tr className="bg-gray-50 rounded-xl">
           <td className="p-2 rounded-l-xl">Mock Test - 3</td>
           <td align="center" className="p-2">
             <span className="text-green-600 font-semibold">45</span>/50
@@ -42,7 +48,7 @@ const AttendedExamResults: React.FC = () => {
           <td align="right" className="p-2 rounded-r-xl text-[#5B9EE9]">
             Average
           </td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   );
