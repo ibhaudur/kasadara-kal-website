@@ -87,12 +87,12 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
             {/* Price section */}
             {details?.exam_type !== "free" && (
               <small className="text-[36px] font-medium mt-4 sm:mt-0">
-                ₹{details?.price}{" "}
+                ₹{Math.round(Number(details?.price))}{" "}
                 <span className="text-[#8790A1] text-[20px] line-through">
-                  ₹{details?.cost}
+                  ₹{Math.round(Number(details?.cost))}
                 </span>{" "}
                 <span className="text-[#2BBC7C] text-[16px]">
-                  ({details?.discount_cost}% OFF)
+                  (₹{Math.round(Number(details?.discount_cost))} OFF)
                 </span>{" "}
               </small>
             )}
