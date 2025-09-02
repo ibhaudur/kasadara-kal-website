@@ -135,7 +135,6 @@ const TakeExam = () => {
       <ExamIndicator />
       <div className="flex">
         <QuestionsandOptions
-          language={language}
           setAnswer={(ans) => handleSetAnswer(ans, currentQuestion)}
           answer={answers[currentQuestion]}
           setCurrentQuestion={handleSetCurrentQuestion}

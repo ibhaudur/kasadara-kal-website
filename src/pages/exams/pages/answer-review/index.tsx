@@ -1,6 +1,6 @@
-import React from "react";
-import QuestionsandOptions from "./component/QuestionsandOptions";
-import Validator from "./component/Validator";
+// import React from "react";
+// import QuestionsandOptions from "./component/QuestionsandOptions";
+// import Validator from "./component/Validator";
 
 const AnswerReview = () => {
   return (

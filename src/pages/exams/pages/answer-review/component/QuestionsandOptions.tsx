@@ -2,7 +2,6 @@ import React from "react";
 import Button from "../../../../../component/UI/Button";
 
 interface QuestionsandOptionsProps {
-  language: string;
   setAnswer: (answer: string | null) => void;
   answer: string | null;
   setCurrentQuestion: (index: number) => void;
@@ -13,7 +12,6 @@ interface QuestionsandOptionsProps {
 }
 
 const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
-  language,
   setAnswer,
   answer,
   setCurrentQuestion,

@@ -1,5 +1,5 @@
 import React from "react";
-import Pagination from "../../../../../component/UI/Pagination";
+// import Pagination from "../../../../../component/UI/Pagination";
 
 interface Attendee {
   candidate_name?: string;
