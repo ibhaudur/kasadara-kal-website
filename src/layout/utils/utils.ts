@@ -1,7 +1,10 @@
-
 export const RoutesList = [
-  { name: "Exams", path: "/exams" },
-  { name: "Paid/Attended", path: "/paid-attended" },
-  { name: "Dashboard", path: "/dashboard" },
-  {name:"Profile" , path:"/profile", icon: "../../../public/images/profile.png"},
+  { name: "Exams", path: "/exams", protect: false },
+  { name: "Paid/Attended", path: "/paid-attended", protect: true },
+  { name: "Dashboard", path: "/dashboard", protect: true },
+  {
+    name: "Profile",
+    path: "/profile",
+    icon: "../../../public/images/profile.png",
+  },
 ];

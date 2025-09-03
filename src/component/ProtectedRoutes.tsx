@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import LoginModal from "./LoginModal";
 
 // Define which routes need login
-const protectedRoutes = ["/exams", "/profile"];
+const protectedRoutes = ["/exams", "/dashboard", "/paid-attended"];
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const userDetails = useSelector((state: any) => state.user.userDetails);

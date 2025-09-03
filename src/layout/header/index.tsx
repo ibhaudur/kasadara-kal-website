@@ -11,7 +11,7 @@ import Button from "../../component/UI/Button";
 import { clearUser } from "../../store/slice/userSlice";
 
 const Header: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const userDetails = useSelector((state: any) => state.user.userDetails);
@@ -127,16 +127,19 @@ const Header: React.FC = () => {
         </div>
         <nav className="flex mobile mt-3 flex-col">
           {RoutesList.filter((item) => item.name !== "Profile").map(
-            (item, index) => (
-              <NavLink
-                key={index}
-                to={item.path}
-                className="p-4 text-[15px] font-medium text-[#21272C]"
-                onClick={() => setMenuOpen(false)}
-              >
-                <span className="block">{item.name}</span>
-              </NavLink>
-            )
+            (item, index) => {
+              if (item.protect && !userDetails?.name) return null;
+              return (
+                <NavLink
+                  key={index}
+                  to={item.path}
+                  className="p-4 text-[15px] font-medium text-[#21272C]"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span className="block">{item.name}</span>
+                </NavLink>
+              );
+            }
           )}
         </nav>
       </div>
@@ -144,7 +147,13 @@ const Header: React.FC = () => {
       {/* Desktop Header */}
       <div className="hidden sm:flex flex-row justify-between items-center w-full gap-0">
         <div className="flex items-center w-auto">
-          <img src={Logo} width={120} className="cursor-pointer" onClick={() => navigate('/')} alt="icon" />
+          <img
+            src={Logo}
+            width={120}
+            className="cursor-pointer"
+            onClick={() => navigate("/")}
+            alt="icon"
+          />
         </div>
         <div className="w-auto">
           <SearchBox
@@ -182,34 +191,39 @@ const Header: React.FC = () => {
               </div>
             </div>
           )}
-          {RoutesList.map((item, index) => (
-            <React.Fragment key={index}>
-              {item.name === "Profile" ? (
-                userDetails?.name ? (
-                  <div
-                    ref={avatarRef}
-                    onClick={togglePopup}
-                    className="text-[#21272C] w-9 h-9 cursor-pointer flex items-center justify-center bg-[#BFFFE3] font-medium text-[15px] rounded-4xl"
-                  >
-                    <p className="font-bold">{userDetails?.name?.charAt(0)}</p>
-                  </div>
-                ) : (
-                  <Login />
-                )
-              ) : (
-                <NavLink
-                  to={item.path}
-                  className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
-                >
-                  {item.icon ? (
-                    <img src={item.icon} alt={item.name} />
+          {RoutesList.map((item, index) => {
+            if (item.protect && !userDetails?.name) return null;
+            return (
+              <React.Fragment key={index}>
+                {item.name === "Profile" ? (
+                  userDetails?.name ? (
+                    <div
+                      ref={avatarRef}
+                      onClick={togglePopup}
+                      className="text-[#21272C] w-9 h-9 cursor-pointer flex items-center justify-center bg-[#BFFFE3] font-medium text-[15px] rounded-4xl"
+                    >
+                      <p className="font-bold">
+                        {userDetails?.name?.charAt(0)}
+                      </p>
+                    </div>
                   ) : (
-                    <span>{item.name}</span>
-                  )}
-                </NavLink>
-              )}
-            </React.Fragment>
-          ))}
+                    <Login />
+                  )
+                ) : (
+                  <NavLink
+                    to={item.path}
+                    className="p-3 text-[#21272C] font-medium text-[15px] block sm:inline"
+                  >
+                    {item.icon ? (
+                      <img src={item.icon} alt={item.name} />
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
+                  </NavLink>
+                )}
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
     </header>

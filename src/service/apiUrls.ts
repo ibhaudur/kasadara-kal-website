@@ -12,3 +12,4 @@ export const getExamReview = "customer_exam/exam-review"; //id
 export const postInitiatePayment = "customer_exam/initiate-payment"; //id
 export const postConfirmPayment = "customer_exam/confirm-payment";
 export const getDashboardDetails = "customer_exam/customer-dashboard";
+export const getAnswerReview = "customer_exam/answer-review"; //id

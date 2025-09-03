@@ -33,7 +33,7 @@ const Result = () => {
         </Button>
         <Button
           type="outline"
-          handler={() => navigate("/exams/answer-review/1")}
+          handler={() => navigate(`/exams/answer-review/${id}`)}
           splClass="rounded-[20px] flex items-center gap-3 px-2 md:px-5 border border-[#EBEBEB]"
         >
           Answer Review

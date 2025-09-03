@@ -1,134 +1,110 @@
 import React from "react";
-import Button from "../../../../../component/UI/Button";
+import { HiMiniArrowLongLeft, HiMiniArrowLongRight } from "react-icons/hi2";
+import { IoMdCheckmarkCircle, IoMdCloseCircle } from "react-icons/io";
 
-interface QuestionsandOptionsProps {
-  setAnswer: (answer: string | null) => void;
-  answer: string | null;
-  setCurrentQuestion: (index: number) => void;
-  currentQuestion: number;
-  markedQuestions: number[];
-  ontotal_marks: () => void;
-  questions: any;
+interface Question {
+  question_id: number;
+  question_text: string;
+  options: Record<string, string>;
+  correct_answer: string;
+  user_answer: string | null;
+  is_correct: boolean;
+  description: string;
 }
 
-const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
-  setAnswer,
-  answer,
-  setCurrentQuestion,
+interface Props {
+  question: Question;
+  currentQuestion: number;
+  handlePrev: () => void;
+  handleNext: () => void;
+  totalQuestions: number;
+}
+
+const QuestionsandOptions: React.FC<Props> = ({
+  question,
   currentQuestion,
-  markedQuestions,
-  ontotal_marks,
-  questions,
+  handlePrev,
+  handleNext,
+  totalQuestions,
 }) => {
-  const q = questions?.[currentQuestion];
-
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    }
-  };
-
-  const handleSaveAndNext = () => {
-    // answer is already in state via setAnswer when selecting option
-    handleNext();
-  };
-
-  const handleClearResponse = () => {
-    setAnswer(null);
-  };
-
   return (
-    <div className="bg-white flex-grow">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center p-2 border border-gray-200">
-        <p className="mb-0 font-semibold">Question No: {currentQuestion + 1}</p>
-        <div className="flex items-center text-[13px] gap-4 md:gap-2">
-          <span>If answer is :</span>
-          <p className="mb-0 border border-[#EBEBEB] bg-[#F8F8F8] rounded-xl px-2 py-2">
-            Correct &nbsp;
-            <span className="bg-[#2C8C53] text-white rounded-2xl px-1">+1</span>
-          </p>
-          (or)
-          <p className="mb-0 border border-[#EBEBEB] bg-[#F8F8F8] rounded-xl px-2 py-2">
-            Wrong &nbsp;
-            <span className="bg-[#FF4444] text-white rounded-2xl px-1">+1</span>
-          </p>
-        </div>
+    <div className="bg-white flex-grow relative">
+      {/* Question */}
+      <div className="p-4">
+        <p className="text-lg mb-4">
+          {currentQuestion + 1}. {question.question_text}
+        </p>
+
+        {/* Options */}
+        {Object.entries(question.options).map(([key, value]) => {
+          const isUserAnswer = question.user_answer === key;
+          const isCorrectAnswer = question.correct_answer === key;
+
+          let optionClass =
+            "flex justify-between mb-3 items-center px-3 py-2 rounded-lg w-[90%] lg:w-[70%] cursor-default";
+
+          if (isCorrectAnswer) {
+            optionClass += " bg-[#D6FFE7]";
+          } else if (isUserAnswer && !question.is_correct) {
+            optionClass += " bg-[#FFE6E6]";
+          } else {
+            optionClass += " border border-[#EBEBEB]";
+          }
+
+          return (
+            <div key={key} className={optionClass}>
+              <span className="text-[15px]">
+                {key}) &nbsp;<b>{value}</b>
+              </span>
+              {isCorrectAnswer && (
+                <span className="text-green-600 font-semibold flex items-center gap-2">
+                  <IoMdCheckmarkCircle className="text-xl" />
+                  Correct
+                </span>
+              )}
+              {isUserAnswer && !question.is_correct && (
+                <span className="text-red-600 font-semibold flex items-center gap-2">
+                  <IoMdCloseCircle className="text-xl" /> Wrong
+                </span>
+              )}
+            </div>
+          );
+        })}
       </div>
 
-      {/* Question & Options */}
-      <div className="p-3 mb-5">
-        <p className="text-lg mb-4">{q?.question}</p>
-        {q?.options && Object?.entries(q?.options)?.map(([key, value]) => (
-          <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
-            <input
-              type="radio"
-              name={`question-${currentQuestion}`}
-              value={key}
-              id={`option-${key}`}
-              checked={answer === key}
-              onChange={() => setAnswer(key)}
-              className="accent-[#2C8C53] w-5 h-5 cursor-pointer"
-            />
-            <label
-              htmlFor={`option-${key}`}
-              className={`px-3 text-[15px] py-2 rounded-lg w-[80%] lg:w-[60%]  cursor-pointer ${
-                answer === key ? "bg-[#D6FFE7]" : "border border-[#EBEBEB]"
-              }`}
-            >
-              {key}) &nbsp;&nbsp; <b>{value as React.ReactNode}</b>
-            </label>
-          </div>
-        ))}
-      </div>
-
-      {/* Footer Buttons */}
-      <div
-        className="
-    flex items-center w-full justify-between p-2 border mt-8 border-gray-200
-    absolute bottom-0
-    md:static md:mt-8
-  "
-      >
-        <div className="flex items-center gap-2">
-          <Button
-            type="outline"
-            splClass="text-[#FF4444] border border-[#EBEBEB] px-5 py-2 text-[14px] rounded-[20px]"
-            handler={handleClearResponse}
-          >
-            <span className="block md:hidden">Clear</span>
-            <span className="hidden md:block">Clear Response</span>
-          </Button>
-
-          <Button
-            type="outline"
-            splClass={`px-5 py-2 text-[14px] rounded-[20px] ${
-              markedQuestions.includes(currentQuestion)
-                ? "text-white bg-[#C94951] border border-[#C94951]"
-                : "text-[#C94951] border border-[#C94951]"
+      {/* Footer Navigation */}
+      <div className="flex items-center w-[71%] justify-between p-3">
+        {!question.is_correct ? (
+          <p className="text-red-600 font-semibold mt-4 flex items-center gap-2">
+            <IoMdCloseCircle className="text-xl" /> Your answer is wrong!
+          </p>
+        ) : (
+          <p className="text-green-600 font-semibold mt-4 flex items-center gap-2">
+            <IoMdCheckmarkCircle className="text-xl" /> Your answer is Correct!
+          </p>
+        )}
+        <div className="flex gap-3 ml-auto">
+          <button
+            onClick={handlePrev}
+            disabled={currentQuestion === 0}
+            className={`px-5 py-2 text-[14px] flex items-center gap-3 rounded-[20px] border border-[#2BBC7C] text-[#2BBC7C] hover:bg-[#2BBC7C] hover:text-white disabled:opacity-50 ${
+              currentQuestion === 0 ? "cursor-not-allowed" : "cursor-pointer"
             }`}
-            handler={ontotal_marks}
           >
-            {markedQuestions.includes(currentQuestion) ? "Unmark" : "Mark"}
-          </Button>
-        </div>
+            <HiMiniArrowLongLeft className="text-xl" /> Previous
+          </button>
 
-        <div className="flex items-center gap-2">
-          <Button
-            type="outline"
-            splClass="text-[#2BBC7C] border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
-            handler={handleNext}
+          <button
+            onClick={handleNext}
+            disabled={currentQuestion === totalQuestions - 1}
+            className={`px-5 py-2 text-[14px] flex items-center gap-3 rounded-[20px] border border-[#2BBC7C] text-[#2BBC7C] hover:bg-[#2BBC7C] hover:text-white disabled:opacity-50 ${
+              currentQuestion === totalQuestions - 1
+                ? "cursor-not-allowed"
+                : "cursor-pointer"
+            }`}
           >
-            Next
-          </Button>
-
-          <Button
-            splClass="text-white border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
-            handler={handleSaveAndNext}
-          >
-            <span className="block md:hidden">Submit</span>
-            <span className="hidden md:block">Save & Next</span>
-          </Button>
+            Next <HiMiniArrowLongRight className="text-xl" />
+          </button>
         </div>
       </div>
     </div>
