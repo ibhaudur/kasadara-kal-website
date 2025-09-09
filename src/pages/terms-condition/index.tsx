@@ -23,9 +23,9 @@ const TermsConditions = () => {
         <li className="mb-4">
           The Platform is owned by <strong>Akshaya Arivazhagan</strong>, a
           company incorporated under the Companies Act, 1956 with its registered
-          office at 6/131, West Street, Thirukkadaiyur, Mayiladuthurai, Tamil
-          Nadu (hereinafter referred to as the “Platform Owner”, “we”, “us”,
-          “our”).
+          office at{" "}
+          <b>6/131, West Street, Thirukkadaiyur, Mayiladuthurai, Tamil Nadu</b>{" "}
+          (hereinafter referred to as the “Platform Owner”, “we”, “us”, “our”).
         </li>
         <li className="mb-4">
           Your use of the Platform and services and tools are governed by the
@@ -66,67 +66,85 @@ const TermsConditions = () => {
               through the use of your registered account on the Platform.
             </li>
             <li>
-              Neither we nor any third parties provide any warranty or guarantee as to the accuracy,
-              timeliness, performance, completeness or suitability of the information and materials offered
-              on this website or through the Services, for any specific purpose. You acknowledge that such
-              information and materials may contain inaccuracies or errors and we expressly exclude
-              liability for any such inaccuracies or errors to the fullest extent permitted by law.
+              Neither we nor any third parties provide any warranty or guarantee
+              as to the accuracy, timeliness, performance, completeness or
+              suitability of the information and materials offered on this
+              website or through the Services, for any specific purpose. You
+              acknowledge that such information and materials may contain
+              inaccuracies or errors and we expressly exclude liability for any
+              such inaccuracies or errors to the fullest extent permitted by
+              law.
             </li>
             <li>
-              Your use of our Services and the Platform is solely and entirely at your own risk and
-              discretion for which we shall not be liable to you in any manner. You are required to
-              independently assess and ensure that the Services meet your requirements.
+              Your use of our Services and the Platform is solely and entirely
+              at your own risk and discretion for which we shall not be liable
+              to you in any manner. You are required to independently assess and
+              ensure that the Services meet your requirements.
             </li>
             <li>
-              The contents of the Platform and the Services are proprietary to us and are licensed to us.
-              You will not have any authority to claim any intellectual property rights, title, or interest in
-              its contents. The contents includes and is not limited to the design, layout, look and graphics.
+              The contents of the Platform and the Services are proprietary to
+              us and are licensed to us. You will not have any authority to
+              claim any intellectual property rights, title, or interest in its
+              contents. The contents includes and is not limited to the design,
+              layout, look and graphics.
             </li>
             <li>
-              You acknowledge that unauthorized use of the Platform and/or the Services may lead to
-              action against you as per these Terms of Use and/or applicable laws.
+              You acknowledge that unauthorized use of the Platform and/or the
+              Services may lead to action against you as per these Terms of Use
+              and/or applicable laws.
             </li>
             <li>
-              You agree to pay us the charges associated with availing the Services.
+              You agree to pay us the charges associated with availing the
+              Services.
             </li>
             <li>
-              You agree not to use the Platform and/or Services for any purpose that is unlawful, illegal or
-              forbidden by these Terms, or Indian or local laws that might apply to you.
+              You agree not to use the Platform and/or Services for any purpose
+              that is unlawful, illegal or forbidden by these Terms, or Indian
+              or local laws that might apply to you.
             </li>
             <li>
-              You agree and acknowledge that website and the Services may contain links to other third
-              party websites. On accessing these links, you will be governed by the terms of use, privacy
-              policy and such other policies of such third party websites. These links are provided for your
-              convenience for provide further information.
+              You agree and acknowledge that website and the Services may
+              contain links to other third party websites. On accessing these
+              links, you will be governed by the terms of use, privacy policy
+              and such other policies of such third party websites. These links
+              are provided for your convenience for provide further information.
             </li>
             <li>
-              You understand that upon initiating a transaction for availing the Services you are entering
-              into a legally binding and enforceable contract with the Platform Owner for the Services.
+              You understand that upon initiating a transaction for availing the
+              Services you are entering into a legally binding and enforceable
+              contract with the Platform Owner for the Services.
             </li>
             <li>
-              You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as
-              applicable) and their respective officers, directors, agents, and employees, from any claim or
-              demand, or actions including reasonable attorney's fees, made by any third party or penalty
-              imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other
-              Policies, or Your violation of any law, rules or regulations or the rights (including
-              infringement of intellectual property rights) of a third party.
+              You shall indemnify and hold harmless Platform Owner, its
+              affiliates, group companies (as applicable) and their respective
+              officers, directors, agents, and employees, from any claim or
+              demand, or actions including reasonable attorney's fees, made by
+              any third party or penalty imposed due to or arising out of Your
+              breach of this Terms of Use, privacy Policy and other Policies, or
+              Your violation of any law, rules or regulations or the rights
+              (including infringement of intellectual property rights) of a
+              third party.
             </li>
             <li>
-              Notwithstanding anything contained in these Terms of Use, the parties shall not be liable for
-              any failure to perform an obligation under these Terms if performance is prevented or
+              Notwithstanding anything contained in these Terms of Use, the
+              parties shall not be liable for any failure to perform an
+              obligation under these Terms if performance is prevented or
               delayed by a force majeure event.
             </li>
             <li>
-              These Terms and any dispute or claim relating to it, or its enforceability, shall be governed
-              by and construed in accordance with the laws of India.
+              These Terms and any dispute or claim relating to it, or its
+              enforceability, shall be governed by and construed in accordance
+              with the laws of India.
             </li>
             <li>
-              All disputes arising out of or in connection with these Terms shall be subject to the exclusive
-              jurisdiction of the courts in Nagapattinam and Tamil Nadu.
+              All disputes arising out of or in connection with these Terms
+              shall be subject to the exclusive jurisdiction of the courts in
+              <b> Nagapattinam</b> and <b>Tamil Nadu</b>.
             </li>
             <li>
-              All concerns or communications relating to these Terms must be communicated to us using
-              the contact information provided on this website.
+              All concerns or communications relating to these Terms must be
+              communicated to us using the contact information provided on this
+              website.
             </li>
           </ul>
         </li>{" "}

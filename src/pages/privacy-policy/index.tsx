@@ -5,14 +5,15 @@ const PrivacyPolicy = () => {
       <ul className="space-y-4">
         <li className="mb-4">
           <h4 className="text-xl font-bold mb-3">Introduction</h4>
-          This Privacy Policy describes how AKSHAYA ARIVAZHAGAN AKSHAYA
-          ARIVAZHAGAN and its affiliates (collectively " , we, our, us")
+          This Privacy Policy describes how <b>AKSHAYA ARIVAZHAGAN</b> and its
+          affiliates (collectively " <b>AKSHAYA ARIVAZHAGAN</b>, we, our, us")
           collect, use, share, protect or otherwise process your information/
-          personal data through our website Platform www.kasadarakal.com
-          (hereinafter referred to as ). Please note that you may be able to
-          browse certain sections of the Platform without registering with us.We
-          do not offer any product/service under this Platform outside India and
-          your personal data will primarily be stored and processed in India. By
+          personal data through our website Platform <b>www.kasadarakal.com</b>{" "}
+          (hereinafter referred to as
+          <b> Platform</b>). Please note that you may be able to browse certain
+          sections of the Platform without registering with us.We do not offer
+          any product/service under this Platform outside India and your
+          personal data will primarily be stored and processed in India. By
           visiting this Platform, providing your information or availing any
           product/service offered on the Platform, you expressly agree to be
           bound by the terms and conditions of this Privacy Policy, the Terms of
@@ -47,9 +48,9 @@ const PrivacyPolicy = () => {
           you, you will be governed by their privacy policies. We shall not be
           responsible for the third-party business partner’s privacy practices
           or the content of their privacy policies, and we request you to read
-          their privacy policies prior to disclosing ARIVAZHAGAN any
-          information. If you receive an email, a call from a person/association
-          claiming to be AKSHAYA seeking any personal data like debit/credit
+          their privacy policies prior to disclosing any information. If you
+          receive an email, a call from a person/association claiming to be
+          <b> AKSHAYA ARIVAZHAGAN</b> seeking any personal data like debit/credit
           card PIN, net-banking or mobile banking password, we request you to
           never provide such information. If you have already revealed such
           information, report it immediately to an appropriate law enforcement
