@@ -1,129 +1,224 @@
 const PrivacyPolicy = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Effective From: September 5,2025</p>
-      <p className="text-sm text-gray-600 mb-6">
-        Website:{" "}
-        <a
-          href="https://www.kasadarakal.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          www.kasadarakal.com
-        </a>
-      </p>
-
-      <p className="mb-6 text-gray-700">
-        At Kasadara Kal, your trust matters to us. This Privacy Policy explains how we handle your 
-        information when you use our portal, take tests, or make payments. We keep it straightforward 
-        so you know exactly what happens with your data.
-      </p>
-
-      <hr className="my-6" />
-
-      <div className="space-y-8 text-gray-800 leading-relaxed">
-        <section>
-          <h2 className="text-xl font-semibold mb-2">1. What We Collect</h2>
-          <p>
-            When you use Kasadara Kal, we may collect:
-          </p>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Basic details you share (name, email, phone, password).</li>
-            <li>Payment details (processed by trusted payment gateways – we don’t store your card/UPI info).</li>
-            <li>Activity data like login history, test attempts, device/browser type, and IP address.</li>
-            <li>Messages you send us through email, WhatsApp, or our contact forms.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">2. How We Use Your Data</h2>
-          <p>
-            We use the collected information to:
-          </p>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Give you access to tests, results, and study materials.</li>
-            <li>Process payments and subscriptions.</li>
-            <li>Keepy ou i nfo rme unsubscribe anytime). d ab out exa m upd ate s,n ew f</li>
-            <li>Fix technical issues and improve our services. eat ure s,o r of</li>
-            <li>Protect against misuse, fraud, or illegal activities.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">3. Who We Share It With</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Never sold: Your data is never sold or rented to anyone. fer s (y ou c an </li>
-            <li>Shared only when needed: With service providers (payment partners, hosting, analytics) who help us run the portal.</li>
-            <li>By law: If required by courts or authorities.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">4. Data Safety</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>We use encryption and security practices to protect your data.</li>
-            <li>Still, no online system is 100% safe – by using our site, you accept that some risks are beyond our control.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">5. Cookies</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Like most sites, we use cookies to make your experience smoother (e.g., saving login, tracking test progress).</li>
-            <li>You can block cookies in your browser, but some features may stop working properly.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">6. Your Choices & Rights</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>You can edit your profile details anytime.</li>
-            <li>You may request us to delete your account and related data (unless we need it for legal or financial reasons).</li>
-            <li>You can unsubscribe from promotional emails/notifications whenever you want.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">7. How Long We Keep Data</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>We keep your data only as long as you use our services or as required by law.</li>
-            <li>Once you request deletion, we will remove your personal data within a reasonable time.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">8. Links to Other Sites</h2>
-          <p>
-            Sometimes we may share useful links (e.g., government notifications). We are not responsible for 
-            the privacy practices of those external websites.
-            the privacy practices of those external websites.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">9. Changes to This Policy</h2>
-          <p>
-            If we make changes, we’ll update the “Effective From” date and post the new version here.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-2">10. Contact Us</h2>
-          <p>
-            Got questions about privacy? Reach us at: <br />
-            Email:{" "}
-            <a
-              href="mailto:support@kasadarakal.com"
-              className="text-blue-600 hover:underline"
-            >
-              support@kasadarakal.com
-            </a>{" "}
-            <br />
-            Phone/WhatsApp:
-          </p>
-        </section>
+    <div className="p-6 max-w-5xl mx-auto text-gray-800 leading-relaxed">
+      <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+      <ul className="space-y-4">
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Introduction</h4>
+          This Privacy Policy describes how AKSHAYA ARIVAZHAGAN AKSHAYA
+          ARIVAZHAGAN and its affiliates (collectively " , we, our, us")
+          collect, use, share, protect or otherwise process your information/
+          personal data through our website Platform www.kasadarakal.com
+          (hereinafter referred to as ). Please note that you may be able to
+          browse certain sections of the Platform without registering with us.We
+          do not offer any product/service under this Platform outside India and
+          your personal data will primarily be stored and processed in India. By
+          visiting this Platform, providing your information or availing any
+          product/service offered on the Platform, you expressly agree to be
+          bound by the terms and conditions of this Privacy Policy, the Terms of
+          Use and the applicable service/product terms and conditions, and agree
+          to be governed by the laws of India including but not limited to the
+          laws applicable to data protection and privacy. If you do not agree
+          please do not use or access our Platform.
+        </li>
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Collection</h4>
+          We collect your personal data when you use our Platform, services or
+          otherwise interact with us during the course of our relationship.and
+          related information provided from time to time. Some of the
+          information that we may collect includes but is not limited to
+          personal data / information provided to us during sign-up/registering
+          or using our Platform such as name, date of birth, address,
+          telephone/mobile number, email IDand/or any such information shared as
+          proof of identity or address. Some of the sensitive personal data may
+          be collected with your consent, such as your bank account or credit or
+          debit card or other payment instrument information or biometric
+          information such as your facial features or physiological information
+          (in order to enable use of certain features when opted for, available
+          on the Platform) etc all of the above being in accordance with
+          applicable law(s) You always have the option to not provide
+          information, by choosing not to use a particular service or feature on
+          the Platform. We may track your behaviour, preferences, and other
+          information that you choose to provide on our Platform. This
+          information is compiled and analysed on an aggregated basis. We will
+          also collect your information related to your transactions on Platform
+          and such third-party business partner platforms. When such a
+          third-party business partner collects your personal data directly from
+          you, you will be governed by their privacy policies. We shall not be
+          responsible for the third-party business partner’s privacy practices
+          or the content of their privacy policies, and we request you to read
+          their privacy policies prior to disclosing ARIVAZHAGAN any
+          information. If you receive an email, a call from a person/association
+          claiming to be AKSHAYA seeking any personal data like debit/credit
+          card PIN, net-banking or mobile banking password, we request you to
+          never provide such information. If you have already revealed such
+          information, report it immediately to an appropriate law enforcement
+          agency.
+        </li>
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Usage</h4>
+          We use personal data to provide the services you request. To the
+          extent we use your personal data to market to you, we will provide you
+          the ability to opt-out of such uses. We use your personal data to
+          assist sellers and business partners in handling and fulfilling
+          orders; enhancing customer experience; to resolve disputes;
+          troubleshoot problems; inform you about online and offline offers,
+          products, services, and updates; customise your experience; detect and
+          protect us against error, fraud and other criminal activity; enforce
+          our terms and conditions; conduct marketing research, analysis and
+          surveys; and as otherwise described to you at the time of collection
+          of information. You understand that your access to these
+          products/services may be affected in the event permission is not
+          provided to us.
+        </li>
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Usage</h4>
+          Your use of the Platform and services and tools are governed by the
+          following terms and conditions (“Terms of Use”) as applicable to the
+          Platform including the applicable policies which are incorporated
+          herein by way of reference. If You transact on the Platform, You shall
+          be subject to the policies that are applicable to the Platform for
+          such transaction. By mere use of the Platform, You shall be
+          contracting with the Platform Owner and these terms and conditions
+          including the policies constitute Your binding obligations, with
+          Platform Owner. These Terms of Use relate to your use of our website,
+          goods (as applicable) or services (as applicable) (collectively,
+          'Services'). Any terms and conditions proposed by You which are in
+          addition to or which conflict with these Terms of Use are expressly
+          rejected by the Platform Owner and shall be of no force or effect.
+          These Terms of Use can be modified at any time without assigning any
+          reason. It is your responsibility to periodically review these Terms
+          of Use to stay informed of updates.
+        </li>
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Sharing</h4>
+          We may share your personal data internally within our group entities,
+          our other corporate entities, and affiliates to provide you access to
+          the services and products offered by them. These entities and
+          affiliates may market to you as a result of such sharing unless you
+          explicitly opt-out. We may disclose personal data to third parties
+          such as sellers, business partners, third party service providers
+          including logistics partners, prepaid payment instrument issuers,
+          third-party reward programs and other payment opted by you. These
+          disclosure may be required for us to provide you access to our
+          services and products offered to you, to comply with our legal
+          obligations, to enforce our user agreement, to facilitate our
+          marketing and advertising activities, to prevent, detect, mitigate,
+          and investigate fraudulent or illegal activities related to our
+          services. We may disclose personal and sensitive personal data to
+          government agencies or other authorised law enforcement agencies if
+          required to do so by law or in the good faith belief that such
+          disclosure is reasonably necessary to respond to subpoenas, court
+          orders, or other legal process. We may disclose personal data to law
+          enforcement offices, third party rights owners, or others in the good
+          faith belief that such disclosure is reasonably necessary to: enforce
+          our Terms of Use or Privacy Policy; respond to claims that an
+          advertisement, posting or other content violates the rights of a third
+          party; or protect the rights, property or personal safety of our users
+          or the general public.
+        </li>
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Security Precautions</h4>
+          To protect your personal data from unauthorised access or disclosure,
+          loss or misuse we adopt reasonable security practices and procedures.
+          Once your information is in our possession or whenever you access your
+          account information, we adhere to our security guidelines to protect
+          it against unauthorised access and offer the use of a secure server.
+          However, the transmission of information is not completely secure for
+          reasons beyond our control. By using the Platform, the users accept
+          the security implications of data transmission over the internet and
+          the World Wide Web which cannot always be guaranteed as completely
+          secure, and therefore, there would always remain certain inherent
+          risks regarding use of the Platform. Users are responsible for
+          ensuring the protection of login and password records for their
+          account.
+        </li>{" "}
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">
+            Data Deletion and Retention
+          </h4>
+          You have an option to delete your account by visiting your profile and
+          settings on our Platform , this action would result in you losing all
+          information related to your account. You may also write to us at the
+          contact information provided below to assist you with these requests.
+          We may in event of any pending grievance, claims, pending shipments or
+          any other services we may refuse or delay deletion of the account.
+          Once the account is deleted, you will lose access to the account. We
+          retain your personal data information for a period no longer than is
+          required for the purpose for which it was collected or as required
+          under any applicable law. However, we may retain data related to you
+          if we believe it may be necessary to prevent fraud or future abuse or
+          for other legitimate purposes. We may continue to retain your data in
+          anonymised form for analytical and research purposes.
+        </li>{" "}
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Your Rights</h4>
+          You may access, rectify, and update your personal data directly
+          through the functionalities provided on the Platform.
+        </li>{" "}
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">Consent</h4>
+          By visiting our Platform or by providing your information, you consent
+          to the collection, use, storage, disclosure and otherwise processing
+          of your information on the Platform in accordance with this Privacy
+          Policy. If you disclose to us any personal data relating to other
+          people, you represent that you have the authority to do so and permit
+          us to use the information in accordance with this Privacy Policy. You,
+          while providing your personal data over the Platform or any partner
+          platforms or establishments, consent to us (including our other
+          corporate entities, affiliates, lending partners, technology partners,
+          marketing channels, business partners and other third parties) to
+          contact you through SMS, instant messaging apps, call and/or e-mail
+          for the purposes specified in this Privacy Policy. You have an option
+          to withdraw your consent that you have already provided by writing to
+          the Grievance Officer at the contact information provided below.
+          Please mention “Withdrawal of consent for processing personal data” in
+          your subject line of your communication. We may verify such requests
+          before acting on our request. However, please note that your
+          withdrawal of consent will not be retrospective and will be in
+          accordance with the Terms of Use, this Privacy Policy, and applicable
+          laws. In the event you withdraw consent given to us under this Privacy
+          Policy, we reserve the right to restrict or deny the provision of our
+          services for which we consider such information to be necessary.
+        </li>{" "}
+        <li className="mb-4">
+          <h4 className="text-xl font-bold mb-3">
+            Changes to this Privacy Policy
+          </h4>
+          Please check our Privacy Policy periodically for changes. We may
+          update this Privacy Policy to reflect changes to our information
+          practices. We may alert / notify you about the significant changes to
+          the Privacy Policy, in the manner as may be required under applicable
+          laws.
+        </li>{" "}
+      </ul>
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">Grievance Officer</h2>
+        <div className="mb-2">
+          <span className="font-semibold">Name of the Officer:</span> [Insert
+          Name of the Officer]
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Designation:</span> [Insert
+          Designation]
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Company Name and Address:</span>{" "}
+          [Insert Name and Address of the Company]
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Contact us:</span>
+          <div className="ml-4">
+            <div>
+              <span className="font-semibold">Phone:</span> [Insert Phone
+              Number]
+            </div>
+            <div>
+              <span className="font-semibold">Time:</span> Monday - Friday (9:00
+              - 18:00)
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
