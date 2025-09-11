@@ -50,11 +50,11 @@ const PrivacyPolicy = () => {
           or the content of their privacy policies, and we request you to read
           their privacy policies prior to disclosing any information. If you
           receive an email, a call from a person/association claiming to be
-          <b> AKSHAYA ARIVAZHAGAN</b> seeking any personal data like debit/credit
-          card PIN, net-banking or mobile banking password, we request you to
-          never provide such information. If you have already revealed such
-          information, report it immediately to an appropriate law enforcement
-          agency.
+          <b> AKSHAYA ARIVAZHAGAN</b> seeking any personal data like
+          debit/credit card PIN, net-banking or mobile banking password, we
+          request you to never provide such information. If you have already
+          revealed such information, report it immediately to an appropriate law
+          enforcement agency.
         </li>
         <li className="mb-4">
           <h4 className="text-xl font-bold mb-3">Usage</h4>
@@ -196,23 +196,21 @@ const PrivacyPolicy = () => {
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Grievance Officer</h2>
         <div className="mb-2">
-          <span className="font-semibold">Name of the Officer:</span> [Insert
-          Name of the Officer]
+          <span className="font-semibold">Name of the Officer:</span> A.Akshaya
         </div>
-        <div className="mb-2">
+        {/* <div className="mb-2">
           <span className="font-semibold">Designation:</span> [Insert
           Designation]
-        </div>
+        </div> */}
         <div className="mb-2">
           <span className="font-semibold">Company Name and Address:</span>{" "}
-          [Insert Name and Address of the Company]
+          6/131, west street, Thirukkadaiyur, Mayiladuthurai, Tamil Nadu 609204
         </div>
         <div className="mb-2">
           <span className="font-semibold">Contact us:</span>
           <div className="ml-4">
             <div>
-              <span className="font-semibold">Phone:</span> [Insert Phone
-              Number]
+              <span className="font-semibold">Phone:</span> +91 9080529713
             </div>
             <div>
               <span className="font-semibold">Time:</span> Monday - Friday (9:00
@@ -226,3 +224,4 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
+Rah_!
