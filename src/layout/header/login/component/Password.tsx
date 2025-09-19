@@ -16,7 +16,7 @@ const PasswordForm: React.FC<{
       <form className="space-y-4">
         <input
           type="password"
-          placeholder="Password"
+          placeholder="New Password"
           name="newPassword"
           onChange={handleChange}
           value={credentials.newPassword}
@@ -24,7 +24,7 @@ const PasswordForm: React.FC<{
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Confirm Password"
           onChange={handleChange}
           name="confirmPassword"
           value={credentials.confirmPassword}

@@ -104,18 +104,23 @@ const Footer: React.FC = () => {
             <MobileLink href="/dashboard" text="Dashboard" isLast={true} />
           </div>
 
-          <div className="flex justify-center items-center gap-2.5 w-full">
+          <div className="flex flex-wrap justify-center items-center gap-2.5 w-full text-center">
             <MobileLink href="/terms-and-condition" text="Terms" />
             <span className="text-[#e0e0e0]">|</span>
             <MobileLink href="/privacy-policy" text="Privacy" />
             <span className="text-[#e0e0e0]">|</span>
             <MobileLink href="#" text="Cookies" />
-            <MobileLink
-              href="/refund-and-cancellation"
-              text="Refund & Cancellation"
-              isLast={true}
-            />
+            <span className="text-[#e0e0e0] hidden md:inline">|</span>
+            
+            <div className="w-full md:w-auto flex justify-center">
+              <MobileLink
+                href="/refund-and-cancellation"
+                text="Refund & Cancellation"
+                isLast={true}
+              />
+            </div>
           </div>
+
         </div>
       </div>
 
