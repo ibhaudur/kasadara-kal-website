@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
           />
           <p className="text-gray-600 mb-3">Rank</p>
           <h2 className="text-3xl font-bold mt-4">
-            {details?.rank ?? "-"}{" "}
+            {details?.rank ? details?.rank : "0"}{" "}
             <span className="text-gray-500 text-sm">/ 50</span>
           </h2>
           <p className="text-sm text-gray-500 mt-6">

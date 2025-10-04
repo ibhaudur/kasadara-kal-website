@@ -1,8 +1,11 @@
 import React from "react";
 import asset from "../../../public/images/bottom_img/asset.ts";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Footer: React.FC = () => {
+  const userDetails = useSelector((state: any) => state.user.userDetails);
+
   return (
     <footer className="w-full bg-white border-t border-[#e9ecef]">
       <div className="max-w-[1200px] mx-auto px-5 py-5 flex flex-col items-center">
@@ -82,11 +85,15 @@ const Footer: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-center items-center gap-5 mb-8 font-['Zoho_Puvi'] font-normal text-base">
           <FooterLink href="/exams" text="Exams" />
-          <FooterLink href="/paid-attended" text="Paid/ Attended" />
-          <FooterLink href="/dashboard" text="Dashboard" />
+          {/* {userDetails?.name && (
+            <FooterLink href="/paid-attended" text="Paid/ Attended" />
+          )} */}
+          {userDetails?.name && (
+            <FooterLink href="/dashboard" text="Dashboard" />
+          )}
           <FooterLink href="/terms-and-condition" text="Terms" />
           <FooterLink href="/privacy-policy" text="Privacy" />
-          <FooterLink href="#" text="Cookies" />
+          <FooterLink href="/cookies" text="Cookies" />
           <FooterLink
             href="/refund-and-cancellation"
             text="Refund & Cancellation"
@@ -96,20 +103,23 @@ const Footer: React.FC = () => {
 
         {/* Mobile Navigation */}
         <div className="flex md:hidden flex-col items-center w-full mb-4 max-w-[360px]">
-          <div className="flex justify-center items-center gap-2.5 w-full mb-2.5">
+          <div className="flex flex-wrap justify-center items-center gap-x-2.5 gap-y-2 w-full mb-2.5">
             <MobileLink href="/exams" text="Exams" />
             <span className="text-[#e0e0e0]">|</span>
-            <MobileLink href="/paid-attended" text="Paid/ Attended" />
-            <span className="text-[#e0e0e0]">|</span>
-            <MobileLink href="/dashboard" text="Dashboard" isLast={true} />
-          </div>
-
-          <div className="flex justify-center items-center gap-2.5 w-full">
+            {userDetails?.name && (
+              <>
+                {/* <MobileLink href="/paid-attended" text="Paid/ Attended" />
+                <span className="text-[#e0e0e0]">|</span> */}
+                <MobileLink href="/dashboard" text="Dashboard" isLast={true} />
+                <span className="text-[#e0e0e0]">|</span>
+              </>
+            )}
             <MobileLink href="/terms-and-condition" text="Terms" />
             <span className="text-[#e0e0e0]">|</span>
             <MobileLink href="/privacy-policy" text="Privacy" />
             <span className="text-[#e0e0e0]">|</span>
-            <MobileLink href="#" text="Cookies" />
+            <MobileLink href="/cookies" text="Cookies" />
+            <span className="text-[#e0e0e0]">|</span>
             <MobileLink
               href="/refund-and-cancellation"
               text="Refund & Cancellation"

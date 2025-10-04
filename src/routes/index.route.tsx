@@ -11,6 +11,7 @@ import TermsConditions from "../pages/terms-condition";
 import ScrollToTop from "../component/ScrollToTop";
 import Result from "../pages/exams/pages/result";
 import AnswerReview from "../pages/exams/pages/answer-review";
+import Cookies from "../pages/cookies";
 
 const Exams = lazy(() => import("../pages/exams"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
@@ -85,6 +86,7 @@ const AllRoutes: React.FC = () => {
               }
             />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="cookies" element={<Cookies />} />
             <Route path="terms-and-condition" element={<TermsConditions />} />
             <Route
               path="refund-and-cancellation"

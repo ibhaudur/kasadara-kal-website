@@ -49,7 +49,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
                   ₹{Number(details.cost).toFixed(0)}
                 </span>{" "}
                 <span className="text-[#2BBC7C] text-xs">
-                  ({Number(details?.discount_cost).toFixed(0)}% OFF)
+                  (₹{Number(details?.discount_cost).toFixed(0)} OFF)
                 </span>
               </small>
             )}
