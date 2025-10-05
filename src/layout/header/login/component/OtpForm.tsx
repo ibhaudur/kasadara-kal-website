@@ -13,7 +13,7 @@ const OtpForm: React.FC<OtpFormProps> = ({
   handleSubmit,
   setCredentials,
 }) => {
-  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState(false);
 
   const handleChange = (value: string, index: number) => {
@@ -24,7 +24,7 @@ const OtpForm: React.FC<OtpFormProps> = ({
       setCredentials((prev) => ({ ...prev, otp: newOtp.join("") }));
       setError(false); // reset error when typing
 
-      if (value && index < 3) {
+      if (value && index < 5) {
         const next = document.getElementById(`otp-${index + 1}`);
         (next as HTMLInputElement)?.focus();
       }
@@ -44,7 +44,7 @@ const OtpForm: React.FC<OtpFormProps> = ({
     <div className="flex flex-col justify-center items-center">
       <h2 className="text-xl font-bold text-gray-900 mb-4">Enter OTP</h2>
       <p className="text-gray-800 mb-6 text-xs sm:text-sm">
-        We've sent a 4-digit OTP to your number.
+        We've sent a 6-digit OTP to your number.
       </p>
 
       <div className="flex gap-2 mb-4">
@@ -67,7 +67,7 @@ const OtpForm: React.FC<OtpFormProps> = ({
       </div>
 
       {error && (
-        <p className="text-red-500 text-sm mb-2">Please enter all 4 digits.</p>
+        <p className="text-red-500 text-sm mb-2">Please enter all 6 digits.</p>
       )}
 
       <div className="flex justify-center w-full gap-2 mt-3 ">
