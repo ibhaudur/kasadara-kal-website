@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "./components/Banner";
 import TestList from "./components/TestList";
-import Adscarousel from "./components/Adscarousel";
 import useApiCall from "../../hooks/useApiCall";
 import { getAllExams } from "../../service/apiUrls";
 const Exams: React.FC = () => {
@@ -13,7 +12,7 @@ const Exams: React.FC = () => {
   return (
     <section>
       <Banner />
-      <Adscarousel />
+      {/* <Adscarousel /> */}
       <div className="p-4">
         <TestList list={data?.data} />
       </div>
