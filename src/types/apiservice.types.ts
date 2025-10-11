@@ -13,6 +13,7 @@ export interface ApiResponse<T> {
   status?: number;
   message: string;
   accessToken?: string;
+  payment_url?: string;
 }
 export interface ApiError {
   response?: {
