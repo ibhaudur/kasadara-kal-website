@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Logo from "../../../public/images/logo.svg";
+import Logo from "../../../public/images/logo.png";
 import logo2 from "../../../public/images/logo2.png";
 import mobileHamburger from "../../../public/images/mobile-hamburger.png";
 import SearchBox from "../../component/SearchBox";
