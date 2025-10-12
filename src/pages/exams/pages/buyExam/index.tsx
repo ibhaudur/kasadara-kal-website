@@ -8,7 +8,7 @@ import {
   postConfirmPayment,
   postInitiatePayment,
 } from "../../../../service/apiUrls";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../../../component/Modal/Modal";
 import Button from "../../../../component/UI/Button";
 import { ApiError, ApiResponse } from "../../../../types/apiservice.types";
@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 
 const BuyExam: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const transactionId = queryParams.get("transaction_id");
   const [initiate, setInitiate] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const BuyExam: React.FC = () => {
     url: `${getExamById}/${id}`,
     method: "get",
   });
-  const { data: PaymentStatus } = useApiCall({
+  const { data: PaymentStatus, error: PaymentError } = useApiCall({
     key: `${getPaymentStatus}${transactionId}`,
     url: `${getPaymentStatus}${transactionId}`,
     method: "get",
@@ -68,10 +69,17 @@ const BuyExam: React.FC = () => {
     if (PaymentStatus?.status === "completed") {
       toast.success("Payment successful");
       refetch();
+      navigate(`/exams/buy/${id}`, { replace: true });
     } else if (PaymentStatus?.status === "failed") {
       toast.error("Payment failed, please try again");
+      navigate(`/exams/buy/${id}`, { replace: true });
+    } else if (PaymentError) {
+      toast.error(
+        PaymentError?.response?.data?.message || "Something went wrong"
+      );
+      navigate(`/exams/buy/${id}`, { replace: true });
     }
-  }, [PaymentStatus]);
+  }, [PaymentStatus, PaymentError]);
   return (
     <section className="p-4 max-w-[1580px] mx-auto">
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Buy Exam">
