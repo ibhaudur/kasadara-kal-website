@@ -47,7 +47,7 @@ const BuyExam: React.FC = () => {
     mutate(initiate ? payload : {}, {
       onSuccess: (res: ApiResponse<any>) => {
         if (res?.message !== "Initiate mock payment") {
-          window.open(res?.payment_url, "_blank");
+          window.open(res?.payment_url, "_self");
           toast.success(res?.message);
           refetch();
           setIsOpen(false);
