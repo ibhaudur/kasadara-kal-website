@@ -31,7 +31,6 @@ const BuyExam: React.FC = () => {
     method: "get",
     enabled: transactionId ? true : false,
   });
-  console.log(PaymentStatus);
   const { mutate } = useApiCall({
     key: "BuyExam",
     url: initiate
@@ -65,6 +64,14 @@ const BuyExam: React.FC = () => {
       handleSubmit();
     }
   }, [initiate]);
+  useEffect(() => {
+    if (PaymentStatus?.status === "completed") {
+      toast.success("Payment successful");
+      refetch();
+    } else if (PaymentStatus?.status === "failed") {
+      toast.error("Payment failed, please try again");
+    }
+  }, [PaymentStatus]);
   return (
     <section className="p-4 max-w-[1580px] mx-auto">
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Buy Exam">

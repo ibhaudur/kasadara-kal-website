@@ -113,7 +113,7 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
               </small>
               <Button
                 handler={() => {
-                  details?.paid_status === "paid"
+                  details?.paid_status === "completed"
                     ? navigate(`/exams/attend/${details?.exam_id}`, {
                         state: {
                           exam_name: details?.exam_name,
@@ -125,7 +125,7 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                     : setIsOpen(true);
                 }}
                 btnName={
-                  details?.paid_status === "paid" ? "Attend Now" : "Buy now"
+                  details?.paid_status === "completed" ? "Attend Now" : "Buy now"
                 }
                 splClass="rounded-[50px] px-20 w-full sm:w-auto"
               />
