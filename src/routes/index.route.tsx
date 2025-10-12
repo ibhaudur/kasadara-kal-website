@@ -37,6 +37,14 @@ const AllRoutes: React.FC = () => {
                 </ProtectedRoute>
               }
             />
+            {/* <Route
+              path="exams/buy/:id?transaction_id=TXN_b5dfa421"
+              element={
+                <ProtectedRoute>
+                  <BuyExam />
+                </ProtectedRoute>
+              }
+            /> */}
             <Route
               path="exams/attend/:id"
               element={

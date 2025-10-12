@@ -4,6 +4,7 @@ import StandOut from "../components/StandOut";
 import useApiCall from "../../../../hooks/useApiCall";
 import {
   getExamById,
+  getPaymentStatus,
   postConfirmPayment,
   postInitiatePayment,
 } from "../../../../service/apiUrls";
@@ -15,6 +16,8 @@ import { toast } from "react-toastify";
 
 const BuyExam: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const queryParams = new URLSearchParams(location.search);
+  const transactionId = queryParams.get("transaction_id");
   const [initiate, setInitiate] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data, refetch } = useApiCall({
@@ -22,6 +25,13 @@ const BuyExam: React.FC = () => {
     url: `${getExamById}/${id}`,
     method: "get",
   });
+  const { data: PaymentStatus } = useApiCall({
+    key: `${getPaymentStatus}${transactionId}`,
+    url: `${getPaymentStatus}${transactionId}`,
+    method: "get",
+    enabled: transactionId ? true : false,
+  });
+  console.log(PaymentStatus);
   const { mutate } = useApiCall({
     key: "BuyExam",
     url: initiate
