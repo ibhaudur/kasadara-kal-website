@@ -85,9 +85,9 @@ const Footer: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-center items-center gap-5 mb-8 font-['Zoho_Puvi'] font-normal text-base">
           <FooterLink href="/exams" text="Exams" />
-          {/* {userDetails?.name && (
+          {userDetails?.name && (
             <FooterLink href="/paid-attended" text="Paid/ Attended" />
-          )} */}
+          )}
           {userDetails?.name && (
             <FooterLink href="/dashboard" text="Dashboard" />
           )}
@@ -108,8 +108,8 @@ const Footer: React.FC = () => {
             <span className="text-[#e0e0e0]">|</span>
             {userDetails?.name && (
               <>
-                {/* <MobileLink href="/paid-attended" text="Paid/ Attended" />
-                <span className="text-[#e0e0e0]">|</span> */}
+                <MobileLink href="/paid-attended" text="Paid/ Attended" />
+                <span className="text-[#e0e0e0]">|</span>
                 <MobileLink href="/dashboard" text="Dashboard" isLast={true} />
                 <span className="text-[#e0e0e0]">|</span>
               </>

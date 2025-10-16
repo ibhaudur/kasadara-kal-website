@@ -23,6 +23,9 @@ export interface ExamDetails {
   valid_until?: string;
   published_on?: string;
   paid_status?: string;
+  answered?: number;
+  user_rank?: number;
+  total_unique_attendees?: number;
 }
 export interface ExamFormValues {
   exam_name: string;

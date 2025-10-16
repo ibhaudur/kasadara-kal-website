@@ -15,7 +15,13 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
   return (
     <div
       key={index}
-      onClick={() => navigate(`buy/${details.exam_id}`)}
+      onClick={() =>
+        navigate(
+          details?.answered
+            ? `/exams/result/${details.exam_id}`
+            : `buy/${details.exam_id}`
+        )
+      }
       className="    relative bg-white rounded-2xl p-4 shadow-md overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
     >
       {details.exam_type === "free" && (
@@ -42,23 +48,43 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
             </span>
           </small>
           <div className="flex justify-between items-center mt-10">
-            {details?.exam_type !== "free" && (
+            {details?.user_rank ? (
               <small className="text-[24px]">
-                ₹{Number(details.price).toFixed(0)}{" "}
-                <span className="text-[#8790A1] text-[14px] line-through">
-                  ₹{Number(details.cost).toFixed(0)}
-                </span>{" "}
-                <span className="text-[#2BBC7C] text-xs">
-                  (₹{Number(details?.discount_cost).toFixed(0)} OFF)
-                </span>
+                {details?.user_rank}/{details?.total_unique_attendees}{" "}
+                <span className="text-[#8790A1] text-[14px]">Rank</span>{" "}
               </small>
+            ) : (
+              details?.exam_type !== "free" && (
+                <small className="text-[24px]">
+                  ₹{Number(details.price).toFixed(0)}{" "}
+                  <span className="text-[#8790A1] text-[14px] line-through">
+                    ₹{Number(details.cost).toFixed(0)}
+                  </span>{" "}
+                  <span className="text-[#2BBC7C] text-xs">
+                    (₹{Number(details?.discount_cost).toFixed(0)} OFF)
+                  </span>
+                </small>
+              )
             )}
             <Button
-              btnName={details?.exam_type === "free" ? "Attend" : "Buy Now"}
+              btnName={
+                details?.answered
+                  ? "Review"
+                  : details?.exam_type === "free" ||
+                    details?.exam_type === "paid"
+                  ? "Attend"
+                  : "Buy Now"
+              }
               splClass={`rounded-[50px] px-9 ${
                 details?.exam_type === "free" && "w-full"
               }`}
-              onClick={() => navigate(`buy/${details.exam_id}`)}
+              onClick={() =>
+                navigate(
+                  details?.answered
+                    ? `/exams/result/${details.exam_id}`
+                    : `buy/${details.exam_id}`
+                )
+              }
             />
           </div>
         </div>

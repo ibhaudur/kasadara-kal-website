@@ -70,6 +70,10 @@ const QuestionsandOptions: React.FC<Props> = ({
             </div>
           );
         })}
+        <div>
+          <h5 className="text-lg font-semibold mt-4">Description:</h5>
+          <p className="text-[15px] mt-2">{question.description}</p>
+        </div>
       </div>
 
       {/* Footer Navigation */}
