@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-// Register Chart.js components
+// Register components
 ChartJS.register(
   LineElement,
   CategoryScale,
@@ -18,43 +18,6 @@ ChartJS.register(
   Tooltip,
   Filler
 );
-
-// Line chart data
-const lineData = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-  datasets: [
-    {
-      label: "Accuracy",
-      data: [30, 60, 45, 70, 40, 65, 75, 55, 68, 85, 60, 70],
-      borderColor: "rgba(44, 140, 83, 1)", // Solid green line
-      backgroundColor: (context: any) => {
-        const ctx = context.chart.ctx;
-        const chart = context.chart;
-        const gradient = ctx.createLinearGradient(0, 0, 0, chart.height);
-        gradient.addColorStop(0, "rgba(44, 140, 83, 0.2)"); // very light near the line
-        gradient.addColorStop(1, "rgba(44, 140, 83, 0)"); // transparent
-        return gradient;
-      },
-      tension: 0.4,
-      fill: true,
-      pointRadius: 0,
-      borderWidth: 2,
-    },
-  ],
-};
 
 const lineOptions = {
   responsive: true,
@@ -68,9 +31,7 @@ const lineOptions = {
     intersect: false,
   },
   scales: {
-    y: {
-      display: false,
-    },
+    y: { display: false },
     x: {
       grid: { display: false },
       ticks: {
@@ -82,10 +43,57 @@ const lineOptions = {
   },
 };
 
-// Component
-const AccuracyLineChart = () => {
+const AccuracyLineChart = ({ data }: { data: any }) => {
+  // Convert data to numbers
+  const labels = data?.map((item: any) => item.month);
+  const accuracyValues = data?.map((item: any) =>
+    item.accuracy ? parseFloat(item.accuracy.replace("%", "")) : 0
+  );
+
+  // ✅ Handle single-point case by duplicating the point slightly
+  const fixedLabels =
+    accuracyValues.length === 1
+      ? [labels[0], labels[0] + " "] // add space to make x-axis wider
+      : labels;
+
+  const fixedData =
+    accuracyValues.length === 1
+      ? [accuracyValues[0], accuracyValues[0]]
+      : accuracyValues;
+
+  const lineData = {
+    labels: fixedLabels,
+    datasets: [
+      {
+        label: "Accuracy",
+        data: fixedData,
+        borderColor: "rgba(44, 140, 83, 1)",
+        backgroundColor: (context: any) => {
+          const { chart } = context;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) return "rgba(44, 140, 83, 0.2)";
+
+          const gradient = ctx.createLinearGradient(
+            0,
+            chartArea.top,
+            0,
+            chartArea.bottom
+          );
+          gradient.addColorStop(0, "rgba(44, 140, 83, 0.2)");
+          gradient.addColorStop(1, "rgba(44, 140, 83, 0)");
+          return gradient;
+        },
+        tension: 0.4,
+        fill: true,
+        pointRadius: 4,
+        pointBackgroundColor: "rgba(44, 140, 83, 1)",
+        borderWidth: 2,
+      },
+    ],
+  };
+
   return (
-    <div className="overflow-hidden">
+    <div className="w-full h-48 overflow-hidden">
       <Line data={lineData} options={lineOptions} />
     </div>
   );

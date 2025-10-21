@@ -143,7 +143,9 @@ const Dashboard: React.FC = () => {
             {details?.monthly_attendance?.[0]?.accuracy ?? "-"}
           </p>
           <p className="text-sm text-gray-500 mb-5">Current accuracy</p>
-          <AccuracyLineChart />
+          <AccuracyLineChart
+            data={details?.monthly_attendance ?? []}
+          />
         </div>
       </section>
     </div>
