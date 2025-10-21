@@ -125,7 +125,7 @@ const Dashboard: React.FC = () => {
             {details?.overall_stats?.total_exams_attended ?? "-"}
           </p>
           <p className="text-sm text-gray-500 mb-10">exams attended</p>
-          <AttendedExamsChart />
+          <AttendedExamsChart data={details?.monthly_attendance ?? []} />
         </div>
 
         <div className="bg-white rounded-xl p-4 shadow w-full">

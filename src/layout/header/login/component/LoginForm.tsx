@@ -33,6 +33,9 @@ const LoginForm: React.FC<{
         toast.success(res?.message);
         dispatch(addUser(res));
         setIsOpen(false);
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       },
       onError: (err: ApiError) => {
         toast.error(err.response?.data?.message);
