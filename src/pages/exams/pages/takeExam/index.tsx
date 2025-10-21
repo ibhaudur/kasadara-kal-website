@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ExamIndicator from "./components/ExamIndicator";
 import { usePrompt } from "../../../../hooks/usePrompt";
 import QuestionsandOptions from "./components/QuestionsandOptions";
@@ -16,8 +16,7 @@ import { toast } from "react-toastify";
 const TakeExam = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const language = location.state?.language;
+  const [language, setLanguage] = useState<string>("English");
 
   const { data } = useApiCall({
     key: `${getExamQuestions}/${id}?language=${
@@ -39,10 +38,11 @@ const TakeExam = () => {
   const [visitedQuestions, setVisitedQuestions] = useState<number[]>([0]);
   const [startTime, setStartTime] = useState<string>("");
   useEffect(() => {
-    if (data?.questions?.length) {
+    if (data?.questions?.length && answers.length === 0) {
+      // Only initialize answers if they haven't been set yet
       setAnswers(Array(data.questions.length).fill(null));
     }
-  }, [data?.questions]);
+  }, [data?.questions, answers.length]);
   useEffect(() => {
     const now = moment().format("YYYY-MM-DD HH:mm:ss");
     setStartTime(now);
@@ -142,6 +142,8 @@ const TakeExam = () => {
           markedQuestions={markedQuestions}
           ontotal_marks={() => handletotal_marksQuestion(currentQuestion)}
           questions={data?.questions}
+          setLanguage={setLanguage}
+          language={language}
         />
         <Validator
           answers={answers}

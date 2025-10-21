@@ -9,6 +9,8 @@ interface QuestionsandOptionsProps {
   markedQuestions: number[];
   ontotal_marks: () => void;
   questions: any;
+  setLanguage: (lang: string) => void;
+  language: string;
 }
 
 const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
@@ -19,6 +21,8 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   markedQuestions,
   ontotal_marks,
   questions,
+  setLanguage,
+  language,
 }) => {
   const q = questions?.[currentQuestion];
 
@@ -40,46 +44,76 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   return (
     <div className="bg-white flex-grow">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center p-2 border border-gray-200">
-        <p className="mb-0 font-semibold">Question No: {currentQuestion + 1}</p>
-        <div className="flex items-center text-[13px] gap-4 md:gap-2">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center p-2 border border-gray-200">
+        <div className="flex items-center justify-between">
+          <p className="mb-0 font-semibold">
+            Question No: {currentQuestion + 1}
+          </p>
+
+          {/* mobile & tablet: select on the same line as question, hidden on lg+ */}
+          <select
+            onChange={(e) => setLanguage(e.target.value)}
+            className="border-none cursor-pointer outline-none p-2 lg:hidden"
+            value={language}
+          >
+            <option value="English">English</option>
+            <option value="Tamil">Tamil</option>
+          </select>
+        </div>
+
+        {/* answer checks: next line on mobile/tablet (mt-2), inline on lg+ (lg:mt-0) */}
+        <div className="mt-2 lg:mt-0 flex items-center text-[13px] gap-4 lg:gap-2">
           <span>If answer is :</span>
+
           <p className="mb-0 border border-[#EBEBEB] bg-[#F8F8F8] rounded-xl px-2 py-2">
             Correct &nbsp;
             <span className="bg-[#2C8C53] text-white rounded-2xl px-1">+1</span>
           </p>
-          (or)
+
+          <span>(or)</span>
+
           <p className="mb-0 border border-[#EBEBEB] bg-[#F8F8F8] rounded-xl px-2 py-2">
             Wrong &nbsp;
             <span className="bg-[#FF4444] text-white rounded-2xl px-1">+1</span>
           </p>
+
+          {/* desktop/large: select visible on lg+ (hidden on smaller screens) */}
+          <select
+            onChange={(e) => setLanguage(e.target.value)}
+            className="hidden lg:inline-block border-none cursor-pointer outline-none p-2"
+            value={language}
+          >
+            <option value="English">English</option>
+            <option value="Tamil">Tamil</option>
+          </select>
         </div>
       </div>
 
       {/* Question & Options */}
       <div className="p-3 mb-5">
         <p className="text-lg mb-4">{q?.question}</p>
-        {q?.options && Object?.entries(q?.options)?.map(([key, value]) => (
-          <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
-            <input
-              type="radio"
-              name={`question-${currentQuestion}`}
-              value={key}
-              id={`option-${key}`}
-              checked={answer === key}
-              onChange={() => setAnswer(key)}
-              className="accent-[#2C8C53] w-5 h-5 cursor-pointer"
-            />
-            <label
-              htmlFor={`option-${key}`}
-              className={`px-3 text-[15px] py-2 rounded-lg w-[80%] lg:w-[60%]  cursor-pointer ${
-                answer === key ? "bg-[#D6FFE7]" : "border border-[#EBEBEB]"
-              }`}
-            >
-              {key}) &nbsp;&nbsp; <b>{value as React.ReactNode}</b>
-            </label>
-          </div>
-        ))}
+        {q?.options &&
+          Object?.entries(q?.options)?.map(([key, value]) => (
+            <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
+              <input
+                type="radio"
+                name={`question-${currentQuestion}`}
+                value={key}
+                id={`option-${key}`}
+                checked={answer === key}
+                onChange={() => setAnswer(key)}
+                className="accent-[#2C8C53] w-5 h-5 cursor-pointer"
+              />
+              <label
+                htmlFor={`option-${key}`}
+                className={`px-3 text-[15px] py-2 rounded-lg w-[80%] lg:w-[60%]  cursor-pointer ${
+                  answer === key ? "bg-[#D6FFE7]" : "border border-[#EBEBEB]"
+                }`}
+              >
+                {key}) &nbsp;&nbsp; <b>{value as React.ReactNode}</b>
+              </label>
+            </div>
+          ))}
       </div>
 
       {/* Footer Buttons */}
