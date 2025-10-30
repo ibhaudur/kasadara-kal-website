@@ -99,14 +99,14 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {showMobileSearch && (
+      {/* {showMobileSearch && (
         <div className="sm:hidden mt-2">
           <SearchBox
             splClass="w-full"
             placeholder="Search exams, mock test  & etc..."
           />
         </div>
-      )}
+      )} */}
 
       {/* Overlay */}
       {menuOpen && (
@@ -155,12 +155,12 @@ const Header: React.FC = () => {
             alt="icon"
           />
         </div>
-        <div className="w-auto">
+        {/* <div className="w-auto">
           <SearchBox
             splClass="max-w-full sm:max-w-[320px]"
             placeholder="Search exams, mock test  & etc..."
           />
-        </div>
+        </div> */}
         <div className="flex flex-row items-center gap-0 w-auto mt-0">
           {showPopup && (
             <div

@@ -56,8 +56,8 @@ const Dashboard: React.FC = () => {
           />
           <p className="text-gray-600 mb-3">Rank</p>
           <h2 className="text-3xl font-bold mt-4">
-            {details?.rank ? details?.rank : "0"}{" "}
-            <span className="text-gray-500 text-sm">/ 50</span>
+            {details?.rank ? details?.rank?.split('/')[0] : "0"}{" "}
+            <span className="text-gray-500 text-sm">/ {details?.rank ? details?.rank?.split('/')[1] : "0"}{" "}</span>
           </h2>
           <p className="text-sm text-gray-500 mt-6">
             Compared to all the attendees who <br /> attend the same exams as
@@ -119,7 +119,7 @@ const Dashboard: React.FC = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl p-4 shadow w-full">
           <h3 className="text-[16px] font-semibold text-gray-800 mb-3">
-            Attended Exams
+            Monthly   Attended Exams
           </h3>
           <p className="text-2xl font-bold text-gray-900">
             {details?.overall_stats?.total_exams_attended ?? "-"}

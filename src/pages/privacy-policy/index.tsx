@@ -203,14 +203,14 @@ const PrivacyPolicy = () => {
           Designation]
         </div> */}
         <div className="mb-2">
-          <span className="font-semibold">Company Name and Address:</span>{" "}
-          6/131, west street, Thirukkadaiyur, Mayiladuthurai, Tamil Nadu 609204
+          <span className="font-semibold">Company Name and Address:</span> 5/35,
+          Main road, Thirukadaiyur, Mayiladuthurai, Tamil Nadu – 609311
         </div>
         <div className="mb-2">
           <span className="font-semibold">Contact us:</span>
           <div className="ml-4">
             <div>
-              <span className="font-semibold">Phone:</span> +91 9080529713
+              <span className="font-semibold">Phone:</span> +91 9445566912
             </div>
             <div>
               <span className="font-semibold">Time:</span> Monday - Friday (9:00

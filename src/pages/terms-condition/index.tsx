@@ -24,7 +24,7 @@ const TermsConditions = () => {
           The Platform is owned by <strong>Akshaya Arivazhagan</strong>, a
           company incorporated under the Companies Act, 1956 with its registered
           office at{" "}
-          <b>6/131, West Street, Thirukkadaiyur, Mayiladuthurai, Tamil Nadu</b>{" "}
+          <b>5/35, Main road, Thirukadaiyur, Mayiladuthurai, Tamil Nadu – 609311</b>{" "}
           (hereinafter referred to as the “Platform Owner”, “we”, “us”, “our”).
         </li>
         <li className="mb-4">

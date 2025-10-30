@@ -13,7 +13,7 @@ const RefundCancellationPolicy: React.FC = () => {
       </h1>
 
       <p className="text-sm text-gray-600 mb-2">
-        Effective From: September 5 ,2025
+        Last update: September 5 ,2025
       </p>
 
       <p className="text-sm text-gray-600 mb-6">
@@ -136,7 +136,8 @@ const RefundCancellationPolicy: React.FC = () => {
               support@kasadarakal.com
             </a>
             <br />
-            Phone/WhatsApp: <span className="text-gray-600">+91 9080529713</span>
+            Phone/WhatsApp:{" "}
+            <span className="text-gray-600">+91 9445566912</span>
           </p>
         </div>
 

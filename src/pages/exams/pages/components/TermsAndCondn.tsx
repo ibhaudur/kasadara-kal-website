@@ -4,13 +4,9 @@ const TermsAndCond: React.FC = () => {
 
   return (
     <div className="w-[100%] font-['Segoe_UI',Arial,sans-serif] text-[#333] leading-none mt-5">
-      <h1 className="text-[16px] sm:text-2xl font-bold leading-[22px] mb:4   sm:mb-5 text-[#333]">
-        Terms & Conditions
-      </h1>
-
       {/* Desktop/Tablet View (>360px) - Original Layout */}
       <div className="hidden min-[361px]:block terms-content">
-        <h2 className="text-[14px] sm:text-lg font-medium mb-5 sm:mb-6">General Instructions</h2>
+        <h2 className="text-2xl font-semibold mb-5 sm:mb-6">General Instructions</h2>
 
         <div className="mb-6">
           <h3 className="text-base font-bold mb-2.5 leading-[31px]">
@@ -127,7 +123,7 @@ const TermsAndCond: React.FC = () => {
 
       {/* Mobile View (≤360px) - Same content with smaller fonts */}
       <div className="block min-[361px]:hidden terms-content">
-        <h2 className="text-sm font-medium mb-3">General Instructions</h2>
+        <h2 className="text-[16px] font-semibold mb-3">General Instructions</h2>
 
         <div className="mb-4">
           <h3 className="text-sm font-bold mb-2 leading-[20px]">

@@ -46,7 +46,7 @@ const LoginForm: React.FC<{
     <>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
       <p className="text-gray-800 mb-9 text-sm">
-        Great Things Start Here. Sign In and Shine!
+        Great Things Start Here. Login and Shine!
       </p>
       <form className="space-y-4" onSubmit={handleContinue}>
         <input

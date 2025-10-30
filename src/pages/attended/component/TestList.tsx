@@ -27,7 +27,7 @@ const TestList: React.FC = () => {
                 : "text-gray-700"
             }`}
           >
-            Attended tests
+            Completed Exams
           </button>
           <button
             onClick={() => setActiveTab("paid")}
@@ -37,7 +37,7 @@ const TestList: React.FC = () => {
                 : "text-gray-700"
             }`}
           >
-            Paid Exams
+            Subscribed Exams
           </button>
         </div>
       </div>
@@ -64,14 +64,14 @@ const TestList: React.FC = () => {
       </div>
 
       <div className="hidden md:block ">
-        <h5 className="text-2xl font-semibold mb-4">Attended Tests</h5>
+        <h5 className="text-2xl font-semibold mb-4">Completed Exams</h5>
         <div className="grid grid-cols-2 lg:grid-cols-3  gap-4 mb-10">
           {AttendedExams?.data?.map((item: any, index: number) => (
             <ExamCards details={item} index={index} key={`attend-d-${index}`} />
           ))}
         </div>
 
-        <h5 className="text-2xl font-semibold mb-4">Paid Exams</h5>
+        <h5 className="text-2xl font-semibold mb-4">Subscribed Exams</h5>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {PaidExams?.data?.map((item: any, index: number) => (
             <ExamCards details={item} index={index} key={`paid-d-${index}`} />

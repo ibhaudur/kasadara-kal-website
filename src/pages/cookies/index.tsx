@@ -1,4 +1,3 @@
-
 const Cookies = () => {
   return (
     <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800 leading-relaxed">
@@ -158,11 +157,11 @@ const Cookies = () => {
             <strong>Name:</strong> A. Akshaya
           </li>
           <li>
-            <strong>Address:</strong> 6/131, West Street, Thirukkadaiyur,
-            Mayiladuthurai, Tamil Nadu – 609204
+            <strong>Address:</strong> 5/35, Main road, Thirukadaiyur,
+            Mayiladuthurai, Tamil Nadu – 609311
           </li>
           <li>
-            <strong>Phone:</strong> +91 9080529713
+            <strong>Phone:</strong> +91 9445566912
           </li>
           <li>
             <strong>Time:</strong> Monday – Friday (09:00 – 18:00)

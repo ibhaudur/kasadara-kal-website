@@ -60,11 +60,11 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                 </span>
               </small>
               <div className="flex gap-3 text-[11px] sm:text-[13px] flex-wrap">
-                <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
+                {/* <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
                   <LuCalendarDays className="text-[#2BBC7C] text-[15px]" />{" "}
                   Published on <b>{formatDate(details?.published_on)}</b> at
                   <b> {formatTime(details?.published_on)}</b>
-                </span>
+                </span> */}
                 <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
                   <HiOutlineUserGroup className="text-[#2BBC7C] text-[15px]" />{" "}
                   <b>230</b>

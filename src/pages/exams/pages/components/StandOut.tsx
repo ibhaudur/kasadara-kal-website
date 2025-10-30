@@ -8,10 +8,13 @@ import TermsAndCond from "./TermsAndCondn";
 const StandOut: React.FC = () => {
   return (
     <div className="relative bg-white rounded-2xl p-5 px-6 shadow-md overflow-hidden mt-5">
-      <h5 className="text-[16px] sm:text-2xl font-semibold mb-3">What Makes Us Stand Out</h5>
+      <h5 className="text-[16px] sm:text-2xl font-semibold mb-3">
+        What Makes Us Stand Out
+      </h5>
       <p className="text-[#8790A1] font-normal text-[14px]">
         Our platform offers real-time mock tests and performance tracking{" "}
-        <br className="hidden sm:block"></br> to help you prepare smarter and succeed faster
+        <br className="hidden sm:block"></br> to help you prepare smarter and
+        succeed faster
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-8 md:grid-cols-8 lg:grid-cols-5 mt-5 gap-5">
         {StandsOutList.map((item, index) => (
@@ -26,8 +29,8 @@ const StandOut: React.FC = () => {
       </div>
       <Overview />
       <Exampattern />
-      <FandQ />
       <TermsAndCond />
+      <FandQ />
     </div>
   );
 };

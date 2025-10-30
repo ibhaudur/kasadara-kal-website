@@ -43,7 +43,7 @@ const SignUp: React.FC<{
           onClick={() => setActive(1)}
           className="text-[#2BBC7C] cursor-pointer"
         >
-          Sign In
+          Login
         </span>{" "}
         here
       </p>

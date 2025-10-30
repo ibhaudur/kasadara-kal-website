@@ -78,7 +78,7 @@ const AllRoutes: React.FC = () => {
               }
             />
             <Route
-              path="paid-attended"
+              path="your-exams"
               element={
                 <ProtectedRoute>
                   <Attended />
