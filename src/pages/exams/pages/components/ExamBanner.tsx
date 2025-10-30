@@ -13,6 +13,7 @@ import {
   formatTime,
 } from "../../../../utils/index.utils";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type DetailsProps = {
   details: ExamDetails;
@@ -21,6 +22,15 @@ type DetailsProps = {
 
 const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
   const navigate = useNavigate();
+  const handleCopyUrl = async () => {
+    try {
+      const fullUrl = window.location.href; // full current URL
+      await navigator.clipboard.writeText(fullUrl);
+      toast.success("URL copied to clipboard!");
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
   return (
     <div className="relative bg-white rounded-2xl p-5 shadow-md overflow-hidden">
       {details?.exam_type === "free" && (
@@ -108,7 +118,10 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
             </div>
 
             <div className="flex gap-3 items-center w-full sm:w-auto">
-              <small className="m-0 w-[40px] h-[40px] cursor-pointer flex justify-center items-center p-2 border bg-white border-[#EBEBEB] rounded-3xl">
+              <small
+                onClick={handleCopyUrl}
+                className="m-0 w-[40px] h-[40px] cursor-pointer flex justify-center items-center p-2 border bg-white border-[#EBEBEB] rounded-3xl"
+              >
                 <GoShareAndroid className=" text-[18px]" />
               </small>
               <Button
@@ -125,7 +138,9 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                     : setIsOpen(true);
                 }}
                 btnName={
-                  details?.paid_status === "completed" ? "Attend Now" : "Buy now"
+                  details?.paid_status === "completed"
+                    ? "Attend Now"
+                    : "Buy now"
                 }
                 splClass="rounded-[50px] px-20 w-full sm:w-auto"
               />

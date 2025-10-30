@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 const images = [
-  "/images/ad-banner.png",
-  "/images/ad-banner.png",
-  "/images/ad-banner.png",
-  "/images/ad-banner.png",
-  "/images/ad-banner.png",
+  "/images/board.jpg",
+  "/images/board.jpg",
+  "/images/board.jpg",
+  "/images/board.jpg",
+  "/images/board.jpg",
 ];
 
 const AdCarousel: React.FC = () => {
