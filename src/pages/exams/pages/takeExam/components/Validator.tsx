@@ -13,6 +13,8 @@ interface ValidatorProps {
   visitedQuestions: number[];
   handleSetCurrentQuestion: (index: number) => void;
   handleSubmitExam: () => void;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Validator: React.FC<ValidatorProps> = ({
@@ -22,8 +24,9 @@ const Validator: React.FC<ValidatorProps> = ({
   visitedQuestions,
   handleSetCurrentQuestion,
   handleSubmitExam,
+  isModalOpen,
+  setIsModalOpen,
 }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false); // NEW for mobile toggle
   const userDetails = useSelector((state: any) => state.user.userDetails);
   const handleModalClose = () => setIsModalOpen(false);
@@ -146,7 +149,7 @@ const Validator: React.FC<ValidatorProps> = ({
         onClose={handleModalClose}
         title="Submitting your test"
       >
-        <div className="w-lg">
+        <div className="w-[320px] md:w-lg">
           <ul className="rounded-lg p-0">
             <li className="flex gap-1 justify-between items-center mb-1">
               <p className="w-[200px] bg-[#F9F9F9] mb-0 p-2">

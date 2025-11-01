@@ -6,22 +6,30 @@ const SignUp: React.FC<{
   credentials: Credentials;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (act: number, e: React.FormEvent) => void;
-}> = ({ setActive, credentials, handleChange, handleSubmit }) => {
+  active: number;
+}> = ({ setActive, credentials, handleChange, handleSubmit, active }) => {
+  console.log(active);
   return (
     <>
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome!</h2>
-      <p className="text-gray-800 mb-9 text-sm">
-        Great Things Start Here. Sign Up and Shine!
-      </p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        {active === 2 ? "Welcome!" : "Forget Password"}
+      </h2>
+      {active === 2 && (
+        <p className="text-gray-800 mb-9 text-sm">
+          Great Things Start Here. Sign Up and Shine!
+        </p>
+      )}
       <form className="space-y-4">
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          onChange={handleChange}
-          value={credentials.name}
-          className="w-full px-9 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-        />
+        {active === 2 && (
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            onChange={handleChange}
+            value={credentials.name}
+            className="w-full px-9 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        )}
         <input
           type="email"
           placeholder="Email address"

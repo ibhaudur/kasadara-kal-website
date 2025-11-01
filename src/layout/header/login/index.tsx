@@ -7,7 +7,12 @@ import useApiCall from "../../../hooks/useApiCall";
 import { ApiError, ApiResponse } from "../../../types/apiservice.types";
 import { AuthLogin } from "../../../types/pages.types";
 import { toast } from "react-toastify";
-import { postOtp, postPassword, postSignUp } from "../../../service/apiUrls";
+import {
+  postForgotPassword,
+  postOtp,
+  postPassword,
+  postSignUp,
+} from "../../../service/apiUrls";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +43,14 @@ const Login = () => {
   }, []);
   const { mutate } = useApiCall({
     key: "SignUp",
-    url: active === 2 ? postSignUp : active === 3 ? postOtp : postPassword,
+    url:
+      active === 2
+        ? postSignUp
+        : active === 3
+        ? postOtp
+        : active === 4
+        ? postPassword
+        : postForgotPassword,
     method: "post",
   });
 
@@ -84,11 +96,12 @@ const Login = () => {
               {active === 1 && (
                 <LoginForm setIsOpen={setIsOpen} setActive={setActive} />
               )}
-              {active === 2 && (
+              {(active === 2 || active === 5) && (
                 <SignUp
                   credentials={credentials}
                   handleChange={handleChange}
                   setActive={setActive}
+                  active={active}
                   handleSubmit={handleSubmit}
                 />
               )}

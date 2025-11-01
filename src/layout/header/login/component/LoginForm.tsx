@@ -65,6 +65,12 @@ const LoginForm: React.FC<{
           value={credentials.password}
           className="w-full px-9 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
         />
+        <p
+          onClick={() => setActive(5)}
+          className="text-[#2BBC7C] text-sm text-end cursor-pointer"
+        >
+          Forget Password?
+        </p>
         <button
           type="submit"
           className="w-full bg-[#2BBC7C] text-white py-2 rounded-3xl hover:bg-[#2C8C53] cursor-pointer transition"

@@ -11,6 +11,7 @@ interface QuestionsandOptionsProps {
   questions: any;
   setLanguage: (lang: string) => void;
   language: string;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
@@ -23,6 +24,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
   questions,
   setLanguage,
   language,
+  setIsModalOpen,
 }) => {
   const q = questions?.[currentQuestion];
 
@@ -30,11 +32,6 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
-  };
-
-  const handleSaveAndNext = () => {
-    // answer is already in state via setAnswer when selecting option
-    handleNext();
   };
 
   const handleClearResponse = () => {
@@ -148,20 +145,36 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <Button
-            type="outline"
-            splClass="text-[#2BBC7C] border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
-            handler={handleNext}
-          >
-            Next
-          </Button>
+          {currentQuestion !== questions.length - 1 && (
+            <Button
+              type="outline"
+              splClass="text-[#2BBC7C] border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+              handler={handleNext}
+            >
+              Next
+            </Button>
+          )}
 
+          {currentQuestion === questions.length - 1 ? (
+            <Button
+              splClass="text-white hidden md:block border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+              handler={handleNext}
+            >
+              <span className="hidden md:block">Save</span>
+            </Button>
+          ) : (
+            <Button
+              splClass="text-white hidden md:block border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+              handler={handleNext}
+            >
+              <span className="hidden md:block">Save & Next</span>
+            </Button>
+          )}
           <Button
-            splClass="text-white border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
-            handler={handleSaveAndNext}
+            splClass="text-white md:hidden border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
+            handler={() => setIsModalOpen(true)}
           >
             <span className="block md:hidden">Submit</span>
-            <span className="hidden md:block">Save & Next</span>
           </Button>
         </div>
       </div>

@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Modal from "../../../../component/Modal/Modal";
 import { formatMinutesToHours } from "../../../../utils/index.utils";
 
 const AttendExam = () => {
   const { id } = useParams<{ id: string }>();
   const [agreed, setAgreed] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation().state;
-  const [selectedLang, setSelectedLang] = useState<string>("Tamil");
+  // const [selectedLang, setSelectedLang] = useState<string>("Tamil");
 
   return (
     <section className="bg-white p-4">
-      <Modal
+      {/* <Modal
         title="Select your preferred language"
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -65,7 +64,7 @@ const AttendExam = () => {
             </button>
           </div>
         </>
-      </Modal>
+      </Modal> */}
       <h5 className="text-3xl font-semibold">{location?.exam_name}</h5>
       <div className="flex gap-3 mt-3">
         <p className="bg-[#F8F8F8] text-sm rounded-xl p-3">
@@ -143,7 +142,12 @@ const AttendExam = () => {
               !agreed ? "bg-[#CED8D4] cursor-not-allowed" : ""
             }`}
             disabled={!agreed}
-            onClick={() => setIsOpen(true)}
+            // onClick={() => setIsOpen(true)}
+            onClick={() =>
+              navigate(`/exams/take-exam/${id}`, {
+                // state: { language: selectedLang },
+              })
+            }
           >
             Ready to Start <HiArrowNarrowRight />
           </button>

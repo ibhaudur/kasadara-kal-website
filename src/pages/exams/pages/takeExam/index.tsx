@@ -17,6 +17,7 @@ const TakeExam = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [language, setLanguage] = useState<string>("English");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data } = useApiCall({
     key: `${getExamQuestions}/${id}?language=${
@@ -126,13 +127,14 @@ const TakeExam = () => {
       },
       onError: (err: ApiError) => {
         toast.error(err.response?.data?.message);
+        setIsModalOpen(false);
       },
     });
   };
 
   return (
     <section className="bg-white h-screen">
-      <ExamIndicator />
+      <ExamIndicator handleSubmitExam={handleSubmitExam} />
       <div className="flex">
         <QuestionsandOptions
           setAnswer={(ans) => handleSetAnswer(ans, currentQuestion)}
@@ -144,6 +146,7 @@ const TakeExam = () => {
           questions={data?.questions}
           setLanguage={setLanguage}
           language={language}
+          setIsModalOpen={setIsModalOpen}
         />
         <Validator
           answers={answers}
@@ -152,6 +155,8 @@ const TakeExam = () => {
           currentQuestion={currentQuestion}
           handleSetCurrentQuestion={handleSetCurrentQuestion}
           handleSubmitExam={handleSubmitExam}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       </div>
     </section>
