@@ -18,3 +18,4 @@ export const getAnswerReview = "customer_exam/answer-review"; //id
 export const getPaymentStatus = "customer_exam/payment/status/"; //transaction_id
 export const getAttendedExams = "customer_exam/attended-exams";
 export const getPaidExams = "customer_exam/paid-exams";
+export const getExportExamReview = "customer_exam/answer-review/:id/export"; //id

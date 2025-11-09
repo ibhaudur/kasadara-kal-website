@@ -6,10 +6,10 @@ import { getAllExams } from "../../service/apiUrls";
 import Adscarousel from "./components/Adscarousel";
 import TermsAndCond from "./pages/components/TermsAndCondn";
 const Exams: React.FC = () => {
-  const [activeTab, setActiveTab] = React.useState<string>("All Exams");
+  const [activeTab, setActiveTab] = React.useState<string>("");
   const { data } = useApiCall({
-    key: getAllExams,
-    url: getAllExams,
+    key: `${getAllExams}?exam_type=${activeTab}`,
+    url: `${getAllExams}?exam_type=${activeTab}`,
     method: "get",
   });
   return (
@@ -18,22 +18,31 @@ const Exams: React.FC = () => {
       <Adscarousel />
       <div className="p-4">
         <ul className="flex justify-center gap-6 border-b border-gray-200 mt-8 mb-6">
-          {["All Exams", "Mock Test", "Quick Test"].map((title) => (
+          {[
+            { name: "All Exams", value: "" },
+            { name: "Group 4", value: "group 4" },
+            { name: "Group 2a Mains", value: "group 2a mains" },
+            { name: "Group 1 Prelims", value: "group 1 prelims" },
+          ].map((title) => (
             <li
-              key={title}
-              onClick={() => setActiveTab(title)}
+              key={title.name}
+              onClick={() => setActiveTab(title.value)}
               className={`cursor-pointer pb-2 text-base font-semibold transition-colors duration-200
             ${
-              activeTab === title
+              activeTab === title.value
                 ? "text-[#2c8c53] border-b-2 border-[#2c8c53]"
                 : "text-gray-600 hover:text-[#2c8c53]"
             }`}
             >
-              {title}
+              {title.name}
             </li>
           ))}
         </ul>
-        <TestList list={data?.data} />
+        {data?.data && data?.data.length === 0 ? (
+          <p className="text-center text-gray-500 mt-10">No exams found.</p>
+        ) : (
+          <TestList list={data?.data} />
+        )}
       </div>
       <div className="p-4 max-w-[1580px] mx-auto">
         <div className="bg-white rounded-2xl p-5 px-6 shadow-md overflow-hidden mt-5">
