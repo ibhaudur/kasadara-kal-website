@@ -44,4 +44,7 @@ export interface ModalProps {
 export interface SearchBoxProp {
   placeholder: string;
   splClass?:string;
+  setSearchExam?: (searchExam:string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
