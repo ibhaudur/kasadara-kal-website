@@ -117,7 +117,7 @@ const Banner: React.FC = () => {
           {BannerTileList.map((item, index) => (
             <div
               key={index}
-              className={`flex items-start gap-3 md:gap-2 px-6 py-3 md:py-0 md:px-2 md:w-[260px] ${
+              className={`flex items-center i gap-3 md:gap-2 px-6 py-3 md:py-0 md:px-2 md:w-[260px] ${
                 index !== BannerTileList.length - 1
                   ? "border-b md:border-b-0 md:border-r border-[#EBEBEB]"
                   : ""
