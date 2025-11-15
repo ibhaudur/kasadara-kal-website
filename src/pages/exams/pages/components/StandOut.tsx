@@ -4,8 +4,10 @@ import Overview from "./Overview";
 import Exampattern from "./Exampatter";
 import FandQ from "./FandQ";
 import TermsAndCond from "./TermsAndCondn";
+import { useLocation } from "react-router-dom";
 
 const StandOut: React.FC = () => {
+  const path = useLocation().pathname;
   return (
     <div className="relative bg-white rounded-2xl p-5 px-6 shadow-md overflow-hidden mt-5">
       <h5 className="text-[16px] sm:text-2xl font-semibold mb-3">
@@ -28,8 +30,7 @@ const StandOut: React.FC = () => {
         ))}
       </div>
       <Overview />
-      <Exampattern />
-      <TermsAndCond />
+      {path.split("/")[2] !== "buy" ? <Exampattern /> : <TermsAndCond />}
       <FandQ />
     </div>
   );
