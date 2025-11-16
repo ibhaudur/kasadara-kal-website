@@ -13,6 +13,7 @@ import {
 } from "../../../../utils/index.utils";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ExamCategory } from "../../../../constant/index.constant";
 
 type DetailsProps = {
   details: ExamDetails;
@@ -27,7 +28,7 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
       await navigator.clipboard.writeText(fullUrl);
       toast.success("URL copied to clipboard!");
     } catch (err) {
-      console.error("Failed to copy: ", err);
+      toast.error("Failed to copy");
     }
   };
   return (
@@ -76,11 +77,12 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                 </span> */}
                 <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
                   <HiOutlineUserGroup className="text-[#2BBC7C] text-[15px]" />{" "}
-                  <b>230</b>
+                  <b>{details?.attended_candidates}</b>
                   attended candidates{" "}
                 </span>{" "}
                 <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
-                  <CgNotes className="text-[#2BBC7C] text-[15px]" /> Quick test{" "}
+                  <CgNotes className="text-[#2BBC7C] text-[15px]" />{" "}
+                  {ExamCategory[details?.exam_category]}{" "}
                 </span>
               </div>
 

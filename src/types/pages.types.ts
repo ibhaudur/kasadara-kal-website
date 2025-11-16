@@ -26,6 +26,8 @@ export interface ExamDetails {
   answered?: number;
   user_rank?: number;
   total_unique_attendees?: number;
+  attended_candidates: number;
+  exam_category: string;
 }
 export interface ExamFormValues {
   exam_name: string;

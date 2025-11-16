@@ -4,7 +4,6 @@ import TestList from "./components/TestList";
 import useApiCall from "../../hooks/useApiCall";
 import { getAllExams } from "../../service/apiUrls";
 import Adscarousel from "./components/Adscarousel";
-import TermsAndCond from "./pages/components/TermsAndCondn";
 import StandOut from "./pages/components/StandOut";
 const Exams: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<string>("");
