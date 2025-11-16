@@ -2,10 +2,33 @@ import React from "react";
 import asset from "../../../public/images/bottom_img/asset.ts";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useApiCall from "../../hooks/useApiCall.ts";
+import { postSubscribe } from "../../service/apiUrls.ts";
+import { ApiError, ApiResponse } from "../../types/apiservice.types.ts";
+import { toast } from "react-toastify";
 
 const Footer: React.FC = () => {
   const userDetails = useSelector((state: any) => state.user.userDetails);
-
+  const [credentials, setCredentials] = React.useState({
+    email: "",
+  });
+  const { mutate } = useApiCall({
+    key: postSubscribe,
+    url: postSubscribe,
+    method: "post",
+  });
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    mutate(credentials, {
+      onSuccess: (res: ApiResponse<any>) => {
+        toast.success(res?.message);
+        setCredentials({ email: "" });
+      },
+      onError: (err: ApiError) => {
+        toast.error(err.response?.data?.message);
+      },
+    });
+  };
   return (
     <footer className="w-full bg-white border-t border-[#e9ecef]">
       <div className="max-w-[1200px] mx-auto px-5 py-5 flex flex-col items-center">
@@ -32,11 +55,22 @@ const Footer: React.FC = () => {
                 />
                 <input
                   type="email"
+                  name="email"
+                  value={credentials?.email}
+                  onChange={(e) =>
+                    setCredentials((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
                   placeholder="Enter your email"
                   className="py-3 pl-10 pr-3 border border-[#2BBC7C] rounded-full w-full md:w-[300px] text-sm outline-none shadow-[0_0_8px_rgba(217,255,238,0.6)]"
                 />
               </div>
-              <button className="bg-[#2BBC7C] text-white border-none rounded-full py-3 px-6 text-sm font-medium cursor-pointer transition-colors hover:bg-[#249d69] w-full md:w-auto max-w-[200px] md:max-w-none">
+              <button
+                onClick={handleSubscribe}
+                className="bg-[#2BBC7C] text-white border-none rounded-full py-3 px-6 text-sm font-medium cursor-pointer transition-colors hover:bg-[#249d69] w-full md:w-auto max-w-[200px] md:max-w-none"
+              >
                 Subscribe
               </button>
             </div>

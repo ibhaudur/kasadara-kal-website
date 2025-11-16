@@ -19,3 +19,4 @@ export const getPaymentStatus = "customer_exam/payment/status/"; //transaction_i
 export const getAttendedExams = "customer_exam/attended-exams";
 export const getPaidExams = "customer_exam/paid-exams";
 export const getExportExamReview = "customer_exam/answer-review/:id/export"; //id
+export const postSubscribe = "customer_exam/subscribe";
