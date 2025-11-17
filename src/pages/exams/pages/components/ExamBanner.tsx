@@ -31,6 +31,24 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
       toast.error("Failed to copy");
     }
   };
+  const handleNavigate = () => {
+    if (details?.paid_status === "completed")
+      if (details?.exam_allow) {
+        navigate(`/exams/attend/${details?.exam_id}`, {
+          state: {
+            exam_name: details?.exam_name,
+            duration: details?.duration,
+            total_marks: details?.total_marks,
+            total_questions: details?.total_questions,
+          },
+        });
+      } else
+        toast.error(
+          details?.message || "You are not allowed to attend this exam"
+        );
+    else setIsOpen(true);
+  };
+
   return (
     <div className="relative bg-white rounded-2xl p-5 shadow-md overflow-hidden">
       {details?.exam_type === "free" && (
@@ -126,18 +144,7 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                 <GoShareAndroid className=" text-[18px]" />
               </small>
               <Button
-                handler={() => {
-                  details?.paid_status === "completed"
-                    ? navigate(`/exams/attend/${details?.exam_id}`, {
-                        state: {
-                          exam_name: details?.exam_name,
-                          duration: details?.duration,
-                          total_marks: details?.total_marks,
-                          total_questions: details?.total_questions,
-                        },
-                      })
-                    : setIsOpen(true);
-                }}
+                handler={handleNavigate}
                 btnName={
                   details?.paid_status === "completed"
                     ? "Attend Now"

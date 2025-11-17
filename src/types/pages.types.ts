@@ -28,6 +28,8 @@ export interface ExamDetails {
   total_unique_attendees?: number;
   attended_candidates: number;
   exam_category: string;
+  message?: string;
+  exam_allow?: boolean;
 }
 export interface ExamFormValues {
   exam_name: string;

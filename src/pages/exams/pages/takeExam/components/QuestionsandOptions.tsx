@@ -145,7 +145,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          {currentQuestion !== questions.length - 1 && (
+          {currentQuestion !== questions?.length - 1 && (
             <Button
               type="outline"
               splClass="text-[#2BBC7C] border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
@@ -155,7 +155,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
             </Button>
           )}
 
-          {currentQuestion === questions.length - 1 ? (
+          {currentQuestion === questions?.length - 1 ? (
             <Button
               splClass="text-white hidden md:block border border-[#2BBC7C] px-5 py-2 text-[14px] rounded-[20px]"
               handler={handleNext}
