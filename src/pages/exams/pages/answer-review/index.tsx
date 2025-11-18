@@ -22,7 +22,7 @@ const AnswerReview = () => {
   const { questions, summary } = details;
 
   return (
-    <section className="bg-white h-screen">
+    <section className="bg-white">
       <p className="flex items-center gap-2 text-[13px] text-[#8790A1] px-4 py-3">
         <span>Exams</span> <FaChevronRight />
         <span>{details?.exam_name}</span> <FaChevronRight />

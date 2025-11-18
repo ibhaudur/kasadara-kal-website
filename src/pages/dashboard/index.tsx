@@ -11,6 +11,7 @@ import AttendedExamResults from "./component/AttendedExamResults";
 import { useSelector } from "react-redux";
 import useApiCall from "../../hooks/useApiCall";
 import { getDashboardDetails } from "../../service/apiUrls";
+import { prepareChartData } from "../../utils/index.utils";
 
 const Dashboard: React.FC = () => {
   const userDetails = useSelector((state: any) => state.user.userDetails);
@@ -20,18 +21,19 @@ const Dashboard: React.FC = () => {
     method: "get",
   });
   const details = data?.data;
-  // const examStats = {
-  //   correct_answered: data?.correct_answered,
-  //   not_answered: data?.not_answered,
-  //   incorrect: data?.incorrect,
-  // };
-  // const examConfig = [
-  //   { key: "correct_answered", label: "Correct", color: "#5FDAA4" },
-  //   { key: "incorrect", label: "Incorrect", color: "#FF6666" },
-  //   { key: "not_answered", label: "Skipped", color: "#5B9EE9" },
-  // ];
+  const analysis = details?.performance_analysis || {};
+  const examStats = {
+    correct_answered: analysis?.good_performance?.count ?? 0,
+    average: analysis?.average_performance?.count ?? 0,
+    bad: analysis?.bad_performance?.count ?? 0,
+  };
+  const examConfig = [
+    { key: "correct_answered", label: "Good", color: "#5FDAA4" },
+    { key: "average", label: "Average", color: "#60a5fa" },
+    { key: "bad", label: "Bad", color: "#f87171" },
+  ];
 
-  // const examData = prepareChartData(examStats, examConfig);
+  const examData = prepareChartData(examStats, examConfig);
   return (
     <div className="min-h-screen bg-white p-6 font-sans">
       <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -56,8 +58,10 @@ const Dashboard: React.FC = () => {
           />
           <p className="text-gray-600 mb-3">Rank</p>
           <h2 className="text-3xl font-bold mt-4">
-            {details?.rank ? details?.rank?.split('/')[0] : "0"}{" "}
-            <span className="text-gray-500 text-sm">/ {details?.rank ? details?.rank?.split('/')[1] : "0"}{" "}</span>
+            {details?.rank ? details?.rank?.split("/")[0] : "0"}{" "}
+            <span className="text-gray-500 text-sm">
+              / {details?.rank ? details?.rank?.split("/")[1] : "0"}{" "}
+            </span>
           </h2>
           <p className="text-sm text-gray-500 mt-6">
             Compared to all the attendees who <br /> attend the same exams as
@@ -111,7 +115,7 @@ const Dashboard: React.FC = () => {
           <h3 className="text-[16px] font-semibold text-[#21272C] mb-2">
             Exam Result overview
           </h3>
-          <ExamResultChart />
+          <ExamResultChart data={examData} />
         </div>
       </section>
 
@@ -119,7 +123,7 @@ const Dashboard: React.FC = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-xl p-4 shadow w-full">
           <h3 className="text-[16px] font-semibold text-gray-800 mb-3">
-            Monthly   Attended Exams
+            Monthly Attended Exams
           </h3>
           <p className="text-2xl font-bold text-gray-900">
             {details?.overall_stats?.total_exams_attended ?? "-"}
@@ -143,9 +147,7 @@ const Dashboard: React.FC = () => {
             {details?.monthly_attendance?.[0]?.accuracy ?? "-"}
           </p>
           <p className="text-sm text-gray-500 mb-5">Current accuracy</p>
-          <AccuracyLineChart
-            data={details?.monthly_attendance ?? []}
-          />
+          <AccuracyLineChart data={details?.monthly_attendance ?? []} />
         </div>
       </section>
     </div>

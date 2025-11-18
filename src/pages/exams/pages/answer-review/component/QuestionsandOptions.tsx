@@ -41,7 +41,7 @@ const QuestionsandOptions: React.FC<Props> = ({
           const isCorrectAnswer = question.correct_answer === key;
 
           let optionClass =
-            "flex justify-between mb-3 items-center px-3 py-2 rounded-lg w-[90%] lg:w-[70%] cursor-default";
+            "flex justify-between mb-3 items-center px-3 py-2 rounded-lg w-[100%] sm:w-[90%] lg:w-[70%] cursor-default";
 
           if (isCorrectAnswer) {
             optionClass += " bg-[#D6FFE7]";
@@ -77,13 +77,13 @@ const QuestionsandOptions: React.FC<Props> = ({
       </div>
 
       {/* Footer Navigation */}
-      <div className="flex items-center w-[71%] justify-between p-3">
+      <div className="flex items-center w-[100%] justify-between p-3">
         {!question.is_correct ? (
-          <p className="text-red-600 font-semibold mt-4 flex items-center gap-2">
+          <p className="text-red-600 font-semibold flex items-center gap-2">
             <IoMdCloseCircle className="text-xl" /> Your answer is wrong!
           </p>
         ) : (
-          <p className="text-green-600 font-semibold mt-4 flex items-center gap-2">
+          <p className="text-green-600 font-semibold flex items-center gap-2">
             <IoMdCheckmarkCircle className="text-xl" /> Your answer is Correct!
           </p>
         )}

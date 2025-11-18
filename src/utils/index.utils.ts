@@ -54,3 +54,23 @@ export const prepareChartData = (
     ],
   };
 };
+export function formatDateAndTime(dateString: string): string {
+  // Convert "YYYY-MM-DD HH:mm:ss" → "YYYY-MM-DDTHH:mm:ss"
+  const formatted = dateString.replace(" ", "T");
+  const date = new Date(formatted);
+
+  const day = date.getDate();
+  const month = date.toLocaleString("en-US", { month: "short" });
+  const year = date.getFullYear();
+
+  const time = date
+    .toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    })
+    .replace("am", "AM")
+    .replace("pm", "PM");
+
+  return `${day} ${month} ${year}, ${time}`;
+}

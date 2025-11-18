@@ -24,6 +24,7 @@ interface ExamResultData {
   start_time: string;
   end_time: string;
   duration: number;
+  speed?: string;
 }
 
 interface ResultDetailsProps {
@@ -90,7 +91,7 @@ const ResultDetails: React.FC<ResultDetailsProps> = ({ data }) => {
         <div className="flex items-center bg-[#FFF9E4] rounded-xl p-2 gap-3">
           <img src={exam} alt="Exam" className="w-8 h-8 sm:w-10 sm:h-10" />
           <div>
-            <p className="text-gray-600 text-xs sm:text-[13px]">Attempts</p>
+            <p className="text-gray-600 text-xs sm:text-[13px]">Questions</p>
             <p className="text-base sm:text-lg font-semibold">
               {data?.answered}
             </p>
@@ -102,7 +103,7 @@ const ResultDetails: React.FC<ResultDetailsProps> = ({ data }) => {
           <div>
             <p className="text-gray-600 text-xs sm:text-[13px]">Speed</p>
             <p className="text-base sm:text-lg font-semibold">
-              {(data?.answered / (data?.duration / 60)).toFixed(1)}Q/min
+              {data?.speed}Q/min
             </p>
           </div>
         </div>

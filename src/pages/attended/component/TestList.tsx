@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ExamCards from "../../../component/ExamCards";
-import { getAttendedExams } from "../../../service/apiUrls";
+import { getAttendedExams, getPaidExams } from "../../../service/apiUrls";
 import useApiCall from "../../../hooks/useApiCall";
 
 const TestList: React.FC = () => {
@@ -11,8 +11,8 @@ const TestList: React.FC = () => {
     method: "get",
   });
   const { data: PaidExams } = useApiCall({
-    key: getAttendedExams,
-    url: getAttendedExams,
+    key: getPaidExams,
+    url: getPaidExams,
     method: "get",
   });
   return (
@@ -43,40 +43,69 @@ const TestList: React.FC = () => {
       </div>
 
       <div className="md:hidden ">
-        {activeTab === "attended" && (
-          <div className="grid grid-cols-1 gap-4 ">
-            {AttendedExams?.data?.map((item: any, index: number) => (
-              <ExamCards
-                details={item}
-                index={index}
-                key={`attend-m-${index}`}
-              />
-            ))}
-          </div>
-        )}
-        {activeTab === "paid" && (
-          <div className="grid grid-cols-1 gap-4">
-            {PaidExams?.data?.map((item: any, index: number) => (
-              <ExamCards details={item} index={index} key={`paid-m-${index}`} />
-            ))}
-          </div>
-        )}
+        {activeTab === "attended" &&
+          (AttendedExams?.data?.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 ">
+              {AttendedExams?.data?.map((item: any, index: number) => (
+                <ExamCards
+                  details={item}
+                  index={index}
+                  key={`attend-m-${index}`}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 py-5">
+              No completed exams found.
+            </p>
+          ))}
+        {activeTab === "paid" &&
+          (PaidExams?.data?.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4">
+              {PaidExams?.data?.map((item: any, index: number) => (
+                <ExamCards
+                  details={item}
+                  index={index}
+                  key={`paid-m-${index}`}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 py-5">
+              No subscribed exams found.
+            </p>
+          ))}
       </div>
 
       <div className="hidden md:block ">
         <h5 className="text-2xl font-semibold mb-4">Completed Exams</h5>
-        <div className="grid grid-cols-2 lg:grid-cols-3  gap-4 mb-10">
-          {AttendedExams?.data?.map((item: any, index: number) => (
-            <ExamCards details={item} index={index} key={`attend-d-${index}`} />
-          ))}
-        </div>
-
+        {AttendedExams?.data?.length > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3  gap-4 mb-10">
+            {AttendedExams?.data?.map((item: any, index: number) => (
+              <ExamCards
+                details={item}
+                index={index}
+                key={`attend-d-${index}`}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 py-5">
+            No completed exams found.
+          </p>
+        )}
         <h5 className="text-2xl font-semibold mb-4">Subscribed Exams</h5>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {PaidExams?.data?.map((item: any, index: number) => (
-            <ExamCards details={item} index={index} key={`paid-d-${index}`} />
-          ))}
-        </div>
+        {PaidExams?.data?.length > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {PaidExams?.data?.map((item: any, index: number) => (
+              <ExamCards details={item} index={index} key={`paid-d-${index}`} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 py-5">
+            No subscribed exams found.
+          </p>
+        )}
       </div>
     </div>
   );

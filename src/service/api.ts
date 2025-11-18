@@ -23,7 +23,7 @@ api.interceptors.response.use(
     return response;
   },
   (error: { status: number }) => {
-    if (error?.status === 401) {
+    if (error?.status === 401 || error?.status === 403) {
       store.dispatch(clearUser());
       // window.location.href = "/";
     }

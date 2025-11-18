@@ -41,9 +41,7 @@ const Banner: React.FC = () => {
           {/* ✅ Left section */}
           <div className="col-span-12 md:col-span-6 text-center md:text-left">
             <h4 className="text-[22px] md:text-[40px] font-bold leading-tight">
-              We’re try to help to improve <br />
-              your preparing for group
-              <br className="md:hidden" /> exams
+              Welcome to TNPSC<br></br> where sleep is optional and dreams are mandatory
             </h4>
 
             <p className="mt-3 text-[14px] md:text-[15px] mb-4">

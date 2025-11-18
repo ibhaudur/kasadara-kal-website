@@ -19,7 +19,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
         navigate(
           details?.answered
             ? `/exams/result/${details.exam_id}`
-            : `buy/${details.exam_id}`
+            : `/exams/buy/${details.exam_id}`
         )
       }
       className="    relative bg-white rounded-2xl p-4 shadow-md overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
@@ -82,7 +82,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
                 navigate(
                   details?.answered
                     ? `/exams/result/${details.exam_id}`
-                    : `buy/${details.exam_id}`
+                    : `/exams/buy/${details.exam_id}`
                 )
               }
             />

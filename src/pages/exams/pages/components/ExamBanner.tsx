@@ -1,5 +1,5 @@
 import React from "react";
-import { LuGauge } from "react-icons/lu";
+import { LuCalendarDays, LuGauge } from "react-icons/lu";
 import { PiTimerBold } from "react-icons/pi";
 import { LuFileQuestion } from "react-icons/lu";
 import Button from "../../../../component/UI/Button";
@@ -9,11 +9,11 @@ import { CgNotes } from "react-icons/cg";
 import { GoShareAndroid } from "react-icons/go";
 import {
   formatDate,
+  formatDateAndTime,
   formatMinutesToHours,
 } from "../../../../utils/index.utils";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ExamCategory } from "../../../../constant/index.constant";
 
 type DetailsProps = {
   details: ExamDetails;
@@ -86,6 +86,16 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                     {details?.total_questions} Ques.
                   </span>
                 </span>
+                {details?.published_on && (
+                  <>
+                    {" "}
+                    |
+                    <span className="flex items-center gap-2">
+                      <LuCalendarDays className="text-[18px]" /> Published on{" "}
+                      <b>{formatDateAndTime(details?.published_on)}</b>
+                    </span>
+                  </>
+                )}
               </small>
               <div className="flex gap-3 text-[11px] sm:text-[13px] flex-wrap">
                 {/* <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
@@ -98,19 +108,22 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                   <b>{details?.attended_candidates}</b>
                   attended candidates{" "}
                 </span>{" "}
-                <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
-                  <CgNotes className="text-[#2BBC7C] text-[15px]" />{" "}
-                  {ExamCategory[details?.exam_category]}{" "}
-                </span>
+                {details?.exam_category && (
+                  <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
+                    <CgNotes className="text-[#2BBC7C] text-[15px]" />{" "}
+                    {details?.exam_category}{" "}
+                  </span>
+                )}
               </div>
 
-              {/* Validity section - shows above price on mobile */}
-              <div className="block sm:hidden mt-6">
-                <p className="mb-4 text-[20px]">Validity</p>
-                <small className="bg-[#FFF5D3] py-1 px-4 rounded-2xl">
-                  Valid until <b>26 Dec, 2025</b>
-                </small>
-              </div>
+              {details?.valid_until && (
+                <div className="block sm:hidden mt-6">
+                  <p className="mb-4 text-[20px]">Validity</p>
+                  <small className="bg-[#FFF5D3] py-1 px-4 rounded-2xl">
+                    Valid until <b>{formatDateAndTime(details?.valid_until)}</b>
+                  </small>
+                </div>
+              )}
             </div>
 
             {/* Price section */}

@@ -57,7 +57,6 @@ const Validator: React.FC<ValidatorProps> = ({
       >
         <FaChevronLeft className="text-xl" />
       </button>
-
       {/* Sidebar container */}
       <div
         className={`fixed top-26 right-0 h-full w-[330px] bg-white shadow-lg transform 
@@ -114,7 +113,7 @@ const Validator: React.FC<ValidatorProps> = ({
           {/* Question Numbers */}
           <div className="mt-5">
             <h6 className="text-[16px] font-semibold mb-3">Questions</h6>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-5 max-h-[52vh] md:max-h-[45vh] overflow-y-scroll gap-2">
               {[...Array(answers.length)].map((_, index) => (
                 <p
                   key={index}
@@ -123,7 +122,7 @@ const Validator: React.FC<ValidatorProps> = ({
                       ? handleSetCurrentQuestion(index)
                       : undefined
                   }
-                  className={`w-12 h-9 rounded-2xl flex justify-center items-center text-[15px] border ${getBgColor(
+                  className={`w-11 h-8 rounded-2xl flex justify-center items-center text-[15px] border ${getBgColor(
                     index
                   )}`}
                 >

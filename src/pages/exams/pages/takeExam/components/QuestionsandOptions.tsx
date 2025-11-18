@@ -87,7 +87,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
       </div>
 
       {/* Question & Options */}
-      <div className="p-3 mb-5">
+      <div className="p-3 mb-10">
         <p className="text-lg mb-4">{q?.question}</p>
         {q?.options &&
           Object?.entries(q?.options)?.map(([key, value]) => (
@@ -116,7 +116,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
       {/* Footer Buttons */}
       <div
         className="
-    flex items-center w-full justify-between p-2 border mt-8 border-gray-200
+    flex items-center w-full justify-between p-2 border mt-8 bg-white border-gray-200
     absolute bottom-0
     md:static md:mt-8
   "
