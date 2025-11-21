@@ -60,7 +60,7 @@ const Result = () => {
   };
   return (
     <div className="bg-white p-6">
-      {/* <div className="flex justify-end mb-5">
+      <div className="flex justify-end mb-5 hidden">
         <Button
           type="outline"
           splClass="rounded-[20px] flex items-center gap-3 px-2 md:px-5 border border-[#EBEBEB]"
@@ -68,7 +68,7 @@ const Result = () => {
         >
           <FiDownload className="text-lg" /> Export
         </Button>
-      </div> */}
+      </div>
 
       <ResultDetails data={Review?.data} />
 
