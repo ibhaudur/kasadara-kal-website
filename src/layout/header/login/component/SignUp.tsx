@@ -45,7 +45,7 @@ const SignUp: React.FC<{
           Continue
         </button>
       </form>
-      <p className="text-gray-600 mt-4 text-xs">
+      <p className="text-gray-600 mt-4 text-md">
         Already have an account?{" "}
         <span
           onClick={() => setActive(1)}
