@@ -76,7 +76,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
                   : "Buy Now"
               }
               splClass={`rounded-[50px] px-9 ${
-                details?.exam_type === "free" && "w-full"
+                details?.exam_type === "free" && !details?.answered && "w-full"
               }`}
               onClick={() =>
                 navigate(

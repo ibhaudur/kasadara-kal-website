@@ -30,6 +30,11 @@ export interface ExamDetails {
   exam_category: string;
   message?: string;
   exam_allow?: boolean;
+  attempt_info?: {
+    max_allowed_attempts: number;
+    attempts_remaining: number;
+    status_label: string;
+  };
 }
 export interface ExamFormValues {
   exam_name: string;

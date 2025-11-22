@@ -12,6 +12,7 @@ import {
 import moment from "moment"; // ✅ for time formatting
 import { ApiError, ApiResponse } from "../../../../types/apiservice.types";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../../../../component/LoadingSpinner";
 
 const TakeExam = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const TakeExam = () => {
   const [language, setLanguage] = useState<string>("English");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data } = useApiCall({
+  const { data, isPending } = useApiCall({
     key: `${getExamQuestions}/${id}?language=${
       language === "English" ? "en" : "ta"
     }`,
@@ -90,7 +91,7 @@ const TakeExam = () => {
   }
 
   useEffect(() => {
-    if (!listenersAttached.current) {
+    if (!listenersAttached.current && data?.status) {
       window.addEventListener("keydown", handleKeyDown);
       window.addEventListener("beforeunload", handleBeforeUnload);
       listenersAttached.current = true;
@@ -103,9 +104,9 @@ const TakeExam = () => {
       }
     };
   }, []);
-
-  usePrompt("Are you sure you want to leave the exam?", true);
-
+  if (data?.status) {
+    usePrompt("Are you sure you want to leave the exam?", true);
+  }
   const formattedAnswers = answers.map((ans, index) => ({
     question_id: data?.questions[index]?.question_id,
     answer: ans,
@@ -131,7 +132,14 @@ const TakeExam = () => {
       },
     });
   };
-
+  useEffect(() => {
+    if (!data?.status) {
+      navigate(`/exams/buy/${id}`);
+    }
+  }, [data, navigate, id]);
+  if (isPending || !data.status) {
+    return <LoadingSpinner />;
+  }
   return (
     <section className="bg-white h-screen">
       <ExamIndicator handleSubmitExam={handleSubmitExam} />

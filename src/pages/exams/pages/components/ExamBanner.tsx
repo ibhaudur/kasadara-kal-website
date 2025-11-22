@@ -8,13 +8,16 @@ import { HiChevronRight, HiOutlineUserGroup } from "react-icons/hi2";
 import { CgNotes } from "react-icons/cg";
 import { GoShareAndroid } from "react-icons/go";
 import {
-  formatDate,
   formatDateAndTime,
   formatMinutesToHours,
 } from "../../../../utils/index.utils";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SharePopup from "../../../../component/SharePopup";
+import {
+  IoCaretForwardCircleOutline,
+  IoInformationCircleOutline,
+} from "react-icons/io5";
 
 type DetailsProps = {
   details: ExamDetails;
@@ -109,14 +112,34 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
                     {details?.exam_category}{" "}
                   </span>
                 )}
+                {details?.attempt_info && (
+                  <span className="flex items-center gap-2 bg-[#F8F8F8] px-3 py-1 rounded-2xl w-fit">
+                    <IoCaretForwardCircleOutline className="text-[#2BBC7C] text-[15px]" />{" "}
+                    Available Attempts{" "}
+                    {details?.attempt_info?.attempts_remaining}/
+                    {details?.attempt_info?.max_allowed_attempts}
+                  </span>
+                )}
               </div>
 
               {details?.valid_until && (
                 <div className="block sm:hidden mt-6">
                   <p className="mb-4 text-[20px]">Validity</p>
-                  <small className="bg-[#FFF5D3] py-1 px-4 rounded-2xl">
+                  <small className="bg-[#FFF5D3] py-1 px-4 mb-2 block rounded-2xl">
                     Valid until <b>{formatDateAndTime(details?.valid_until)}</b>
                   </small>
+                  {details?.paid_status === "completed" &&
+                    (details?.attempt_info?.status_label ===
+                    "No more attempts allowed" ? (
+                      <div className="bg-[#e4390f] flex items-center gap-1 text-white py-1 px-4 rounded-2xl">
+                        <IoInformationCircleOutline className="text-md" />{" "}
+                        <small>{details?.attempt_info?.status_label}</small>
+                      </div>
+                    ) : (
+                      <small className="bg-[#2BBC7C] ms-2 text-white py-1 px-4 rounded-2xl">
+                        {details?.attempt_info?.status_label}
+                      </small>
+                    ))}
                 </div>
               )}
             </div>
@@ -139,9 +162,25 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
             {/* Validity section - shows here on desktop */}
             <div className="hidden sm:block w-full sm:w-auto mb-6 sm:mb-0">
               <p className="mb-4 text-[20px]">Validity</p>
-              <small className="bg-[#FFF5D3] py-1 px-4 rounded-2xl">
-                Valid until <b>{formatDate(details?.valid_until)}</b>
-              </small>
+              <div className="flex flex-wrap gap-2">
+                {details?.valid_until && (
+                  <small className="bg-[#FFF5D3] py-1 px-4 rounded-2xl me-1">
+                    Valid until <b>{formatDateAndTime(details?.valid_until)}</b>
+                  </small>
+                )}
+                {details?.paid_status === "completed" &&
+                  (details?.attempt_info?.status_label ===
+                  "No more attempts allowed" ? (
+                    <div className="bg-[#e4390f] flex items-center gap-1 text-white py-1 px-4 rounded-2xl">
+                      <IoInformationCircleOutline className="text-md" />{" "}
+                      <small>{details?.attempt_info?.status_label}</small>
+                    </div>
+                  ) : (
+                    <small className="bg-[#2BBC7C] ms-2 text-white py-1 px-4 rounded-2xl">
+                      {details?.attempt_info?.status_label}
+                    </small>
+                  ))}
+              </div>
             </div>
 
             <div className="flex gap-3 items-center w-full sm:w-auto">

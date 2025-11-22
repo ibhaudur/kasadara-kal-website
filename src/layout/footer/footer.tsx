@@ -79,42 +79,62 @@ const Footer: React.FC = () => {
 
         {/* Social Links */}
         <div className="flex justify-center gap-4 my-8">
-          <a href="#" className="social-link">
+          <a
+            href="https://x.com/kasadara_kal?s=21"
+            className="social-link"
+            target="_blank"
+          >
             <img
               src={asset.twitter}
               className="w-[35px] h-[35px] object-contain"
               alt="Twitter"
             />
           </a>
-          <a href="#" className="social-link">
+          {/* <a href="#" className="social-link">
             <img
               src={asset.facebook}
               className="w-[35px] h-[35px] object-contain"
               alt="Facebook"
             />
-          </a>
-          <a href="#" className="social-link">
+          </a> */}
+          <a
+            href="https://youtube.com/@kasadarakal-y8z?si=WK78ejcWwA08atRw"
+            className="social-link"
+            target="_blank"
+          >
             <img
               src={asset.youtube}
               className="w-[35px] h-[35px] object-contain"
               alt="YouTube"
             />
           </a>
-          <a href="#" className="social-link">
+          <a
+            href="www.linkedin.com/in/kasadara-kal-3880a237a"
+            target="_blank"
+            className="social-link"
+          >
             <img
               src={asset.linkdin}
               className="w-[35px] h-[35px] object-contain"
               alt="LinkedIn"
             />
           </a>
-          <a href="#" className="social-link">
+          <a
+            href="https://www.instagram.com/kasadarakal1?igsh=MW9jdzhrd2toOGRuaA%3D%3D&utm_source=qr"
+            target="_blank"
+            className="social-link"
+          >
             <img
               src={asset.insta}
               className="w-[35px] h-[35px] object-contain"
               alt="Instagram"
             />
           </a>
-          <a href="#" className="social-link">
+          <a
+            href="https://t.me/kasadara_kal"
+            className="social-link"
+            target="_blank"
+          >
             <img
               src={asset.telegram}
               className="w-[35px] h-[35px] object-contain"

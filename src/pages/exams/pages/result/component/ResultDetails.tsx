@@ -25,6 +25,7 @@ interface ExamResultData {
   end_time: string;
   duration: number;
   speed?: string;
+  rank_position: number;
 }
 
 interface ResultDetailsProps {
@@ -63,7 +64,7 @@ const ResultDetails: React.FC<ResultDetailsProps> = ({ data }) => {
         />
         <p className="text-gray-600 mb-2 sm:mb-3">Rank</p>
         <h2 className="text-2xl sm:text-3xl font-bold mt-2 sm:mt-4">
-          {data?.rank} <span className="text-gray-500 text-sm">/ 50</span>
+          {data?.rank_position}
         </h2>
         <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6">
           Compared to all the attendees who <br /> attended the same exams as
