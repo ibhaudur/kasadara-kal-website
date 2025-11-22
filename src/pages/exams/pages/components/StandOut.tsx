@@ -1,5 +1,10 @@
 import React from "react";
-import { StandsOutList } from "../utils/index.utils";
+import {
+  Group1Prelims,
+  Group2AMains,
+  Group4,
+  StandsOutList,
+} from "../utils/index.utils";
 import Overview from "./Overview";
 import Exampattern from "./Exampatter";
 import FandQ from "./FandQ";
@@ -30,7 +35,21 @@ const StandOut: React.FC = () => {
         ))}
       </div>
       <Overview />
-      {path.split("/")[2] !== "buy" ? <Exampattern /> : <TermsAndCond />}
+      {path.split("/")[2] !== "buy" ? (
+        <React.Fragment>
+          <Exampattern title="TNPSC Group 4 (2025)" subjects={Group4} />
+          <Exampattern
+            title="TNPSC Group 2A Mains (2025)"
+            subjects={Group2AMains}
+          />
+          <Exampattern
+            title="TNPSC Group 1A Prelims (2025)"
+            subjects={Group1Prelims}
+          />
+        </React.Fragment>
+      ) : (
+        <TermsAndCond />
+      )}
       <FandQ />
     </div>
   );
