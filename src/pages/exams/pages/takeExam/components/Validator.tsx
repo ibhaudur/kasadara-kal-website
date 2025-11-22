@@ -59,7 +59,7 @@ const Validator: React.FC<ValidatorProps> = ({
       </button>
       {/* Sidebar container */}
       <div
-        className={`fixed top-26 right-0 h-full w-[330px] bg-white shadow-lg transform 
+        className={`fixed top-26 right-0 h-full w-[330px] flex-shrink-0 bg-white shadow-lg transform 
           transition-transform duration-300 z-40 
           ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} 
           md:static md:translate-x-0 md:block`}

@@ -5,7 +5,6 @@ import useApiCall from "../../../../hooks/useApiCall";
 import {
   getExamById,
   getPaymentStatus,
-  postConfirmPayment,
   postInitiatePayment,
 } from "../../../../service/apiUrls";
 import { useNavigate, useParams } from "react-router-dom";
@@ -19,7 +18,6 @@ const BuyExam: React.FC = () => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const transactionId = queryParams.get("transaction_id");
-  const [initiate, setInitiate] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data, refetch } = useApiCall({
     key: `${getExamById}/${id}`,
@@ -34,37 +32,28 @@ const BuyExam: React.FC = () => {
   });
   const { mutate } = useApiCall({
     key: "BuyExam",
-    url: initiate
-      ? postConfirmPayment
-      : `${postInitiatePayment}/${data?.data?.exam_id}`,
+    url: `${postInitiatePayment}/${data?.data?.exam_id}`,
     method: "post",
   });
   const handleSubmit = () => {
-    const payload = {
-      exam_id: data?.data?.exam_id,
-      mock_paid: true,
-    };
-    mutate(initiate ? payload : {}, {
-      onSuccess: (res: ApiResponse<any>) => {
-        if (res?.message !== "Initiate mock payment") {
-          window.open(res?.payment_url, "_self");
-          toast.success(res?.message);
-          refetch();
+    mutate(
+      {},
+      {
+        onSuccess: (res: ApiResponse<any>) => {
+          if (res?.payment_url) {
+            window.open(res?.payment_url, "_self");
+          } else {
+            toast.success(res?.message);
+            refetch();
+          }
           setIsOpen(false);
-        }
-        if (res?.message === "Initiate mock payment") setInitiate(true);
-      },
-      onError: (err: ApiError) => {
-        toast.error(err.response?.data?.message);
-      },
-    });
+        },
+        onError: (err: ApiError) => {
+          toast.error(err.response?.data?.message);
+        },
+      }
+    );
   };
-  useEffect(() => {
-    if (initiate) {
-      setInitiate(false);
-      handleSubmit();
-    }
-  }, [initiate]);
   useEffect(() => {
     if (PaymentStatus?.status === "completed") {
       toast.success("Payment successful");

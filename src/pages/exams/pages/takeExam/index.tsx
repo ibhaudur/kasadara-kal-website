@@ -104,9 +104,8 @@ const TakeExam = () => {
       }
     };
   }, []);
-  if (data?.status) {
-    usePrompt("Are you sure you want to leave the exam?", true);
-  }
+  usePrompt("Are you sure you want to leave the exam?", !!data?.status);
+
   const formattedAnswers = answers.map((ans, index) => ({
     question_id: data?.questions[index]?.question_id,
     answer: ans,
@@ -133,10 +132,14 @@ const TakeExam = () => {
     });
   };
   useEffect(() => {
-    if (!data?.status) {
-      navigate(`/exams/buy/${id}`);
+    if (isPending) return; // still loading → do nothing
+    if (!data) return; // no response yet → do nothing
+
+    if (data.status === false) {
+      navigate(`/exams/buy/${id}`, { replace: true });
     }
-  }, [data, navigate, id]);
+  }, [isPending, data, id, navigate]);
+
   if (isPending || !data.status) {
     return <LoadingSpinner />;
   }

@@ -20,7 +20,7 @@ const Button: React.FC<ExtendedButtonProps> = ({
         data-testid="button"
         className={`cursor-pointer rounded-[8px] p-2 border border-[#2BBC7C] text-[#2BBC7C] ${splClass}`}
         onClick={clickHandler}
-        type="submit"
+        type="button"
       >
         {btnName ? btnName : children}
       </button>
@@ -32,7 +32,7 @@ const Button: React.FC<ExtendedButtonProps> = ({
       data-testid="button"
       className={`cursor-pointer bg-[#2BBC7C] hover:bg-[#0C804D] rounded-[8px] text-white p-2 ${splClass}`}
       onClick={clickHandler}
-      type="submit"
+      type="button"
     >
       {btnName ? btnName : children}
     </button>

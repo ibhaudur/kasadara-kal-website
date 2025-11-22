@@ -46,7 +46,7 @@ const Validator: React.FC<Props> = ({
         <FaChevronLeft className="text-xl" />
       </button>
       <div
-        className={`fixed top-26 right-0 w-[330px] transform 
+        className={`fixed top-26 right-0 w-[330px] flex-shrink-0 transform 
                transition-transform duration-300 z-40 
                ${isSidebarOpen ? "translate-x-0" : "translate-x-full"} 
                md:static md:translate-x-0 md:block`}
