@@ -34,11 +34,8 @@ const barOptions = {
 };
 
 const AttendedExamsChart = ({ data }: { data: any }) => {
-  const labels = [data?.map((item: any) => item.month)];
-
-  // Data for exams attended
-  const attendedData = [data?.map((item: any) => item.exams_count)];
-
+  const labels = data?.map((item: any) => item.month);
+  const attendedData = data?.map((item: any) => item.exams_count);
   const barData = {
     labels,
     datasets: [

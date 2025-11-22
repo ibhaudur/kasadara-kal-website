@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LuCalendarDays, LuGauge } from "react-icons/lu";
 import { PiTimerBold } from "react-icons/pi";
 import { LuFileQuestion } from "react-icons/lu";
@@ -14,6 +14,7 @@ import {
 } from "../../../../utils/index.utils";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SharePopup from "../../../../component/SharePopup";
 
 type DetailsProps = {
   details: ExamDetails;
@@ -22,15 +23,8 @@ type DetailsProps = {
 
 const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
   const navigate = useNavigate();
-  const handleCopyUrl = async () => {
-    try {
-      const fullUrl = window.location.href; // full current URL
-      await navigator.clipboard.writeText(fullUrl);
-      toast.success("URL copied to clipboard!");
-    } catch (err) {
-      toast.error("Failed to copy");
-    }
-  };
+  const [open, setOpen] = useState(false);
+  const url = window.location.href;
   const handleNavigate = () => {
     if (details?.paid_status === "completed")
       if (details?.exam_allow) {
@@ -56,8 +50,9 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
           FREE
         </span>
       )}
+      {open && <SharePopup url={url} onClose={() => setOpen(false)} />}
       <small className="text-[10px] sm:text-[12px] text-[#8790A1] flex items-center gap-2 mb-3">
-        Exams <HiChevronRight /> Quick tests <HiChevronRight />{" "}
+        Exams <HiChevronRight /> {details?.exam_category} <HiChevronRight />{" "}
         <span className="text-[#2BBC7C]">{details?.exam_name}</span>
       </small>
       <div className="flex flex-col h-full justify-between">
@@ -151,7 +146,7 @@ const ExamBanner: React.FC<DetailsProps> = ({ details, setIsOpen }) => {
 
             <div className="flex gap-3 items-center w-full sm:w-auto">
               <small
-                onClick={handleCopyUrl}
+                onClick={() => setOpen(true)}
                 className="m-0 w-[40px] h-[40px] cursor-pointer flex justify-center items-center p-2 border bg-white border-[#EBEBEB] rounded-3xl"
               >
                 <GoShareAndroid className=" text-[18px]" />

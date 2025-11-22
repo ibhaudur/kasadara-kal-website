@@ -3,6 +3,7 @@ import ScreenType from "../../../../../component/ScreenType";
 import Button from "../../../../../component/UI/Button";
 import { AiOutlineClose } from "react-icons/ai";
 import Modal from "../../../../../component/Modal/Modal";
+import logo2 from "../../../../../../public/images/logo2.png";
 
 const INITIAL_TIME = 60 * 90; // 1 duration in seconds
 
@@ -43,8 +44,8 @@ const ExamIndicator: React.FC<{ handleSubmitExam: () => void }> = ({
         className="bg-white w-full flex flex-col lg:flex-row lg:justify-between lg:items-center border-b border-b-[#EBEBEB] p-3 sticky top-0"
         style={{ zIndex: 9999 }}
       >
-        {/* Title */}
-        <h4 className="text-xl font-semibold mb-3 md:mb-0">
+        <h4 className="text-xl flex items-center gap-3 font-semibold mb-3 md:mb-0">
+          <img src={logo2} width={24} alt="icon" />
           Group 4 Exam - Quick Test - 4
         </h4>
 
