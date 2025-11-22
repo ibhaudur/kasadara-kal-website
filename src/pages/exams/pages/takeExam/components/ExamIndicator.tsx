@@ -9,9 +9,10 @@ const INITIAL_TIME = 60 * 90; // 1 duration in seconds
 
 const formatTime = (time: number) => String(time).padStart(2, "0");
 
-const ExamIndicator: React.FC<{ handleSubmitExam: () => void }> = ({
-  handleSubmitExam,
-}) => {
+const ExamIndicator: React.FC<{
+  handleSubmitExam: () => void;
+  examName: string;
+}> = ({ handleSubmitExam, examName }) => {
   const [remaining, setRemaining] = useState(INITIAL_TIME);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,7 +47,7 @@ const ExamIndicator: React.FC<{ handleSubmitExam: () => void }> = ({
       >
         <h4 className="text-xl flex items-center gap-3 font-semibold mb-3 md:mb-0">
           <img src={logo2} width={24} alt="icon" />
-          Group 4 Exam - Quick Test - 4
+          {examName}
         </h4>
 
         {/* Right side controls */}

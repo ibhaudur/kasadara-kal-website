@@ -145,7 +145,7 @@ const TakeExam = () => {
   }
   return (
     <section className="bg-white h-screen">
-      <ExamIndicator handleSubmitExam={handleSubmitExam} />
+      <ExamIndicator examName={data?.exam_name} handleSubmitExam={handleSubmitExam} />
       <div className="flex">
         <QuestionsandOptions
           setAnswer={(ans) => handleSetAnswer(ans, currentQuestion)}
