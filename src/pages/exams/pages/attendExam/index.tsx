@@ -75,7 +75,7 @@ const AttendExam = () => {
         </p>
       </div>
       <h6 className="text-[20px] font-semibold mt-4">General Instructions: </h6>
-      <ul className="list-decimal mb-6 p-4 text-[15px]">
+      <ul className="list-decimal mb-24 md:mb-10 p-4 text-[15px]">
         <li className="mb-3">
           The clock will be set at the server. The countdown timer at the top
           right corner of screen will display the remaining time available for

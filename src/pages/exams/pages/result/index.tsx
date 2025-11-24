@@ -12,9 +12,12 @@ import useApiCall from "../../../../hooks/useApiCall";
 import { FiDownload } from "react-icons/fi";
 import api from "../../../../service/api";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Result = () => {
   const { id } = useParams();
+  const [language, setLanguage] = useState("English");
+
   const navigate = useNavigate();
   const { data: Review } = useApiCall({
     key: `${getExamReview}/${id}`,
@@ -30,7 +33,9 @@ const Result = () => {
   const handleExport = async () => {
     try {
       const response = await api.get(
-        getExportExamReview.replace(":id", id || ""),
+        `${getExportExamReview.replace(":id", id || "")}?language=${
+          language === "English" ? "en" : "ta"
+        }`,
         {
           responseType: "blob", // 👈 ensures file data (not JSON)
         }
@@ -60,7 +65,15 @@ const Result = () => {
   };
   return (
     <div className="bg-white p-6">
-      <div className="justify-end mb-5 hidden">
+      <div className="flex justify-end mb-5">
+        <select
+          onChange={(e) => setLanguage(e.target.value)}
+          className="border-none cursor-pointer outline-none me-3 p-2"
+          value={language}
+        >
+          <option value="English">English</option>
+          <option value="Tamil">Tamil</option>
+        </select>
         <Button
           type="outline"
           splClass="rounded-[20px] flex items-center gap-3 px-2 md:px-5 border border-[#EBEBEB]"

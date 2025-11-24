@@ -7,10 +7,15 @@ import { useParams } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 
 const AnswerReview = () => {
+  const [language, setLanguage] = useState("English");
   const { id } = useParams();
   const { data } = useApiCall({
-    key: `${getAnswerReview}/${id}`,
-    url: `${getAnswerReview}/${id}`,
+    key: `${getAnswerReview}/${id}?language=${
+      language === "English" ? "en" : "ta"
+    }`,
+    url: `${getAnswerReview}/${id}?language=${
+      language === "English" ? "en" : "ta"
+    }`,
     method: "get",
   });
 
@@ -31,7 +36,18 @@ const AnswerReview = () => {
       </p>
       <div className="flex">
         <div className="flex-grow">
-          <h2 className="text-2xl font-bold px-4 py-3">Answer Review</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold px-4 py-3">Answer Review</h2>
+
+            <select
+              onChange={(e) => setLanguage(e.target.value)}
+              className="border-none cursor-pointer outline-none me-2 p-2"
+              value={language}
+            >
+              <option value="English">English</option>
+              <option value="Tamil">Tamil</option>
+            </select>
+          </div>
           <QuestionsandOptions
             question={questions[currentQuestion]}
             totalQuestions={questions.length}

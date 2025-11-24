@@ -87,7 +87,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
       </div>
 
       {/* Question & Options */}
-      <div className="p-3 mb-10">
+      <div className="p-3 mb-24 md:mb-10">
         <p className="text-lg mb-4">{q?.question}</p>
         {q?.options &&
           Object?.entries(q?.options)?.map(([key, value]) => (
