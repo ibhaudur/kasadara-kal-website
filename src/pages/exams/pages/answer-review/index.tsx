@@ -40,7 +40,7 @@ const AnswerReview = () => {
 
             <select
               onChange={(e) => setLanguage(e.target.value)}
-              className="border-none cursor-pointer outline-none me-2 p-2"
+              className="border-none hidden cursor-pointer outline-none me-2 p-2"
               value={language}
             >
               <option value="English">English</option>
