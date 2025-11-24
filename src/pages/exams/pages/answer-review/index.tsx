@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import QuestionsandOptions from "./component/QuestionsandOptions";
 import Validator from "./component/Validator";
 import useApiCall from "../../../../hooks/useApiCall";
@@ -25,9 +25,6 @@ const AnswerReview = () => {
   if (!details) return null;
 
   const { questions, summary } = details;
-  useEffect(() => {
-    setLanguage("English");
-  }, [language]);
   return (
     <section className="bg-white">
       <p className="flex items-center gap-2 text-[13px] text-[#8790A1] px-4 py-3">
@@ -41,14 +38,14 @@ const AnswerReview = () => {
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold px-4 py-3">Answer Review</h2>
 
-            {/* <select
+            <select
               onChange={(e) => setLanguage(e.target.value)}
               className="border-none cursor-pointer outline-none me-2 p-2"
               value={language}
             >
               <option value="English">English</option>
               <option value="Tamil">Tamil</option>
-            </select> */}
+            </select>
           </div>
           <QuestionsandOptions
             question={questions[currentQuestion]}
