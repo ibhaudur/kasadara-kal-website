@@ -17,7 +17,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
       key={index}
       onClick={() =>
         navigate(
-          details?.answered
+          details?.attended
             ? `/exams/result/${details.exam_id}`
             : `/exams/buy/${details.exam_id}`
         )
@@ -68,7 +68,7 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
             )}
             <Button
               btnName={
-                details?.answered
+                details?.attended
                   ? "Review"
                   : details?.exam_type === "free" ||
                     details?.exam_type === "paid"
@@ -76,11 +76,11 @@ const ExamCards: React.FC<DetailsProps> = ({ details, index }) => {
                   : "Buy Now"
               }
               splClass={`rounded-[50px] px-9 ${
-                details?.exam_type === "free" && !details?.answered && "w-full"
+                details?.exam_type === "free" && !details?.attended && "w-full"
               }`}
               onClick={() =>
                 navigate(
-                  details?.answered
+                  details?.attended
                     ? `/exams/result/${details.exam_id}`
                     : `/exams/buy/${details.exam_id}`
                 )

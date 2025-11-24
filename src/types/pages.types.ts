@@ -35,6 +35,7 @@ export interface ExamDetails {
     attempts_remaining: number;
     status_label: string;
   };
+  attended?: number;
 }
 export interface ExamFormValues {
   exam_name: string;
