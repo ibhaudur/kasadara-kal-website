@@ -31,10 +31,10 @@ const QuestionsandOptions: React.FC<Props> = ({
     <div className="bg-white flex-grow relative">
       {/* Question */}
       <div className="p-4">
-        <p className="text-lg mb-4">
-          {currentQuestion + 1}. {question.question_text}
+        <p className="flex gap-1 text-lg mb-4">
+          {currentQuestion + 1}.{" "}
+          <span dangerouslySetInnerHTML={{ __html: question.question_text }} />
         </p>
-
         {/* Options */}
         {Object.entries(question.options).map(([key, value]) => {
           const isUserAnswer = question.user_answer === key;

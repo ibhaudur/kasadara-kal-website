@@ -88,7 +88,10 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
 
       {/* Question & Options */}
       <div className="p-3 mb-24 md:mb-10">
-        <p className="text-lg mb-4">{q?.question}</p>
+        <p
+          className="text-lg mb-4"
+          dangerouslySetInnerHTML={{ __html: q?.question }}
+        />
         {q?.options &&
           Object?.entries(q?.options)?.map(([key, value]) => (
             <div key={key} className="flex px-3 py-1 items-center gap-2 mb-2">
