@@ -89,7 +89,7 @@ const QuestionsandOptions: React.FC<QuestionsandOptionsProps> = ({
       {/* Question & Options */}
       <div className="p-3 mb-24 md:mb-10">
         <p
-          className="text-lg mb-4"
+          className="text-lg questions mb-4"
           dangerouslySetInnerHTML={{ __html: q?.question }}
         />
         {q?.options &&
