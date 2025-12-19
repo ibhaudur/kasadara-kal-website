@@ -6,6 +6,7 @@ import {
   getExamById,
   getPaymentStatus,
   postInitiatePayment,
+  postPreviewCoupon,
 } from "../../../../service/apiUrls";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../../../component/Modal/Modal";
@@ -16,6 +17,7 @@ import { toast } from "react-toastify";
 const BuyExam: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [promoCode, setPromoCode] = useState<string>("");
   const queryParams = new URLSearchParams(location.search);
   const transactionId = queryParams.get("transaction_id");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -35,24 +37,27 @@ const BuyExam: React.FC = () => {
     url: `${postInitiatePayment}/${data?.data?.exam_id}`,
     method: "post",
   });
+  const { mutate: mutateApplyCode, data: applyCodeData } = useApiCall({
+    key: "BuyExam",
+    url: postPreviewCoupon.replace(":id", data?.data?.exam_id),
+    method: "post",
+  });
   const handleSubmit = () => {
-    mutate(
-      {},
-      {
-        onSuccess: (res: ApiResponse<any>) => {
-          if (res?.payment_url) {
-            window.open(res?.payment_url, "_self");
-          } else {
-            toast.success(res?.message);
-            refetch();
-          }
-          setIsOpen(false);
-        },
-        onError: (err: ApiError) => {
-          toast.error(err.response?.data?.message);
-        },
-      }
-    );
+    const payload = promoCode ? { coupon_code: promoCode } : {};
+    mutate(payload, {
+      onSuccess: (res: ApiResponse<any>) => {
+        if (res?.payment_url) {
+          window.open(res?.payment_url, "_self");
+        } else {
+          toast.success(res?.message);
+          refetch();
+        }
+        setIsOpen(false);
+      },
+      onError: (err: ApiError) => {
+        toast.error(err.response?.data?.message);
+      },
+    });
   };
   useEffect(() => {
     if (PaymentStatus?.status === "completed") {
@@ -69,25 +74,77 @@ const BuyExam: React.FC = () => {
       navigate(`/exams/buy/${id}`, { replace: true });
     }
   }, [PaymentStatus, PaymentError]);
+  const handleApplyPromoCode = () => {
+    mutateApplyCode(
+      { coupon_code: promoCode },
+      {
+        onSuccess: (res: ApiResponse<any>) => {
+          toast.success(res?.message);
+        },
+        onError: (err: ApiError) => {
+          toast.error(err.response?.data?.message);
+        },
+      }
+    );
+  };
   return (
     <section className="p-4 max-w-[1580px] mx-auto">
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Buy Exam">
-        <div className="min-w-80 flex flex-col justify-center items-center">
-          <div className="text-[18px] text-center">
-            <label>Exam Name</label>
-            <b className="block mb-3">{data?.data?.exam_name}</b>
-            <label>Price</label>
-            <b className="block">
-              ₹
-              {Number(data?.data?.price) % 1 === 0
-                ? Number(data?.data?.price)
-                : Number(data?.data?.price).toFixed(2)}
-            </b>
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-[15px] flex justify-between gap-3 w-full">
+            <div className="">
+              <label>Exam Name</label>
+              <b className="block mb-3">{data?.data?.exam_name}</b>
+            </div>
+            <div>
+              <label>Price</label>
+              <b className="block">
+                ₹
+                {Number(data?.data?.price) % 1 === 0
+                  ? Number(data?.data?.price)
+                  : Number(data?.data?.price).toFixed(2)}
+              </b>
+            </div>
           </div>
-          <Button splClass="rounded-2xl mt-3" handler={handleSubmit}>
-            Confirm
-          </Button>
         </div>
+        <div className="relative w-full mt-4">
+          <input
+            type="text"
+            className="w-full p-2 pr-24 border rounded-md placeholder:text-xs focus:outline-none"
+            placeholder="Enter Coupon Code (if any)"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+          />
+          <button
+            type="button"
+            onClick={handleApplyPromoCode}
+            className="absolute right-1 top-1/2 -translate-y-1/2 cursor-pointer text-[#2BBC7C] px-4 py-1 rounded-md text-sm"
+          >
+            Apply
+          </button>
+        </div>
+        {applyCodeData?.status && (
+          <span className="text-sm text-green-600">
+            Coupon applied Successfully!
+          </span>
+        )}
+        <div className="flex justify-between mt-5 items-center w-full text-[15px]">
+          <label>Amount to pay:</label>
+          <b className="text-sm mb-2  text-center">
+            {" "}
+            ₹
+            {applyCodeData?.data?.final_amount
+              ? Number(applyCodeData?.data?.final_amount) % 1 === 0
+                ? Number(applyCodeData?.data?.final_amount)
+                : Number(applyCodeData?.data?.final_amount).toFixed(2)
+              : Number(data?.data?.price) % 1 === 0
+              ? Number(data?.data?.price)
+              : Number(data?.data?.price).toFixed(2)}
+          </b>
+        </div>
+        <Button splClass="rounded-md w-full mt-3" handler={handleSubmit}>
+          Confirm
+        </Button>
       </Modal>
       <ExamBanner details={data?.data} setIsOpen={setIsOpen} />
       <StandOut />
