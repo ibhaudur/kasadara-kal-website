@@ -133,10 +133,10 @@ const BuyExam: React.FC = () => {
           <b className="text-sm mb-2  text-center">
             {" "}
             ₹
-            {applyCodeData?.data?.final_amount
-              ? Number(applyCodeData?.data?.final_amount) % 1 === 0
-                ? Number(applyCodeData?.data?.final_amount)
-                : Number(applyCodeData?.data?.final_amount).toFixed(2)
+            {applyCodeData?.data?.final_amount != null
+              ? Number(applyCodeData.data.final_amount) % 1 === 0
+                ? Number(applyCodeData.data.final_amount)
+                : Number(applyCodeData.data.final_amount).toFixed(2)
               : Number(data?.data?.price) % 1 === 0
               ? Number(data?.data?.price)
               : Number(data?.data?.price).toFixed(2)}
