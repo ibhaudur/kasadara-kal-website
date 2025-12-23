@@ -12,7 +12,7 @@ const SignUp: React.FC<{
   return (
     <>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-        {active === 2 ? "Welcome!" : "Forget Password"}
+        {active === 2 ? "Sign Up" : "Forget Password"}
       </h2>
       {active === 2 && (
         <p className="text-gray-800 mb-9 text-sm">
