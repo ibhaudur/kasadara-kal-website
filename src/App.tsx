@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import "./assets/style.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
+import AdPopup from "./component/AdPopup";
 
 const queryClient = new QueryClient();
 
@@ -14,7 +15,8 @@ function App() {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <AllRoutes />
-          <ToastContainer style={{zIndex:99999999}} />
+          <AdPopup />
+          <ToastContainer style={{ zIndex: 99999999 }} />
         </PersistGate>
       </Provider>
     </QueryClientProvider>
