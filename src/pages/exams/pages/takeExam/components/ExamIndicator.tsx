@@ -99,7 +99,7 @@ const ExamIndicator: React.FC<{
         onClose={handleModalClose}
         title="Confirm Quit"
       >
-        <div className="text-center w-[90%] md:w-[500px]">
+        <div className="text-center w-96">
           <p className="text-gray-600 mb-6">
             Are you sure you want to quit the exam? Your exam will be completed
             with all the answers you have provided so far.

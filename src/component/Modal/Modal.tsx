@@ -9,7 +9,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       className="fixed inset-0 flex items-center justify-center z-[9999999] bg-[#0000008f] bg-opacity-10"
       data-testid="modal"
     >
-      <div className="bg-white rounded-3xl w-80 shadow-lg">
+      <div className="bg-white rounded-3xl shadow-lg">
         <div className="flex justify-between items-center p-5">
           <h5 className="text-[18px] font-semibold">{title}</h5>
           <button

@@ -69,7 +69,7 @@ const LoginForm: React.FC<{
           onClick={() => setActive(5)}
           className="text-[#2BBC7C] text-sm text-end cursor-pointer"
         >
-          Forget Password?
+          Forgot Password?
         </p>
         <button
           type="submit"
