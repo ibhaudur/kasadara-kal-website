@@ -8,7 +8,6 @@ const SignUp: React.FC<{
   handleSubmit: (act: number, e: React.FormEvent) => void;
   active: number;
 }> = ({ setActive, credentials, handleChange, handleSubmit, active }) => {
-  console.log(active);
   return (
     <>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">
