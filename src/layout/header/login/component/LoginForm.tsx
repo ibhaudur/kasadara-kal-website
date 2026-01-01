@@ -44,7 +44,7 @@ const LoginForm: React.FC<{
   };
   return (
     <>
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">Login</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Registered User</h2>
       <p className="text-gray-800 mb-9 text-sm">
         Great Things Start Here. Login and Shine!
       </p>
