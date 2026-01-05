@@ -38,17 +38,17 @@ const TakeExam = () => {
   const [answers, setAnswers] = useState<(string | null)[]>([]);
   const [markedQuestions, setmarkedQuestions] = useState<number[]>([]);
   const [visitedQuestions, setVisitedQuestions] = useState<number[]>([0]);
-  const [startTime, setStartTime] = useState<string>("");
+  const startTimeRef = useRef<string | null>(null);
+
+  if (!startTimeRef.current) {
+    startTimeRef.current = moment().format("YYYY-MM-DD HH:mm:ss");
+  }
   useEffect(() => {
     if (data?.questions?.length && answers.length === 0) {
       // Only initialize answers if they haven't been set yet
       setAnswers(Array(data.questions.length).fill(null));
     }
   }, [data?.questions, answers.length]);
-  useEffect(() => {
-    const now = moment().format("YYYY-MM-DD HH:mm:ss");
-    setStartTime(now);
-  }, []);
 
   const handleSetAnswer = (answer: string | null, index: number) => {
     setAnswers((prev) => {
@@ -116,7 +116,7 @@ const TakeExam = () => {
     const payload = {
       exam_id: id,
       duration: data?.duration,
-      start_time: startTime,
+      start_time: startTimeRef.current,
       end_time: end,
       answers: formattedAnswers,
     };
@@ -145,7 +145,12 @@ const TakeExam = () => {
   }
   return (
     <section className="bg-white h-screen">
-      <ExamIndicator examName={data?.exam_name} handleSubmitExam={handleSubmitExam} />
+      <ExamIndicator
+        examName={data?.exam_name}
+        handleSubmitExam={handleSubmitExam}
+        startTime={startTimeRef.current!}
+        duration={data?.duration}
+      />
       <div className="flex">
         <QuestionsandOptions
           setAnswer={(ans) => handleSetAnswer(ans, currentQuestion)}
