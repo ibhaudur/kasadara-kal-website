@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const images = ["/images/board.png", "/images/board.png", "/images/board.png"];
+const images = [
+  "/images/board.jpeg",
+  "/images/board.jpeg",
+  "/images/board.jpeg",
+];
 
 const AdCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
