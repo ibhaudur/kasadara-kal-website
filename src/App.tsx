@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import AdPopup from "./component/AdPopup";
 
 const queryClient = new QueryClient();
-
+//This is the main file for handle react's component
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
